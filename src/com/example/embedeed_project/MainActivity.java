@@ -3,6 +3,7 @@ package com.example.embedeed_project;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -10,7 +11,7 @@ public class MainActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toast.makeText(this, "source changed", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "asdfasdfas", Toast.LENGTH_LONG).show();
     }
 
     @Override
