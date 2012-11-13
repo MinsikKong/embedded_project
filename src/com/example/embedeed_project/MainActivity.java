@@ -16,11 +16,12 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		// 메인 화면은 3x3 Gridview 사용
 		GridView gridview = (GridView) findViewById(R.id.gridview);
 		gridview.setAdapter(new ImageAdapter(this));
 
+		// 'position'번 아이템 터치 시 이벤트
 		gridview.setOnItemClickListener(new OnItemClickListener() {
-
 			public void onItemClick(AdapterView<?> parent, View v,
 					int position, long id) {
 				Toast.makeText(MainActivity.this, "" + position,

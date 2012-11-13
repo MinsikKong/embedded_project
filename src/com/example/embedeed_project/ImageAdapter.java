@@ -26,26 +26,25 @@ public class ImageAdapter extends BaseAdapter {
 		return 0;
 	}
 
-	// create a new ImageView for each item referenced by the Adapter
 	public View getView(int position, View convertView, ViewGroup parent) {
 		ImageView imageView;
-		if (convertView == null) { // if it's not recycled, initialize some
-									// attributes
+		if (convertView == null) {
 			imageView = new ImageView(mContext);
-			imageView.setLayoutParams(new GridView.LayoutParams(150, 150));
+			imageView.setLayoutParams(new GridView.LayoutParams(150, 150));// 버튼 그림 파일 크기가 150x150
 			imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-			imageView.setPadding(8, 8, 8, 8);
 		} else {
 			imageView = (ImageView) convertView;
 		}
 
+		// 버튼 이미지 추가
 		imageView.setImageResource(mThumbIds[position]);
 		return imageView;
 	}
 
-	// references to our images
-	private Integer[] mThumbIds = { R.drawable.button, R.drawable.button,
-			R.drawable.button, R.drawable.button, R.drawable.button,
-			R.drawable.button, R.drawable.button, R.drawable.button,
-			R.drawable.button };
+	// 메인화면의 버튼 이미지
+	private Integer[] mThumbIds = { R.drawable.main_button1,
+			R.drawable.main_button2, R.drawable.main_button3,
+			R.drawable.main_button4, R.drawable.main_button5,
+			R.drawable.main_button6, R.drawable.main_button7,
+			R.drawable.main_button8, R.drawable.main_button9 };
 }
