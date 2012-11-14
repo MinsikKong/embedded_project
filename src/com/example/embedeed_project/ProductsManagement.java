@@ -7,8 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class ProductsManagement extends Activity {
-
-	/** Called when the activity is first created. */
+	//상품관리(공민식)
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

@@ -10,7 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class AddItem extends Activity {
-	/** Called when the activity is first created. */
+	//바코드로 상품 추가기능
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

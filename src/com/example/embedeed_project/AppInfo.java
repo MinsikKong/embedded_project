@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 
 public class AppInfo extends Activity {
-
+	//앱 정보(박민성)
 	/**
 	 * @param args
 	 */

@@ -4,10 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 
 public class ShopInfo extends Activity {
-
-	/**
-	 * @param args
-	 */
+	//매장정보(박민성)
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 

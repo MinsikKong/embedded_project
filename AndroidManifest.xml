@@ -25,7 +25,7 @@
         <activity android:name="PurchaseManagement"></activity>
         <activity android:name="ProductsManagement"></activity>
         <activity android:name="ShopInfo"></activity>
-        <activity android:name="PosMain"></activity>
+        <activity android:name=".PurchaseMain"></activity>
         <activity android:name="Advertisement"></activity>
         <activity android:name="Cafe"></activity>
         <activity android:name="Option"></activity>

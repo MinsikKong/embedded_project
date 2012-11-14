@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 
 public class Cafe extends Activity {
-
+	//까페가기(박민성)
 	/**
 	 * @param args
 	 */

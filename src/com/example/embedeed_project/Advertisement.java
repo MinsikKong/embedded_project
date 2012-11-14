@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 
 public class Advertisement extends Activity {
-
+	//광고(공민식)
 	/**
 	 * @param args
 	 */

@@ -18,12 +18,12 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		// ¸ÞÀÎ È­¸éÀº 3x3 Gridview »ç¿ë
+		// ï¿½ï¿½ï¿½ï¿½ È­ï¿½ï¿½ï¿½ï¿½ 3x3 Gridview ï¿½ï¿½ï¿½
 		GridView gridview = (GridView) findViewById(R.id.gridview);
 		gridview.setAdapter(new ImageAdapter(this));
 
-		// 'position'¹ø ¾ÆÀÌÅÛ ÅÍÄ¡ ½Ã ÀÌº¥Æ®
-		// 0~8 ¼ø¼­´ë·Î ¸ÅÃâ°ü¸®, ¸ÅÀÔ°ü¸®, »óÇ°°ü¸®, ¸ÅÀåÁ¤º¸, POS, ¾÷Ã¼±¤°í, Ä«Æä, ¿É¼Ç, Á¤º¸
+		// 'position'ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ ï¿½Ìºï¿½Æ®
+		// 0~8 ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½Ô°ï¿½, ï¿½ï¿½Ç°ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, POS, ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½, Ä«ï¿½ï¿½, ï¿½É¼ï¿½, ï¿½ï¿½ï¿½ï¿½
 		gridview.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View v,
 					int position, long id) {
@@ -57,7 +57,7 @@ public class MainActivity extends Activity {
 
 				case 4:
 					Intent intent4 = new Intent(MainActivity.this,
-							PosMain.class);
+							PurchaseMain.class);
 					startActivity(intent4);
 					break;
 

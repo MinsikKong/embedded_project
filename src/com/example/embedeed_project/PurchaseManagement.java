@@ -4,10 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 
 public class PurchaseManagement extends Activity {
-
-	/**
-	 * @param args
-	 */
+	//매입관리(공민식)
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 

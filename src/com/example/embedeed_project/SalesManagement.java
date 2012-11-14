@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class SalesManagement extends ListActivity {
+	//매출 관리(공민식)
 	private ArrayList<String> list;
 	private ArrayAdapter<String> adapter;
 

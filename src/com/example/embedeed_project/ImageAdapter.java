@@ -8,6 +8,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 
 public class ImageAdapter extends BaseAdapter {
+	//그리드뷰에서 이미지 보여주기 위한 어댑터
 	private Context mContext;
 
 	public ImageAdapter(Context c) {

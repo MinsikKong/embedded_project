@@ -4,10 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 
 public class Option extends Activity {
-
-	/**
-	 * @param args
-	 */
+	//옵션(공민식)
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
