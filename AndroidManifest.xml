@@ -30,6 +30,7 @@
         <activity android:name="Cafe"></activity>
         <activity android:name="Option"></activity>
         <activity android:name="AppInfo"></activity>
+        <activity android:name="AddItem"></activity>
     </application>
 
 </manifest>
