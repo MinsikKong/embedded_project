@@ -5,35 +5,43 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.ListView;
 
 public class PurchaseMain extends Activity {
-	// 구매(박민성)
-	private ArrayList<String> list;
-	private ArrayAdapter<String> adapter;
-	private ListView productList;
-
+	//구매(박민성)
+	private ArrayList<String> productArray;
+	private ArrayList<String> orderArray;
+	private ArrayAdapter<String> productAdapter;
+	private ArrayAdapter<String> orderAdapter;
+	private GridView productList;
+	private ListView orderList;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.pos_main);
+	    super.onCreate(savedInstanceState);
+		setContentView(R.layout.purchase_main);
+		
+		productList = (GridView)findViewById(R.id.productList);
+		orderList = (ListView)findViewById(R.id.orderList);
+		productArray = new ArrayList<String>();
+		orderArray = new ArrayList<String>();
 
-		productList = (ListView) findViewById(R.id.productList);
-		list = new ArrayList<String>();
-
-		list.add("1");
-		list.add("2");
-		list.add("3");
-		list.add("4");
-		list.add("5");
-		list.add("6");
-		list.add("7");
-		list.add("8");
-		list.add("9");
+		productArray.add("1");
+		productArray.add("2");
+		productArray.add("3");
+		productArray.add("4");
+		orderArray.add("5");
+		orderArray.add("6");
+		orderArray.add("7");
+		orderArray.add("8");
+		orderArray.add("9");
+		
 		// adapter.notifyDataSetChanged();
 
-		adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, list);
-		productList.setAdapter(adapter);
+		productAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, productArray);
+		orderAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, orderArray);
+	    productList.setAdapter(productAdapter);
+	    orderList.setAdapter(orderAdapter);
 	}
 }

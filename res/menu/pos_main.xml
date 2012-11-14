@@ -31,18 +31,19 @@
 
     <TextView
         android:id="@+id/listViewspliter"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/listView1"
+        android:background="@drawable/red"
+        android:layout_alignBottom="@+id/orderList"
         android:layout_alignParentLeft="true"
         android:text=" " />
-
+
     <ListView
         android:id="@+id/productList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignTop="@+id/listViewspliter"
+        android:layout_below="@+id/listViewspliter"
         android:layout_centerHorizontal="true" >
 
     </ListView>
