@@ -8,6 +8,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="바코드" />
+        android:text="바코드 스캔" />
 
 </RelativeLayout>
