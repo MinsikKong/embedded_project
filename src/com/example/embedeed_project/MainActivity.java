@@ -18,12 +18,11 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		// ���� ȭ���� 3x3 Gridview ���
+
 		GridView gridview = (GridView) findViewById(R.id.gridview);
 		gridview.setAdapter(new ImageAdapter(this));
 
-		// 'position'�� ������ ��ġ �� �̺�Ʈ
-		// 0~8 ���� �����, ���԰�, ��ǰ��, ��������, POS, ��ü����, ī��, �ɼ�, ����
+
 		gridview.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View v,
 					int position, long id) {
@@ -85,6 +84,7 @@ public class MainActivity extends Activity {
 				}
 			}
 		});
+
 	}
 
 	@Override
