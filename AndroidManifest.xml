@@ -41,7 +41,11 @@
         </activity>
         <activity android:name="AddItem" >
         </activity>
-        <activity android:name="SalesManagementByDay" >
+        <activity android:name="SalesManagementByDate" >
+        </activity>
+        <activity android:name="SalesManagementByCompany" >
+        </activity>
+        <activity android:name="SalesManagementByItem" >
         </activity>
     </application>
 

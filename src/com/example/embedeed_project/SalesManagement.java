@@ -47,7 +47,27 @@ public class SalesManagement extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(SalesManagement.this,
-						SalesManagementByDay.class);
+						SalesManagementByDate.class);
+				startActivity(intent);
+			}
+		});
+
+		Button byCompany = (Button) findViewById(R.id.salesByCompanyButton);
+		byCompany.setOnClickListener(new Button.OnClickListener() {
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(SalesManagement.this,
+						SalesManagementByCompany.class);
+				startActivity(intent);
+			}
+		});
+		
+		Button byItem = (Button) findViewById(R.id.salesByItemButton);
+		byItem.setOnClickListener(new Button.OnClickListener() {
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(SalesManagement.this,
+						SalesManagementByItem.class);
 				startActivity(intent);
 			}
 		});

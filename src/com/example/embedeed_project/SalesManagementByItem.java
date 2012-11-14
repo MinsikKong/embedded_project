@@ -1,57 +1,43 @@
 package com.example.embedeed_project;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-
-import org.apache.http.auth.BasicUserPrincipal;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.app.DatePickerDialog;
-import android.content.Intent;
+import android.widget.Spinner;
 
-public class SalesManagementByDay extends Activity {
-	// 일자별 매출(공민식)
+public class SalesManagementByItem extends Activity {
+	// 판매(공민식)
 	private ArrayList<String> list;
 	private ArrayAdapter<String> adapter;
 	private ListView productList;
 
-	EditText et_startdate, et_enddate;
-	private int iYear, iMonth, iDay;
-
-	View tempview;
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.sales_management);
+		setContentView(R.layout.sales_management_by_item);
 
-		et_startdate.setOnClickListener(new Button.OnClickListener() {
-			public void onClick(View v) {
-				tempview = v;
-				showDialog(0);
-			}
-		});
+		Spinner spinner = (Spinner) findViewById(R.id.SalesManagementByItemSpinner);
+		// Create an ArrayAdapter using the string array and a default spinner
+		// layout
+		ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter
+				.createFromResource(this, R.array.SalesManagementByItemSpinner,
+						android.R.layout.simple_spinner_item);
+		// Specify the layout to use when the list of choices appears
+		spinnerAdapter
+				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		// Apply the adapter to the spinner
+		spinner.setAdapter(spinnerAdapter);
 
-		et_enddate.setOnClickListener(new Button.OnClickListener() {
-			public void onClick(View v) {
-				tempview = v;
-				showDialog(0);
-			}
-		});
-
-		productList = (ListView) findViewById(R.id.SalesList);
+		productList = (ListView) findViewById(R.id.SalesManagementByItemList);
 		list = new ArrayList<String>();
 
 		list.add("a");
@@ -68,5 +54,6 @@ public class SalesManagementByDay extends Activity {
 		adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, list);
 		productList.setAdapter(adapter);
+
 	}
 }

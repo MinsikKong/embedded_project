@@ -1,0 +1,72 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <ListView
+        android:id="@+id/SalesByDayList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/SalesSummary"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/startDateET" >
+    </ListView>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/startDateET"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="일자"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/TextView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/startDateET"
+        android:layout_alignBottom="@+id/startDateET"
+        android:layout_toRightOf="@+id/startDateET"
+        android:text="~" />
+
+    <EditText
+        android:id="@+id/startDateET"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/textView1"
+        android:editable="false"
+        android:ems="10"
+        android:hint="시작일"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/endDateET"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/TextView2"
+        android:editable="false"
+        android:ems="10"
+        android:hint="종료일"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/searchByDayButton1"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="검색" />
+
+    <TextView
+        android:id="@+id/SalesSummary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:text="~일에서 ~일까지 매출 ~원 등 기타정보" />
+
+</RelativeLayout>
