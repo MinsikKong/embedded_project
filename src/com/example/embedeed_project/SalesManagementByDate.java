@@ -30,7 +30,7 @@ public class SalesManagementByDate extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.sales_management_by_date);
+		setContentView(R.layout.purchase_management_by_date);
 
 		// datepicker 관련 변수들 초기화 함수
 		Init();
@@ -51,7 +51,7 @@ public class SalesManagementByDate extends Activity {
 			}
 		});
 
-		productList = (ListView) findViewById(R.id.SalesByDayList);
+		productList = (ListView) findViewById(R.id.PurchaseByDateList);
 		list = new ArrayList<String>();
 
 		list.add("a");
@@ -72,8 +72,8 @@ public class SalesManagementByDate extends Activity {
 
 	// 변수들 초기화
 	public void Init() {
-		et_startdate = (EditText) findViewById(R.id.startDateET);
-		et_enddate = (EditText) findViewById(R.id.endDateET);
+		et_startdate = (EditText) findViewById(R.id.PurchaseByDateStartDateET);
+		et_enddate = (EditText) findViewById(R.id.PurchaseByDateEndDateET);
 
 		final Calendar objTime = Calendar.getInstance();
 		year = objTime.get(Calendar.YEAR);
@@ -94,7 +94,7 @@ public class SalesManagementByDate extends Activity {
 	private DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {
 		public void onDateSet(DatePicker view, int year, int month, int day) {
 			// 시작일,종료일을 정했을 경우 시작일의 textview에 날자 출력
-			if (tempView.getId() == R.id.startDateET) {
+			if (tempView.getId() == R.id.SalesByDateStartDateET) {
 				et_startdate.setText(year + "-" + (month + 1) + "-" + day);
 			} else {
 				et_enddate.setText(year + "-" + (month + 1) + "-" + day);

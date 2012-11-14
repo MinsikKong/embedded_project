@@ -47,6 +47,10 @@
         </activity>
         <activity android:name="SalesManagementByItem" >
         </activity>
+        <activity android:name="PurchaseManagementByDate" >
+        </activity>
+        <activity android:name="PurchaseManagementByItem"></activity>
+        <activity android:name="PurchaseManagementByCompany"></activity>
     </application>
 
 </manifest>

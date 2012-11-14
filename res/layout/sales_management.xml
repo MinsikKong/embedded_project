@@ -2,24 +2,6 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
-    <TextView
-        android:id="@+id/SalesSummary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/button1"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:text="매출 ~~~원 등 기타정보" />
-
-    <ListView
-        android:id="@+id/SalesList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/salesByDayButton"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/SalesSummary" >
-    </ListView>
-
     <Button
         android:id="@+id/salesByDayButton"
         android:layout_width="wrap_content"
@@ -43,5 +25,22 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:text="상품별" />
+
+    <TextView
+        android:id="@+id/SalesSummary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/salesByDayButton"
+        android:layout_alignParentLeft="true"
+        android:text="매출 ~~~원 등 기타정보" />
+
+    <ListView
+        android:id="@+id/SalesList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/SalesSummary"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" >
+    </ListView>
 
 </RelativeLayout>
