@@ -30,18 +30,18 @@ public class ImageAdapter extends BaseAdapter {
 		ImageView imageView;
 		if (convertView == null) {
 			imageView = new ImageView(mContext);
-			imageView.setLayoutParams(new GridView.LayoutParams(150, 150));// ¹öÆ° ±×¸² ÆÄÀÏ Å©±â°¡ 150x150
+			imageView.setLayoutParams(new GridView.LayoutParams(150, 150));// ï¿½ï¿½Æ° ï¿½×¸ï¿½ ï¿½ï¿½ï¿½ï¿½ Å©ï¿½â°¡ 150x150
 			imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 		} else {
 			imageView = (ImageView) convertView;
 		}
 
-		// ¹öÆ° ÀÌ¹ÌÁö Ãß°¡
+		// 
 		imageView.setImageResource(mThumbIds[position]);
 		return imageView;
 	}
 
-	// ¸ŞÀÎÈ­¸éÀÇ ¹öÆ° ÀÌ¹ÌÁö
+	// 
 	private Integer[] mThumbIds = { R.drawable.main_button1,
 			R.drawable.main_button2, R.drawable.main_button3,
 			R.drawable.main_button4, R.drawable.main_button5,

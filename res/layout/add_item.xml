@@ -2,4 +2,12 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
+    <Button
+        android:id="@+id/barcodeReadButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="바코드" />
+
 </RelativeLayout>

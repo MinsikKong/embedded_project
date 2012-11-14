@@ -24,13 +24,17 @@ public final class R {
         public static final int main_button9=0x7f02000a;
     }
     public static final class id {
-        public static final int addItemButton=0x7f070002;
-        public static final int button1=0x7f070004;
-        public static final int button2=0x7f070003;
-        public static final int button3=0x7f070005;
+        public static final int SalesSummary=0x7f070008;
+        public static final int addItemButton=0x7f070003;
+        public static final int barcodeReadButton=0x7f070001;
+        public static final int button1=0x7f070009;
+        public static final int button2=0x7f070005;
         public static final int gridview=0x7f070000;
-        public static final int menu_settings=0x7f070006;
-        public static final int textView1=0x7f070001;
+        public static final int menu_settings=0x7f07000a;
+        public static final int salesByCompanyutton=0x7f070006;
+        public static final int salesByDayButton=0x7f070004;
+        public static final int salesByProduct=0x7f070007;
+        public static final int textView1=0x7f070002;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
