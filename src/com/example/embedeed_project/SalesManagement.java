@@ -3,12 +3,12 @@ package com.example.embedeed_project;
 import android.app.Activity;
 import android.os.Bundle;
 
-public class StockManagement extends Activity {
+public class SalesManagement extends Activity {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.stock_management);
+		setContentView(R.layout.sales_management);
 	}
 
 }

@@ -2,6 +2,7 @@ package com.example.embedeed_project;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -22,6 +23,7 @@ public class MainActivity extends Activity {
 		gridview.setAdapter(new ImageAdapter(this));
 
 		// 'position'번 아이템 터치 시 이벤트
+		// 0~8 순서대로 매출관리, 매입관리, 상품관리, 매장정보, POS, 업체광고, 카페, 옵션, 정보
 		gridview.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View v,
 					int position, long id) {
@@ -30,9 +32,56 @@ public class MainActivity extends Activity {
 
 				switch (position) {
 				case 0:
-					Intent intent = new Intent(MainActivity.this,
-							StockManagement.class);
-					startActivity(intent);
+					Intent intent0 = new Intent(MainActivity.this,
+							SalesManagement.class);
+					startActivity(intent0);
+					break;
+
+				case 1:
+					Intent intent1 = new Intent(MainActivity.this,
+							PurchaseManagement.class);
+					startActivity(intent1);
+					break;
+
+				case 2:
+					Intent intent2 = new Intent(MainActivity.this,
+							ProductsManagement.class);
+					startActivity(intent2);
+					break;
+
+				case 3:
+					Intent intent3 = new Intent(MainActivity.this,
+							ShopInfo.class);
+					startActivity(intent3);
+					break;
+
+				case 4:
+					Intent intent4 = new Intent(MainActivity.this,
+							PosMain.class);
+					startActivity(intent4);
+					break;
+
+				case 5:
+					Intent intent5 = new Intent(MainActivity.this,
+							Advertisement.class);
+					startActivity(intent5);
+					break;
+
+				case 6:
+					Intent intent6 = new Intent(MainActivity.this, Cafe.class);
+					startActivity(intent6);
+					break;
+
+				case 7:
+					Intent intent7 = new Intent(MainActivity.this, Option.class);
+					startActivity(intent7);
+					break;
+
+				case 8:
+					Intent intent8 = new Intent(MainActivity.this,
+							AppInfo.class);
+					startActivity(intent8);
+					break;
 				}
 			}
 		});

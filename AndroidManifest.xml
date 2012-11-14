@@ -12,7 +12,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name="MainActivity"
             android:screenOrientation="portrait"
             android:label="@string/title_activity_main" >
             <intent-filter>
@@ -21,7 +21,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="StockManagement"></activity>
+        <activity android:name="SalesManagement"></activity>
+        <activity android:name="PurchaseManagement"></activity>
+        <activity android:name="ProductsManagement"></activity>
+        <activity android:name="ShopInfo"></activity>
+        <activity android:name="PosMain"></activity>
+        <activity android:name="Advertisement"></activity>
+        <activity android:name="Cafe"></activity>
+        <activity android:name="Option"></activity>
+        <activity android:name="AppInfo"></activity>
     </application>
 
 </manifest>
