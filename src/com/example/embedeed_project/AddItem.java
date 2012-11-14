@@ -10,7 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class AddItem extends Activity {
-	//바코드로 상품 추가기능
+	// 바코드로 상품 추가기능
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -22,9 +22,6 @@ public class AddItem extends Activity {
 		final Intent intent = new Intent("com.google.zxing.client.android.SCAN");
 		intent.setPackage("com.google.zxing.client.android");
 		Button b1 = (Button) findViewById(R.id.barcodeReadButton);
-
-		Toast.makeText(AddItem.this, intent.getStringExtra("code"),
-				Toast.LENGTH_SHORT).show();
 
 		b1.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
