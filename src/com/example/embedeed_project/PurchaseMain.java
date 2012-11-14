@@ -8,17 +8,17 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class PurchaseMain extends Activity {
-	//구매(박민성)
+	// 구매(박민성)
 	private ArrayList<String> list;
 	private ArrayAdapter<String> adapter;
 	private ListView productList;
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-	    super.onCreate(savedInstanceState);
+		super.onCreate(savedInstanceState);
 		setContentView(R.layout.pos_main);
-		
-		productList = (ListView)findViewById(R.id.productList);
+
+		productList = (ListView) findViewById(R.id.productList);
 		list = new ArrayList<String>();
 
 		list.add("1");
@@ -32,7 +32,8 @@ public class PurchaseMain extends Activity {
 		list.add("9");
 		// adapter.notifyDataSetChanged();
 
-		adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
-	    productList.setAdapter(adapter);
+		adapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_list_item_1, list);
+		productList.setAdapter(adapter);
 	}
 }
