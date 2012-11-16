@@ -4,18 +4,18 @@ import android.app.Activity;
 import android.os.Bundle;
 
 public class Option extends Activity {
-	//옵션(공민식)
+	// 옵션(공민식)
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stubdddddddddddddddddddddasdasdasdasdfasfasfasdf
 
 	}
 
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-	    super.onCreate(savedInstanceState);
-	
-	    // TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+
+		// TODO Auto-generated method stub
 	}
 
 }
