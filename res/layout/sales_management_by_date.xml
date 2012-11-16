@@ -57,7 +57,7 @@
         android:id="@+id/SalesByDateList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/SalesSummary"
+        android:layout_above="@+id/SalesByDateSummary"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/SalesByDateEndDateEditext" >
     </ListView>
