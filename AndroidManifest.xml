@@ -25,7 +25,7 @@
         </activity>
         <activity android:name="PurchaseManagement" >
         </activity>
-        <activity android:name="com.example.embedeed_project.ItemManagement" >
+        <activity android:name="ItemManagement" >
         </activity>
         <activity android:name="ShopInfo" >
         </activity>
@@ -39,7 +39,7 @@
         </activity>
         <activity android:name="AppInfo" >
         </activity>
-        <activity android:name="com.example.embedeed_project.ItemManagementAddItem" >
+        <activity android:name="ItemManagementAddItem" >
         </activity>
         <activity android:name="SalesManagementByDate" >
         </activity>
@@ -49,9 +49,12 @@
         </activity>
         <activity android:name="PurchaseManagementByDate" >
         </activity>
-        <activity android:name="PurchaseManagementByItem"></activity>
-        <activity android:name="PurchaseManagementByCompany"></activity>
-        <activity android:name="SalesManagementAdd"></activity>
+        <activity android:name="PurchaseManagementByItem" >
+        </activity>
+        <activity android:name="PurchaseManagementByCompany" >
+        </activity>
+        <activity android:name="SalesManagementAdd" >
+        </activity>
     </application>
 
 </manifest>
