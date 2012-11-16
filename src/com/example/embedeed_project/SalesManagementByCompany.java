@@ -50,7 +50,7 @@ public class SalesManagementByCompany extends Activity {
 		list.add("7");
 		list.add("8");
 		list.add("9");
-		//adapter.notifyDataSetChanged();
+		// adapter.notifyDataSetChanged();
 
 		adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, list);

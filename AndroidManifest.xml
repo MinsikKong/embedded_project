@@ -51,6 +51,7 @@
         </activity>
         <activity android:name="PurchaseManagementByItem"></activity>
         <activity android:name="PurchaseManagementByCompany"></activity>
+        <activity android:name="SalesManagementAdd"></activity>
     </application>
 
 </manifest>

@@ -24,7 +24,7 @@ public class SalesManagement extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.sales_management);
 
-		productList = (ListView) findViewById(R.id.SalesList);
+		productList = (ListView) findViewById(R.id.SalesManagementList);
 		list = new ArrayList<String>();
 
 		list.add("a");
@@ -42,7 +42,7 @@ public class SalesManagement extends Activity {
 				android.R.layout.simple_list_item_1, list);
 		productList.setAdapter(adapter);
 
-		Button byDay = (Button) findViewById(R.id.salesByDayButton);
+		Button byDay = (Button) findViewById(R.id.SalesManagementButton1);
 		byDay.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
@@ -52,7 +52,7 @@ public class SalesManagement extends Activity {
 			}
 		});
 
-		Button byCompany = (Button) findViewById(R.id.salesByCompanyButton);
+		Button byCompany = (Button) findViewById(R.id.SalesManagementButton2);
 		byCompany.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
@@ -61,8 +61,8 @@ public class SalesManagement extends Activity {
 				startActivity(intent);
 			}
 		});
-		
-		Button byItem = (Button) findViewById(R.id.salesByItemButton);
+
+		Button byItem = (Button) findViewById(R.id.SalesManagementButton3);
 		byItem.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
