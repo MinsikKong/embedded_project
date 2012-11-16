@@ -34,6 +34,7 @@ public final class R {
         public static final int yellow=0x7f02000e;
     }
     public static final class id {
+        public static final int ItemManagementAddItemButton=0x7f080003;
         public static final int PurchaseByDateButton1=0x7f080023;
         public static final int PurchaseByDateEndDateEditext=0x7f080021;
         public static final int PurchaseByDateList=0x7f080024;
@@ -79,28 +80,27 @@ public final class R {
         public static final int SalesManagementList=0x7f08002c;
         public static final int SalesManagementSummary=0x7f08002e;
         public static final int SalesSummary=0x7f080032;
-        public static final int addItemButton=0x7f08000b;
-        public static final int amount=0x7f080006;
+        public static final int amount=0x7f080007;
         public static final int backButton=0x7f080010;
         public static final int barcodeButton=0x7f080011;
         public static final int barcodeReadButton=0x7f080001;
         public static final int calculateButton=0x7f08000e;
         public static final int gridview=0x7f080000;
         public static final int menu_settings=0x7f080043;
-        public static final int orderItemName=0x7f080003;
+        public static final int orderItemName=0x7f080004;
         public static final int orderList=0x7f08000d;
-        public static final int price=0x7f080008;
+        public static final int price=0x7f080009;
         public static final int productList=0x7f08000f;
-        public static final int productName=0x7f080007;
+        public static final int productName=0x7f080008;
         public static final int resetButton=0x7f080012;
         public static final int salesByDayButton=0x7f08002f;
         public static final int salesSearchByDayButton1=0x7f08003b;
-        public static final int singlePrice=0x7f080004;
+        public static final int singlePrice=0x7f080005;
         public static final int spinner1=0x7f080029;
-        public static final int stock=0x7f080009;
+        public static final int stock=0x7f08000a;
         public static final int textView1=0x7f080002;
-        public static final int textView2=0x7f08000a;
-        public static final int totalPrice=0x7f080005;
+        public static final int textView2=0x7f08000b;
+        public static final int totalPrice=0x7f080006;
         public static final int totalPriceText=0x7f08000c;
     }
     public static final class layout {
@@ -109,10 +109,10 @@ public final class R {
         public static final int advertisement=0x7f030002;
         public static final int app_info=0x7f030003;
         public static final int cafe=0x7f030004;
-        public static final int option=0x7f030005;
-        public static final int order_listview=0x7f030006;
-        public static final int product_gridview=0x7f030007;
-        public static final int products_management=0x7f030008;
+        public static final int item_management=0x7f030005;
+        public static final int option=0x7f030006;
+        public static final int order_listview=0x7f030007;
+        public static final int product_gridview=0x7f030008;
         public static final int purchase_main=0x7f030009;
         public static final int purchase_management=0x7f03000a;
         public static final int purchase_management_by_company=0x7f03000b;

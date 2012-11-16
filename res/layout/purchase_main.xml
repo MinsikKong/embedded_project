@@ -17,7 +17,7 @@
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/totalPriceText"
         android:text="                                 " />
-
+
     <ListView
         android:id="@+id/orderList"
         android:layout_width="match_parent"
@@ -25,9 +25,8 @@
         android:layout_above="@+id/calculateButton"
         android:layout_below="@+id/totalPriceText"
         android:layout_toRightOf="@+id/totalPrice" >
-
     </ListView>
-
+
     <GridView
         android:id="@+id/productList"
         android:layout_width="match_parent"
@@ -36,7 +35,6 @@
         android:layout_alignTop="@+id/orderList"
         android:layout_toLeftOf="@+id/orderList"
         android:numColumns="3" >
-
     </GridView>
 
     <Button

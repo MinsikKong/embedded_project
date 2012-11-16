@@ -42,7 +42,7 @@ public class MainActivity extends Activity {
 
 				case 2: // 상품관리
 					Intent intent2 = new Intent(MainActivity.this,
-							ProductsManagement.class);
+							ItemManagement.class);
 					startActivity(intent2);
 					break;
 
