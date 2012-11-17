@@ -27,8 +27,6 @@ public class PurchaseManagement extends Activity {
 	private ArrayList<String> list; // listview의 목록
 	private ArrayAdapter<String> adapter;
 	private ListView itemList;
-	public static final String DATABASE_NAME = "posDB.db";
-	public static final String DATABASE_PATH = "/data/data/com.example.embedeed_project/databases/posDB.db";
 	Cursor cursor;
 	SQLiteDatabase db;
 	public int count;
@@ -40,8 +38,42 @@ public class PurchaseManagement extends Activity {
 
 		list = new ArrayList<String>();
 
-		dbInstall();
-		db = openOrCreateDatabase(DATABASE_NAME, MODE_PRIVATE, null);
+
+		adapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_list_item_1, list);
+		itemList = (ListView) findViewById(R.id.PurchaseManagementList);
+		itemList.setAdapter(adapter);
+
+		Button byDay = (Button) findViewById(R.id.PurchaseManagementButton1);
+		byDay.setOnClickListener(new Button.OnClickListener() {
+			public void onClick(View v) {
+				Intent intent = new Intent(PurchaseManagement.this,
+						PurchaseManagementByDate.class);
+				startActivity(intent);
+			}
+		});
+
+		Button byCompany = (Button) findViewById(R.id.PurchaseManagementButton2);
+		byCompany.setOnClickListener(new Button.OnClickListener() {
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(PurchaseManagement.this,
+						PurchaseManagementByCompany.class);
+				startActivity(intent);
+			}
+		});
+
+		Button byItem = (Button) findViewById(R.id.PurchaseManagementButton3);
+		byItem.setOnClickListener(new Button.OnClickListener() {
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(PurchaseManagement.this,
+						PurchaseManagementByItem.class);
+				startActivity(intent);
+			}
+		});
+		
+		db = openOrCreateDatabase(Const.DATABASE_NAME, MODE_PRIVATE, null);
 		db.setVersion(1);
 		db.setLocale(Locale.getDefault());
 		db.setLockingEnabled(true);
@@ -63,6 +95,7 @@ public class PurchaseManagement extends Activity {
 		itemList.setAdapter(adapter);
 	}
 
+<<<<<<< HEAD
 	public void dbInstall() {
 		AssetManager assetManager = getResources().getAssets();
 		File file = new File(DATABASE_PATH);
@@ -100,6 +133,8 @@ public class PurchaseManagement extends Activity {
 
 	}
 
+=======
+>>>>>>> b4103de547784d176d27b5d6972c65c3a99646d7
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.purchase_management, menu);

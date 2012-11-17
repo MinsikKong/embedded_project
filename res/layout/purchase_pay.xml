@@ -16,7 +16,7 @@
         android:textSize="30dp" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/cashPay"
         android:layout_width="120dp"
         android:layout_height="60dp"
         android:layout_alignLeft="@+id/textView1"
@@ -26,23 +26,24 @@
         android:text="현금결제" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/cardPay"
         android:layout_width="120dp"
         android:layout_height="60dp"
-        android:layout_alignBaseline="@+id/button2"
-        android:layout_alignBottom="@+id/button2"
-        android:layout_marginLeft="20dp"
-        android:layout_toRightOf="@+id/button2"
+        android:layout_alignBaseline="@+id/cashPay"
+        android:layout_alignBottom="@+id/cashPay"
+        android:layout_marginLeft="18dp"
+        android:layout_toRightOf="@+id/cashPay"
         android:background="@drawable/blue"
         android:text="카드결제" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/totalPayPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button2"
-        android:layout_alignRight="@+id/button1"
-        android:text="100000원"
+        android:layout_alignBaseline="@+id/textView1"
+        android:layout_alignBottom="@+id/textView1"
+        android:layout_alignRight="@+id/cardPay"
+        android:text="0원"
         android:textSize="30dp" />
 
 </RelativeLayout>
