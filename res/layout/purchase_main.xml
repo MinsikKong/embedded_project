@@ -16,37 +16,31 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/totalPriceText"
-        android:text="                                 " />
-
+        android:maxLength="40"
+        android:text="10000원" />
+
     <ListView
         android:id="@+id/orderList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/calculateButton"
-        android:layout_below="@+id/totalPriceText"
-        android:layout_toRightOf="@+id/totalPrice" >
+        android:layout_above="@+id/payButton"
+        android:layout_alignLeft="@+id/resetButton"
+        android:layout_below="@+id/totalPriceText" >
+
     </ListView>
 
     <GridView
         android:id="@+id/productList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/backButton"
+        android:layout_alignBottom="@+id/orderList"
         android:layout_alignTop="@+id/orderList"
         android:layout_toLeftOf="@+id/orderList"
         android:numColumns="3" >
     </GridView>
 
     <Button
-        android:id="@+id/backButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:text="back" />
-
-    <Button
-        android:id="@+id/calculateButton"
+        android:id="@+id/payButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -54,20 +48,28 @@
         android:text="계산" />
 
     <Button
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/productList"
+        android:layout_toRightOf="@+id/totalPriceText"
+        android:text="back" />
+
+    <Button
         android:id="@+id/barcodeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/totalPrice"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="20dp"
+        android:layout_centerHorizontal="true"
         android:text="바코드" />
 
     <Button
         android:id="@+id/resetButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/orderList"
         android:layout_alignParentBottom="true"
+        android:layout_marginLeft="14dp"
+        android:layout_toRightOf="@+id/barcodeButton"
         android:text="리셋" />
 
 </RelativeLayout>
