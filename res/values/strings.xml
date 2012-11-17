@@ -8,22 +8,22 @@
     <string-array name="SalesManagementByCompanySpinner">
         <item>업체1</item>
         <item>업체2</item>
-        <item>ㅁㄴㅇㅁㄴㅇ</item>
-        <item>ㄴㅇㄹㄴㅇ류</item>
-        <item>ㄴㅇㅁㅇㅁ</item>
-        <item>ㅇㅁㅁㄴㅇㅁㄴㅇㅍ</item>
-        <item>ㅠㅠㅠㅠㅠㅠ</item>
-        <item>ㅁ</item>
     </string-array>
     <string-array name="SalesManagementByItemSpinner">
         <item>상품1</item>
         <item>상품2</item>
-        <item>ㅁㅁ</item>
-        <item>ㄴㅇㄹㄴㅇ류</item>
-        <item>ㄴㅇㅁㅇㅁ</item>
-        <item>ㅇㅁㅁㄴㅇㅁㄴㅇㅍ</item>
-        <item>ㅠㅠㅠㅠㅠㅠ</item>
-        <item>ㅁ</item>
+    </string-array>
+    <string-array name="PurchaseManagementByCompanySpinner">
+        <item>업체1</item>
+        <item>업체2</item>
+    </string-array>
+    <string-array name="PurchaseManagementByItemSpinner">
+        <item>상품1</item>
+        <item>상품2</item>
+    </string-array>
+    <string-array name="ItemManagementByCompanySpinner">
+        <item>상품1</item>
+        <item>상품2</item>
     </string-array>
 
 </resources>

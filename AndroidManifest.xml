@@ -7,6 +7,8 @@
         android:minSdkVersion="8"
         android:targetSdkVersion="15" />
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -40,6 +42,10 @@
         <activity android:name="AppInfo" >
         </activity>
         <activity android:name="ItemManagementAddItem" >
+        </activity>
+        <activity android:name="ItemManagementByDate" >
+        </activity>
+        <activity android:name="ItemManagementByCompany" >
         </activity>
         <activity android:name="SalesManagementByDate" >
         </activity>

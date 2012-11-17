@@ -3,14 +3,8 @@ package com.example.embedeed_project;
 import java.util.ArrayList;
 
 import android.app.Activity;
-import android.app.ListActivity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 
@@ -18,7 +12,7 @@ public class SalesManagementByItem extends Activity {
 	// 판매(공민식)
 	private ArrayList<String> list;
 	private ArrayAdapter<String> adapter;
-	private ListView productList;
+	private ListView itemList;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -37,23 +31,14 @@ public class SalesManagementByItem extends Activity {
 		// Apply the adapter to the spinner
 		spinner.setAdapter(spinnerAdapter);
 
-		productList = (ListView) findViewById(R.id.SalesManagementByItemList);
 		list = new ArrayList<String>();
 
-		list.add("a");
-		list.add("s");
-		list.add("d");
-		list.add("g");
-		list.add("5");
-		list.add("6");
-		list.add("7");
-		list.add("8");
-		list.add("9");
-		// adapter.notifyDataSetChanged();
+		list.add("구현해야됨");
 
 		adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, list);
-		productList.setAdapter(adapter);
+		itemList = (ListView) findViewById(R.id.SalesManagementByItemList);
+		itemList.setAdapter(adapter);
 
 	}
 }

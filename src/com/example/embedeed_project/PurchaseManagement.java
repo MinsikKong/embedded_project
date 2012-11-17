@@ -1,9 +1,12 @@
 package com.example.embedeed_project;
 
 import java.util.ArrayList;
-
+import java.util.Locale;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -12,32 +15,42 @@ import android.widget.ListView;
 
 public class PurchaseManagement extends Activity {
 	// 판매(공민식)
-	private ArrayList<String> list;
+	private ArrayList<String> list; // listview의 목록
 	private ArrayAdapter<String> adapter;
-	private ListView productList;
+	private ListView itemList;
 
+	Cursor cursor;
+	SQLiteDatabase db;
+	@SuppressLint("SdCardPath")
+	public static final String DB_PATH = "/sdcard/db.db";
+
+	@SuppressLint("SdCardPath")
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.purchase_management);
 
-		productList = (ListView) findViewById(R.id.PurchaseManagementList);
 		list = new ArrayList<String>();
 
-		list.add("a");
-		list.add("s");
-		list.add("d");
-		list.add("g");
-		list.add("5");
-		list.add("6");
-		list.add("7");
-		list.add("8");
-		list.add("9");
-		// adapter.notifyDataSetChanged();
+		db = openOrCreateDatabase(DB_PATH, MODE_PRIVATE, null);
+		db.setVersion(1);
+		db.setLocale(Locale.getDefault());
+		db.setLockingEnabled(true);
+
+		// "item" table에서 item 이름을 불러와서 list에 추가
+		cursor = db.rawQuery("select * from item", null);
+		cursor.moveToFirst();
+		while (!cursor.isLast()) {
+			String item_name = cursor.getString(2);
+			list.add(item_name);
+			cursor.moveToNext();
+		}
+		cursor.close();
 
 		adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, list);
-		productList.setAdapter(adapter);
+		itemList = (ListView) findViewById(R.id.PurchaseManagementList);
+		itemList.setAdapter(adapter);
 
 		Button byDay = (Button) findViewById(R.id.PurchaseManagementButton1);
 		byDay.setOnClickListener(new Button.OnClickListener() {
@@ -53,7 +66,7 @@ public class PurchaseManagement extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(PurchaseManagement.this,
-						SalesManagementByCompany.class);
+						PurchaseManagementByCompany.class);
 				startActivity(intent);
 			}
 		});
@@ -63,7 +76,7 @@ public class PurchaseManagement extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(PurchaseManagement.this,
-						SalesManagementByItem.class);
+						PurchaseManagementByItem.class);
 				startActivity(intent);
 			}
 		});

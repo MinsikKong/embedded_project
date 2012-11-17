@@ -3,14 +3,8 @@ package com.example.embedeed_project;
 import java.util.ArrayList;
 
 import android.app.Activity;
-import android.app.ListActivity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 
@@ -41,15 +35,7 @@ public class SalesManagementByCompany extends Activity {
 		productList = (ListView) findViewById(R.id.SalesManagementByCompanyList);
 		list = new ArrayList<String>();
 
-		list.add("a");
-		list.add("s");
-		list.add("d");
-		list.add("g");
-		list.add("5");
-		list.add("6");
-		list.add("7");
-		list.add("8");
-		list.add("9");
+		list.add("구현해야됨");
 		// adapter.notifyDataSetChanged();
 
 		adapter = new ArrayAdapter<String>(this,

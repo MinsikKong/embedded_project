@@ -2,6 +2,7 @@ package com.example.embedeed_project;
 
 import java.util.ArrayList;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridView;
@@ -54,6 +54,7 @@ public class PurchaseMain extends Activity {
 
 		//바코드 인식
 		barcodeButton.setOnClickListener(new Button.OnClickListener() {
+			@SuppressLint("NewApi")
 			public void onClick(View v) {
 				// 오픈소스 "ZXing"을 이용한 "Barcode Scanner"
 				// app(https://zxing.googlecode.com/files/BarcodeScanner4.31.apk)을
@@ -152,13 +153,14 @@ public class PurchaseMain extends Activity {
 						}
 					}
 				} else {
-					Toast.makeText(PurchaseMain.this, "뭔가 문제가 있는것 같다.", Toast.LENGTH_LONG);
+					Toast.makeText(PurchaseMain.this, "뭔가 문제가 있는것 같다.",
+							Toast.LENGTH_LONG);
 				}
 				orderList.setAdapter(orderAdapter);
 				productList.setAdapter(productAdapter);
 				setTotalPriceText();
 			}
-			
+
 		});
 		
 	}
@@ -222,14 +224,14 @@ public class PurchaseMain extends Activity {
 	// 주문목록작성을 위한 아이템빈
 	class OrderItemBean {
 		public int productCode; // 상품코드
-		public int productIndex; //해당상품인덱스
+		public int productIndex; // 해당상품인덱스
 		public String itemName;// 상품명
 		public int amount; // 수량
 		public int singlePrice; // 1개 가격
 		public int totalPrice; // 총 가격
 
-		public OrderItemBean(int productCode, int productIndex, String itemName, int amount,
-				int singlePrice, int totalPrice) {
+		public OrderItemBean(int productCode, int productIndex,
+				String itemName, int amount, int singlePrice, int totalPrice) {
 			this.productCode = productCode;
 			this.productIndex = productIndex;
 			this.itemName = itemName;
