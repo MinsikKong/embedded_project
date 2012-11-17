@@ -114,7 +114,7 @@ public class PurchaseMain extends Activity {
 		payButton.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				Intent intent = new Intent(PurchaseMain.this, PurchasePay.class);
-				intent.putExtra("totalPrice",totalPrice);
+				intent.putExtra("totalPrice", totalPrice);
 				intent.putExtra("orderArray", orderArray);
 				startActivity(intent);
 			}
@@ -126,21 +126,21 @@ public class PurchaseMain extends Activity {
 		productArray = new ArrayList<ProductItemBean>();
 		orderArray = new ArrayList<OrderItemBean>();
 
-		//db옆고 세팅
+		// db옆고 세팅
 		db = openOrCreateDatabase(Const.DATABASE_NAME, MODE_PRIVATE, null);
 		db.setVersion(1);
 		db.setLocale(Locale.getDefault());
 		db.setLockingEnabled(true);
 
-		//product불러오기
+		// product불러오기
 		cursor = db.rawQuery("select * from product", null);
 		cursor.moveToFirst();
 		while (!cursor.moveToNext()) {
 			String item_name = cursor.getString(3);
-			pr.add(item_name);
+			// pr.add(item_name);
 		}
 		cursor.close();
-		
+
 		ProductItemBean item = new ProductItemBean(14124, "까페모카",
 				"8801056956011", 50, 12);
 		ProductItemBean item2 = new ProductItemBean(23125, "아메리카노",

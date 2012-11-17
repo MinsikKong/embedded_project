@@ -18,6 +18,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -38,41 +39,11 @@ public class PurchaseManagement extends Activity {
 
 		list = new ArrayList<String>();
 
-
 		adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, list);
 		itemList = (ListView) findViewById(R.id.PurchaseManagementList);
 		itemList.setAdapter(adapter);
 
-		Button byDay = (Button) findViewById(R.id.PurchaseManagementButton1);
-		byDay.setOnClickListener(new Button.OnClickListener() {
-			public void onClick(View v) {
-				Intent intent = new Intent(PurchaseManagement.this,
-						PurchaseManagementByDate.class);
-				startActivity(intent);
-			}
-		});
-
-		Button byCompany = (Button) findViewById(R.id.PurchaseManagementButton2);
-		byCompany.setOnClickListener(new Button.OnClickListener() {
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent(PurchaseManagement.this,
-						PurchaseManagementByCompany.class);
-				startActivity(intent);
-			}
-		});
-
-		Button byItem = (Button) findViewById(R.id.PurchaseManagementButton3);
-		byItem.setOnClickListener(new Button.OnClickListener() {
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent(PurchaseManagement.this,
-						PurchaseManagementByItem.class);
-				startActivity(intent);
-			}
-		});
-		
 		db = openOrCreateDatabase(Const.DATABASE_NAME, MODE_PRIVATE, null);
 		db.setVersion(1);
 		db.setLocale(Locale.getDefault());
@@ -95,46 +66,6 @@ public class PurchaseManagement extends Activity {
 		itemList.setAdapter(adapter);
 	}
 
-<<<<<<< HEAD
-	public void dbInstall() {
-		AssetManager assetManager = getResources().getAssets();
-		File file = new File(DATABASE_PATH);
-
-		FileOutputStream fileOutputStream = null;
-		BufferedOutputStream bufferedOutputStream = null;
-
-		try {
-			InputStream inputStream = assetManager.open(DATABASE_NAME);
-			BufferedInputStream bufferedInputStream = new BufferedInputStream(
-					inputStream);
-
-			if (file.exists()) {
-				file.delete();
-				file.createNewFile();
-			}
-
-			fileOutputStream = new FileOutputStream(file);
-			bufferedOutputStream = new BufferedOutputStream(fileOutputStream);
-
-			int read = -1;
-			byte[] buffer = new byte[1024];
-			while ((read = bufferedInputStream.read(buffer, 0, 1024)) != -1) {
-				bufferedOutputStream.write(buffer, 0, read);
-			}
-
-			bufferedOutputStream.flush();
-
-			bufferedOutputStream.close();
-			fileOutputStream.close();
-			bufferedInputStream.close();
-			inputStream.close();
-		} catch (IOException e) {
-		}
-
-	}
-
-=======
->>>>>>> b4103de547784d176d27b5d6972c65c3a99646d7
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.purchase_management, menu);
