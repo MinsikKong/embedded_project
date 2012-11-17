@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/PurchaseManagementByDateMenu"
+        android:orderInCategory="100"
+        android:title="일자별 조회"/>
+    <item
+        android:id="@+id/PurchaseManagementByCompanyMenu"
+        android:orderInCategory="100"
+        android:title="업체별 조회"/>
+    <item
+        android:id="@+id/PurchaseManagementByItemMenu"
+        android:orderInCategory="100"
+        android:title="상품별 조회"/>
+    <item
+        android:id="@+id/PurchaseManagementAddListMenu"
+        android:orderInCategory="100"
+        android:title="매입내역 추가"/>
+
+</menu>
