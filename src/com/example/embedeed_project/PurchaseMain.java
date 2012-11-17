@@ -137,7 +137,7 @@ public class PurchaseMain extends Activity {
 		cursor.moveToFirst();
 		while (!cursor.moveToNext()) {
 			String item_name = cursor.getString(3);
-			pr.add(item_name);
+			//pr.add(item_name);
 		}
 		cursor.close();
 		

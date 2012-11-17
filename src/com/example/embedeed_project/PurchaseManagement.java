@@ -20,6 +20,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ListView;
 
@@ -47,35 +48,6 @@ public class PurchaseManagement extends Activity {
 				android.R.layout.simple_list_item_1, list);
 		itemList = (ListView) findViewById(R.id.PurchaseManagementList);
 		itemList.setAdapter(adapter);
-
-		Button byDay = (Button) findViewById(R.id.PurchaseManagementButton1);
-		byDay.setOnClickListener(new Button.OnClickListener() {
-			public void onClick(View v) {
-				Intent intent = new Intent(PurchaseManagement.this,
-						PurchaseManagementByDate.class);
-				startActivity(intent);
-			}
-		});
-
-		Button byCompany = (Button) findViewById(R.id.PurchaseManagementButton2);
-		byCompany.setOnClickListener(new Button.OnClickListener() {
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent(PurchaseManagement.this,
-						PurchaseManagementByCompany.class);
-				startActivity(intent);
-			}
-		});
-
-		Button byItem = (Button) findViewById(R.id.PurchaseManagementButton3);
-		byItem.setOnClickListener(new Button.OnClickListener() {
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent(PurchaseManagement.this,
-						PurchaseManagementByItem.class);
-				startActivity(intent);
-			}
-		});
 		
 		db = openOrCreateDatabase(Const.DATABASE_NAME, MODE_PRIVATE, null);
 		db.setVersion(1);
