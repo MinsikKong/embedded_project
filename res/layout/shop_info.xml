@@ -3,11 +3,141 @@
     android:layout_height="fill_parent" >
 
     <TextView
-        android:id="@+id/ShopInfotextView1"
+        android:id="@+id/ShopInfotextView0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="매장정보" />
+        android:text="매장정보"
+        android:textSize="48px" />
+
+    <TextView
+        android:id="@+id/ShopInfoTextView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/ShopInfotextView0"
+        android:text="사업자번호"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/ShopInfoTextView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/ShopInfoTextView1"
+        android:text="매장명"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/ShopInfoTextView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/ShopInfoTextView2"
+        android:text="대표명"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/ShopInfoTextView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/ShopInfoTextView3"
+        android:text="주소"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/ShopInfoTextView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/ShopInfoTextView4"
+        android:text="전화"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/ShopInfoTextView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/ShopInfoTextView5"
+        android:text="환경정보"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/ShopInfoTextView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/ShopInfoTextView6"
+        android:text="위치정보"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/ShopInfoEditText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ShopInfoTextView1"
+        android:layout_alignTop="@+id/ShopInfoTextView1"
+        android:layout_toRightOf="@+id/ShopInfoTextView1"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/ShopInfoEditText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ShopInfoTextView2"
+        android:layout_below="@+id/ShopInfoTextView1"
+        android:layout_toRightOf="@+id/ShopInfoTextView1"
+        android:ems="10" />
+
+    <EditText
+        android:id="@+id/ShopInfoEditText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ShopInfoTextView3"
+        android:layout_below="@+id/ShopInfoTextView2"
+        android:layout_toRightOf="@+id/ShopInfoTextView2"
+        android:ems="10" />
+
+    <EditText
+        android:id="@+id/ShopInfoEditText4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ShopInfoTextView4"
+        android:layout_below="@+id/ShopInfoTextView3"
+        android:layout_toRightOf="@+id/ShopInfoTextView3"
+        android:ems="10" />
+
+    <EditText
+        android:id="@+id/ShopInfoEditText5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ShopInfoTextView5"
+        android:layout_below="@+id/ShopInfoTextView4"
+        android:layout_toRightOf="@+id/ShopInfoTextView4"
+        android:ems="10" />
+
+    <EditText
+        android:id="@+id/ShopInfoEditText7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ShopInfoTextView7"
+        android:layout_below="@+id/ShopInfoTextView6"
+        android:layout_toRightOf="@+id/ShopInfoTextView6"
+        android:ems="10" />
+
+    <EditText
+        android:id="@+id/ShopInfoEditText6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ShopInfoTextView6"
+        android:layout_below="@+id/ShopInfoEditText5"
+        android:layout_toRightOf="@+id/ShopInfoTextView6"
+        android:ems="10" />
 
 </RelativeLayout>
