@@ -84,6 +84,7 @@ public final class R {
         public static final int SalesManagementList=0x7f08003a;
         public static final int SalesManagementSummary=0x7f08003c;
         public static final int SalesSummary=0x7f080040;
+        public static final int ShopInfotextView1=0x7f080051;
         public static final int amount=0x7f080017;
         public static final int backButton=0x7f08001f;
         public static final int barcodeButton=0x7f080020;
@@ -96,7 +97,7 @@ public final class R {
         public static final int editText5=0x7f080011;
         public static final int editText6=0x7f080012;
         public static final int gridview=0x7f080000;
-        public static final int menu_settings=0x7f080051;
+        public static final int menu_settings=0x7f080052;
         public static final int orderItemName=0x7f080014;
         public static final int orderList=0x7f08001c;
         public static final int price=0x7f080019;
