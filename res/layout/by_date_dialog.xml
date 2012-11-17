@@ -1,0 +1,65 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_root"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <EditText
+        android:id="@+id/ByDateDialogEdittext1"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_alignLeft="@+id/ByDateDialogButton1"
+        android:layout_alignParentTop="true"
+        android:editable="false"
+        android:ems="10"
+        android:hint="시작일"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/ByDateDialogTextview1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/ByDateDialogEdittext1"
+        android:layout_alignBottom="@+id/ByDateDialogEdittext1"
+        android:layout_alignParentLeft="true"
+        android:text="시작일" />
+
+    <EditText
+        android:id="@+id/ByDateDialogEdittext2"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/ByDateDialogEdittext1"
+        android:layout_toRightOf="@+id/ByDateDialogTextview1"
+        android:editable="false"
+        android:ems="10"
+        android:hint="종료일"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/ByDateDialogTextview2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/ByDateDialogEdittext2"
+        android:layout_alignBottom="@+id/ByDateDialogEdittext2"
+        android:layout_toLeftOf="@+id/ByDateDialogEdittext2"
+        android:text="종료일" />
+
+    <Button
+        android:id="@+id/ByDateDialogButton1"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ByDateDialogEdittext2"
+        android:layout_toRightOf="@+id/ByDateDialogTextview2"
+        android:text="확인" />
+
+    <Button
+        android:id="@+id/ByDateDialogButton2"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/ByDateDialogButton1"
+        android:layout_alignBottom="@+id/ByDateDialogButton1"
+        android:layout_toRightOf="@+id/ByDateDialogButton1"
+        android:text="취소" />
+
+</RelativeLayout>
