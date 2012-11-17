@@ -1,12 +1,24 @@
 package com.example.embedeed_project;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.Vector;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +40,8 @@ public class PurchaseMain extends Activity {
 	private GridView productList;
 	private ListView orderList;
 	TextView totalPriceText;
+	SQLiteDatabase db;
+	Cursor cursor;
 	private int totalPrice = 0;
 
 	@Override
@@ -100,6 +114,8 @@ public class PurchaseMain extends Activity {
 		payButton.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				Intent intent = new Intent(PurchaseMain.this, PurchasePay.class);
+				intent.putExtra("totalPrice",totalPrice);
+				intent.putExtra("orderArray", orderArray);
 				startActivity(intent);
 			}
 		});
@@ -110,6 +126,21 @@ public class PurchaseMain extends Activity {
 		productArray = new ArrayList<ProductItemBean>();
 		orderArray = new ArrayList<OrderItemBean>();
 
+		//db옆고 세팅
+		db = openOrCreateDatabase(Const.DATABASE_NAME, MODE_PRIVATE, null);
+		db.setVersion(1);
+		db.setLocale(Locale.getDefault());
+		db.setLockingEnabled(true);
+
+		//product불러오기
+		cursor = db.rawQuery("select * from product", null);
+		cursor.moveToFirst();
+		while (!cursor.moveToNext()) {
+			String item_name = cursor.getString(3);
+			pr.add(item_name);
+		}
+		cursor.close();
+		
 		ProductItemBean item = new ProductItemBean(14124, "까페모카",
 				"8801056956011", 50, 12);
 		ProductItemBean item2 = new ProductItemBean(23125, "아메리카노",
@@ -168,15 +199,13 @@ public class PurchaseMain extends Activity {
 					}
 				} else {
 					Toast.makeText(PurchaseMain.this, "뭔가 문제가 있는것 같다.",
-							Toast.LENGTH_LONG);
+							Toast.LENGTH_LONG).show();
 				}
 				orderList.setAdapter(orderAdapter);
 				productList.setAdapter(productAdapter);
 				setTotalPriceText();
 			}
-
 		});
-
 	}
 
 	// 해당 상품을 주문목록에 넣어줌
@@ -234,26 +263,6 @@ public class PurchaseMain extends Activity {
 	// 현재 총금액을 텍스트로 세팅해줌
 	private void setTotalPriceText() {
 		totalPriceText.setText(totalPrice + "원");
-	}
-
-	// 주문목록작성을 위한 아이템빈
-	class OrderItemBean {
-		public int productCode; // 상품코드
-		public int productIndex; // 해당상품인덱스
-		public String itemName;// 상품명
-		public int amount; // 수량
-		public int singlePrice; // 1개 가격
-		public int totalPrice; // 총 가격
-
-		public OrderItemBean(int productCode, int productIndex,
-				String itemName, int amount, int singlePrice, int totalPrice) {
-			this.productCode = productCode;
-			this.productIndex = productIndex;
-			this.itemName = itemName;
-			this.amount = amount;
-			this.singlePrice = singlePrice;
-			this.totalPrice = totalPrice;
-		}
 	}
 
 	// 상품 선택을 위한 아이템빈

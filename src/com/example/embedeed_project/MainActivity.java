@@ -1,7 +1,16 @@
 package com.example.embedeed_project;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.AssetManager;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -12,11 +21,16 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
+	boolean dbInstalled = false;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
+		
+		//DB인스톨
+		if(!dbInstalled)dbInstall();
+		
+		
 		GridView gridview = (GridView) findViewById(R.id.gridview);
 		gridview.setAdapter(new ImageAdapter(this));
 
@@ -81,6 +95,44 @@ public class MainActivity extends Activity {
 				}
 			}
 		});
+	}
+	
+	public void dbInstall() {
+		AssetManager assetManager = getResources().getAssets();
+		File file = new File(Const.DATABASE_PATH);
+
+		FileOutputStream fileOutputStream = null;
+		BufferedOutputStream bufferedOutputStream = null;
+
+		try {
+			InputStream inputStream = assetManager.open(Const.DATABASE_NAME);
+			BufferedInputStream bufferedInputStream = new BufferedInputStream(
+					inputStream);
+
+			if (file.exists()) {
+				file.delete();
+				file.createNewFile();
+			}
+
+			fileOutputStream = new FileOutputStream(file);
+			bufferedOutputStream = new BufferedOutputStream(fileOutputStream);
+
+			int read = -1;
+			byte[] buffer = new byte[1024];
+			while ((read = bufferedInputStream.read(buffer, 0, 1024)) != -1) {
+				bufferedOutputStream.write(buffer, 0, read);
+			}
+
+			bufferedOutputStream.flush();
+
+			bufferedOutputStream.close();
+			fileOutputStream.close();
+			bufferedInputStream.close();
+			inputStream.close();
+			dbInstalled = true;
+		} catch (IOException e) {
+
+		}
 	}
 
 	@Override
