@@ -3,7 +3,7 @@
     android:layout_height="fill_parent" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/ItemManagementAddItemTextView1"
         android:layout_width="wrap_content"
         android:layout_height="50px"
         android:layout_alignParentLeft="true"
@@ -11,7 +11,7 @@
         android:text="업체명" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/ItemManagementAddItemTextView2"
         android:layout_width="wrap_content"
         android:layout_height="50px"
         android:layout_alignParentLeft="true"
@@ -19,7 +19,7 @@
         android:text="상품명" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/ItemManagementAddItemTextView3"
         android:layout_width="wrap_content"
         android:layout_height="50px"
         android:layout_alignParentLeft="true"
@@ -27,7 +27,7 @@
         android:text="수량" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/ItemManagementAddItemTextView4"
         android:layout_width="wrap_content"
         android:layout_height="50px"
         android:layout_alignParentLeft="true"
@@ -35,7 +35,7 @@
         android:text="단가" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/ItemManagementAddItemTextView5"
         android:layout_width="wrap_content"
         android:layout_height="50px"
         android:layout_alignParentLeft="true"
@@ -43,7 +43,7 @@
         android:text="바코드" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/ItemManagementAddItemTextView6"
         android:layout_width="wrap_content"
         android:layout_height="50px"
         android:layout_alignParentLeft="true"
@@ -51,7 +51,7 @@
         android:text="메모" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/ItemManagementAddItemEditText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView1"
@@ -60,7 +60,7 @@
         android:ems="10" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/ItemManagementAddItemEditText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView2"
@@ -69,7 +69,7 @@
         android:ems="10" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/ItemManagementAddItemEditText3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView3"
@@ -78,7 +78,7 @@
         android:ems="10" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/ItemManagementAddItemEditText4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView4"
@@ -87,7 +87,7 @@
         android:ems="10" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/ItemManagementAddItemEditText5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView5"
@@ -97,7 +97,7 @@
         android:ems="10" />
 
     <EditText
-        android:id="@+id/editText6"
+        android:id="@+id/ItemManagementAddItemEditText6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView6"

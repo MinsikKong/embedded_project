@@ -62,6 +62,8 @@
         <activity android:name="SalesManagementAdd" >
         </activity>
         <activity android:name="PurchasePay"></activity>
+        <activity android:name="PurchaseManagementAddList"></activity>
+        <activity android:name="dbConnect"></activity>
     </application>
 
 </manifest>

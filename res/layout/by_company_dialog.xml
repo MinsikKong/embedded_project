@@ -1,0 +1,31 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_root"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <Spinner
+        android:id="@+id/PurchaseManagementByCompanySpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" />
+
+    <Button
+        android:id="@+id/ByDateDialogButton1"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/ByDateDialogButton2"
+        android:layout_alignBottom="@+id/ByDateDialogButton2"
+        android:layout_alignParentLeft="true"
+        android:text="확인" />
+
+    <Button
+        android:id="@+id/ByDateDialogButton2"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/PurchaseManagementByCompanySpinner"
+        android:layout_toRightOf="@+id/ByDateDialogButton1"
+        android:text="취소" />
+
+</RelativeLayout>
