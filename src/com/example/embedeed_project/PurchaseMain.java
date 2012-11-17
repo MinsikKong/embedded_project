@@ -80,8 +80,7 @@ public class PurchaseMain extends Activity {
 					if (!isProductExist) {
 						// 현재 주문내역에 상품이 존재하지 않으면 상품 추가하고 상품재고1내림
 						OrderItemBean item = new OrderItemBean(productArray
-								.get(i).productCode,
-								i,
+								.get(i).productCode, i,
 								productArray.get(i).productName, 1,
 								productArray.get(i).price,
 								productArray.get(i).price);
@@ -112,39 +111,45 @@ public class PurchaseMain extends Activity {
 				int selctedAmount = orderArray.get(i).amount;
 				int selectedProductCode = orderArray.get(i).productCode;
 				int selectedProductIndex = orderArray.get(i).productIndex;
-				if(selctedAmount>1){
-					orderArray.get(i).amount--;								//주문내역의 저장된 제품값 1감소
-					productArray.get(selectedProductIndex).stock++;//주문내역에 저장된 제품의 인덱스값 받아와서 재고 1증가
-				} else if(selctedAmount==1){
-					//현재 수량이 1일때 리스트에서 삭제 시킴
-					for(int j=0;j<productArray.size();j++){
-						if(productArray.get(j).productCode==selectedProductCode){
-							//상품 배열속의 상품코드가 선택된 주문의 상품코드와 일치하면
-							orderArray.remove(i);						  //선택된 주문내역 삭제
-							productArray.get(selectedProductIndex).stock++;//해당 재고 1증가
+				if (selctedAmount > 1) {
+					orderArray.get(i).amount--; // 주문내역의 저장된 제품값 1감소
+					productArray.get(selectedProductIndex).stock++;// 주문내역에 저장된
+																	// 제품의 인덱스값
+																	// 받아와서 재고
+																	// 1증가
+				} else if (selctedAmount == 1) {
+					// 현재 수량이 1일때 리스트에서 삭제 시킴
+					for (int j = 0; j < productArray.size(); j++) {
+						if (productArray.get(j).productCode == selectedProductCode) {
+							// 상품 배열속의 상품코드가 선택된 주문의 상품코드와 일치하면
+							orderArray.remove(i); // 선택된 주문내역 삭제
+							productArray.get(selectedProductIndex).stock++;// 해당
+																			// 재고
+																			// 1증가
 						}
 					}
 				} else {
-					Toast.makeText(PurchaseMain.this, "뭔가 문제가 있는것 같다.", Toast.LENGTH_LONG);
+					Toast.makeText(PurchaseMain.this, "뭔가 문제가 있는것 같다.",
+							Toast.LENGTH_LONG);
 				}
 				orderList.setAdapter(orderAdapter);
 				productList.setAdapter(productAdapter);
 			}
-			
+
 		});
 	}
 
 	class OrderItemBean {
 		// 주문목록작성을 위한 아이템빈
 		public int productCode; // 상품코드
-		public int productIndex; //해당상품인덱스
+		public int productIndex; // 해당상품인덱스
 		public String itemName;// 상품명
 		public int amount; // 수량
 		public int singlePrice; // 1개 가격
 		public int totalPrice; // 총 가격
 
-		public OrderItemBean(int productCode, int productIndex, String itemName, int amount,
-				int singlePrice, int totalPrice) {
+		public OrderItemBean(int productCode, int productIndex,
+				String itemName, int amount, int singlePrice, int totalPrice) {
 			this.productCode = productCode;
 			this.productIndex = productIndex;
 			this.itemName = itemName;

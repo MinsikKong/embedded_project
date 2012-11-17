@@ -9,6 +9,8 @@ package com.example.embedeed_project;
 
 public final class R {
     public static final class array {
+        public static final int PurchaseManagementByCompanySpinner=0x7f050002;
+        public static final int PurchaseManagementByItemSpinner=0x7f050003;
         public static final int SalesManagementByCompanySpinner=0x7f050000;
         public static final int SalesManagementByItemSpinner=0x7f050001;
     }

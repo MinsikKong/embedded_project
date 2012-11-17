@@ -54,15 +54,7 @@ public class SalesManagementByDate extends Activity {
 		productList = (ListView) findViewById(R.id.SalesByDateList);
 		list = new ArrayList<String>();
 
-		list.add("a");
-		list.add("s");
-		list.add("d");
-		list.add("g");
-		list.add("5");
-		list.add("6");
-		list.add("7");
-		list.add("8");
-		list.add("9");
+		list.add("매출1");
 		// adapter.notifyDataSetChanged();
 
 		adapter = new ArrayAdapter<String>(this,
