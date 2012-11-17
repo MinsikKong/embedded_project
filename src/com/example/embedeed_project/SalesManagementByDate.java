@@ -7,11 +7,9 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -54,7 +52,7 @@ public class SalesManagementByDate extends Activity {
 		productList = (ListView) findViewById(R.id.SalesByDateList);
 		list = new ArrayList<String>();
 
-		list.add("매출1");
+		list.add("구현해야됨");
 		// adapter.notifyDataSetChanged();
 
 		adapter = new ArrayAdapter<String>(this,

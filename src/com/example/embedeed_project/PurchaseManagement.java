@@ -1,18 +1,10 @@
 package com.example.embedeed_project;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Locale;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -20,7 +12,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class PurchaseManagement extends Activity {
 	// 판매(공민식)
@@ -30,8 +21,10 @@ public class PurchaseManagement extends Activity {
 
 	Cursor cursor;
 	SQLiteDatabase db;
+	@SuppressLint("SdCardPath")
 	public static final String DB_PATH = "/sdcard/db.db";
 
+	@SuppressLint("SdCardPath")
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

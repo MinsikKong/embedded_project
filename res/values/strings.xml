@@ -21,5 +21,9 @@
         <item>상품1</item>
         <item>상품2</item>
     </string-array>
+    <string-array name="ItemManagementByCompanySpinner">
+        <item>상품1</item>
+        <item>상품2</item>
+    </string-array>
 
 </resources>
