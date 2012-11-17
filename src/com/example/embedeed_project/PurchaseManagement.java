@@ -7,16 +7,20 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Locale;
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ListView;
 
 public class PurchaseManagement extends Activity {
@@ -28,6 +32,10 @@ public class PurchaseManagement extends Activity {
 	public static final String DATABASE_PATH = "/data/data/com.example.embedeed_project/databases/posDB.db";
 	Cursor cursor;
 	SQLiteDatabase db;
+	public static final int DIALOG_ID_DATE = 0;
+	public static final int DIALOG_ID_COMPANY = 1;
+	public static final int DIALOG_ID_ITEM = 2;
+	Dialog customDialogInstance;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -94,33 +102,66 @@ public class PurchaseManagement extends Activity {
 		itemList = (ListView) findViewById(R.id.PurchaseManagementList);
 		itemList.setAdapter(adapter);
 
-		Button byDay = (Button) findViewById(R.id.PurchaseManagementButton1);
-		byDay.setOnClickListener(new Button.OnClickListener() {
-			public void onClick(View v) {
-				Intent intent = new Intent(PurchaseManagement.this,
-						PurchaseManagementByDate.class);
-				startActivity(intent);
-			}
-		});
-
-		Button byCompany = (Button) findViewById(R.id.PurchaseManagementButton2);
-		byCompany.setOnClickListener(new Button.OnClickListener() {
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent(PurchaseManagement.this,
-						PurchaseManagementByCompany.class);
-				startActivity(intent);
-			}
-		});
-
-		Button byItem = (Button) findViewById(R.id.PurchaseManagementButton3);
-		byItem.setOnClickListener(new Button.OnClickListener() {
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent(PurchaseManagement.this,
-						PurchaseManagementByItem.class);
-				startActivity(intent);
-			}
-		});
 	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.purchase_management, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onMenuItemSelected(int featureId, MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.PurchaseManagementByDateMenu: // 일자별
+			Intent intent1 = new Intent(PurchaseManagement.this,
+					PurchaseManagementByDate.class);
+			// startActivity(intent1);
+			showDialog(DIALOG_ID_DATE);
+			break;
+
+		case R.id.PurchaseManagementByCompanyMenu: // 업체별
+			Intent intent2 = new Intent(PurchaseManagement.this,
+					PurchaseManagementByCompany.class);
+			startActivity(intent2);
+			break;
+
+		case R.id.PurchaseManagementByItemMenu: // 상품별
+			Intent intent3 = new Intent(PurchaseManagement.this,
+					PurchaseManagementByItem.class);
+			startActivity(intent3);
+			break;
+
+		case R.id.PurchaseManagementAddListMenu: // 매입내역 추가
+			Intent intent4 = new Intent(PurchaseManagement.this,
+					PurchaseManagementByItem.class);
+			startActivity(intent4);
+			break;
+		}
+		return true;
+	}
+
+	@Override
+	protected Dialog onCreateDialog(int id) {
+		Calendar c = Calendar.getInstance();
+		int year = c.get(Calendar.YEAR);
+		int monthOfYear = c.get(Calendar.MONTH);
+		int dayOfMonth = c.get(Calendar.DAY_OF_MONTH);
+		switch (id) {
+		case DIALOG_ID_DATE:
+			return new DatePickerDialog(this, mDateSetListener, year,
+					monthOfYear, dayOfMonth);
+		}
+		return null;
+	}
+
+	private DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+
+		@Override
+		public void onDateSet(DatePicker view, int year, int monthOfYear,
+				int dayOfMonth) {
+			// blahblah
+		}
+	};
+
 }
