@@ -55,6 +55,7 @@
         </activity>
         <activity android:name="SalesManagementAdd" >
         </activity>
+        <activity android:name="PurchasePay"></activity>
     </application>
 
 </manifest>
