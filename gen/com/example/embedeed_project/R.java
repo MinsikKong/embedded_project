@@ -79,44 +79,6 @@ public final class R {
         public static final int PurchaseManagementSummary=0x7f080030;
         public static final int PurchaseSearchByDayButton1=0x7f08003d;
         public static final int PurchaseSummary=0x7f080040;
-<<<<<<< HEAD
-        public static final int SalesByDateButton1=0x7f080057;
-        public static final int SalesByDateEndDateEditext=0x7f080055;
-        public static final int SalesByDateList=0x7f080058;
-        public static final int SalesByDateStartDateEditext=0x7f080053;
-        public static final int SalesByDateSummary=0x7f080059;
-        public static final int SalesByDateTextView1=0x7f080052;
-        public static final int SalesByDateTextView2=0x7f080054;
-        public static final int SalesManagementButton1=0x7f080048;
-        public static final int SalesManagementButton2=0x7f08004b;
-        public static final int SalesManagementButton3=0x7f08004c;
-        public static final int SalesManagementByCompanyList=0x7f080050;
-        public static final int SalesManagementByCompanySpinner=0x7f08004f;
-        public static final int SalesManagementByCompanySummary=0x7f080051;
-        public static final int SalesManagementByCompanyTv1=0x7f08004e;
-        public static final int SalesManagementByItemList=0x7f08005c;
-        public static final int SalesManagementByItemSalesSummary=0x7f08005d;
-        public static final int SalesManagementByItemSpinner=0x7f08005b;
-        public static final int SalesManagementByItemTv1=0x7f08005a;
-        public static final int SalesManagementList=0x7f080047;
-        public static final int SalesManagementSummary=0x7f080049;
-        public static final int SalesSummary=0x7f08004d;
-        public static final int ShopInfoEditText1=0x7f080066;
-        public static final int ShopInfoEditText2=0x7f080067;
-        public static final int ShopInfoEditText3=0x7f080068;
-        public static final int ShopInfoEditText4=0x7f080069;
-        public static final int ShopInfoEditText5=0x7f08006a;
-        public static final int ShopInfoEditText6=0x7f08006c;
-        public static final int ShopInfoEditText7=0x7f08006b;
-        public static final int ShopInfoTextView1=0x7f08005f;
-        public static final int ShopInfoTextView2=0x7f080060;
-        public static final int ShopInfoTextView3=0x7f080061;
-        public static final int ShopInfoTextView4=0x7f080062;
-        public static final int ShopInfoTextView5=0x7f080063;
-        public static final int ShopInfoTextView6=0x7f080064;
-        public static final int ShopInfoTextView7=0x7f080065;
-        public static final int ShopInfotextView0=0x7f08005e;
-=======
         public static final int SalesByDateButton1=0x7f080059;
         public static final int SalesByDateEndDateEditext=0x7f080057;
         public static final int SalesByDateList=0x7f08005a;
@@ -153,7 +115,6 @@ public final class R {
         public static final int ShopInfoTextView6=0x7f080066;
         public static final int ShopInfoTextView7=0x7f080067;
         public static final int ShopInfotextView0=0x7f080060;
->>>>>>> f3874204f7fd92e4c280865356ae27e4121f8cc0
         public static final int amount=0x7f080023;
         public static final int backButton=0x7f08002c;
         public static final int barcodeButton=0x7f08002d;
