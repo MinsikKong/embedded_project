@@ -26,7 +26,6 @@ public class ItemManagementAddItem extends Activity {
 				startActivityForResult(intent, 0);
 			}
 		});
-
 	}
 
 	protected void onActivityResult(int requestCode, int resultCode,

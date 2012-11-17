@@ -3,6 +3,7 @@ package com.example.embedeed_project;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -22,6 +23,7 @@ public class ItemManagement extends Activity {
 
 	Cursor cursor;
 	SQLiteDatabase db;
+	@SuppressLint("SdCardPath")
 	public static final String DB_PATH = "/sdcard/db.db";
 
 	@Override

@@ -105,8 +105,8 @@ public final class R {
         public static final int ShopInfoEditText3=0x7f080068;
         public static final int ShopInfoEditText4=0x7f080069;
         public static final int ShopInfoEditText5=0x7f08006a;
-        public static final int ShopInfoEditText6=0x7f08006b;
-        public static final int ShopInfoEditText7=0x7f08006c;
+        public static final int ShopInfoEditText6=0x7f08006c;
+        public static final int ShopInfoEditText7=0x7f08006b;
         public static final int ShopInfoTextView1=0x7f08005f;
         public static final int ShopInfoTextView2=0x7f080060;
         public static final int ShopInfoTextView3=0x7f080061;

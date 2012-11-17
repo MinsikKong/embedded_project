@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 
 public class Advertisement extends Activity {
-	//광고(공민식)
+	// 광고(공민식)
 	/**
 	 * @param args
 	 */
@@ -16,9 +16,9 @@ public class Advertisement extends Activity {
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-	    super.onCreate(savedInstanceState);
-	
-	    // TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+
+		// TODO Auto-generated method stub
 	}
 
 }
