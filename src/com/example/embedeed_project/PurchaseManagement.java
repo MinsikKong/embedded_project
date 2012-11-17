@@ -21,7 +21,7 @@ public class PurchaseManagement extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.purchase_management);
 
-		productList = (ListView) findViewById(R.id.PurchaseList);
+		productList = (ListView) findViewById(R.id.PurchaseManagementList);
 		list = new ArrayList<String>();
 
 		list.add("a");
@@ -39,7 +39,7 @@ public class PurchaseManagement extends Activity {
 				android.R.layout.simple_list_item_1, list);
 		productList.setAdapter(adapter);
 
-		Button byDay = (Button) findViewById(R.id.PurchaseByDayButton);
+		Button byDay = (Button) findViewById(R.id.PurchaseManagementButton1);
 		byDay.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				Intent intent = new Intent(PurchaseManagement.this,
@@ -48,7 +48,7 @@ public class PurchaseManagement extends Activity {
 			}
 		});
 
-		Button byCompany = (Button) findViewById(R.id.PurchaseByCompanyButton);
+		Button byCompany = (Button) findViewById(R.id.PurchaseManagementButton2);
 		byCompany.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
@@ -58,7 +58,7 @@ public class PurchaseManagement extends Activity {
 			}
 		});
 
-		Button byItem = (Button) findViewById(R.id.PurchaseByItemButton);
+		Button byItem = (Button) findViewById(R.id.PurchaseManagementButton3);
 		byItem.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub

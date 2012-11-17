@@ -3,39 +3,38 @@
     android:layout_height="fill_parent" >
 
     <TextView
-        android:id="@+id/SalesManagementByItemTv1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/SalesManagementByItemSpinner"
-        android:layout_alignBottom="@+id/spinner1"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:text="상품명"
-        android:textSize="16sp" />
-
-    <Spinner
-        android:id="@+id/SalesManagementByItemSpinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/SalesManagementByItemTv1" />
-
-    <ListView
-        android:id="@+id/SalesManagementByItemList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/SalesManagementByItemSalesSummary"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/SalesManagementByItemSpinner" >
-    </ListView>
-
-    <TextView
-        android:id="@+id/SalesManagementByItemSalesSummary"
+        android:id="@+id/SalesSummary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:text="~일에서 ~일까지 매출 ~원 등 기타정보" />
+
+    <TextView
+        android:id="@+id/SalesManagementByCompanyTv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/spinner1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="업체명"
+        android:textSize="16sp" />
+
+    <Spinner
+        android:id="@+id/SalesManagementByCompanySpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/SalesManagementByCompanyTv1" />
+
+    <ListView
+        android:id="@+id/SalesManagementByCompanyList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/SalesSummary"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/SalesManagementByCompanySpinner" >
+    </ListView>
 
 </RelativeLayout>

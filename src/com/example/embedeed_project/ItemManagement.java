@@ -6,20 +6,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class ProductsManagement extends Activity {
+public class ItemManagement extends Activity {
 	// 상품관리(공민식)
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.products_management);
+		setContentView(R.layout.item_management);
 
-		Button b1 = (Button) findViewById(R.id.addItemButton);
+		Button b1 = (Button) findViewById(R.id.ItemManagementAddItemButton);
 
 		b1.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(ProductsManagement.this,
-						AddItem.class);
+				Intent intent = new Intent(ItemManagement.this,
+						ItemManagementAddItem.class);
 				startActivity(intent);
 			}
 		});
