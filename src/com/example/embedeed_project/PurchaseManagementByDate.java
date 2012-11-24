@@ -36,8 +36,6 @@ public class PurchaseManagementByDate extends Activity {
 	private int year, month, day;
 	static final int DATE_DIALOG_ID = 0;
 	View tempView;
-	
-
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
