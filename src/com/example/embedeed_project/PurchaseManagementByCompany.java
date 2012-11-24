@@ -1,8 +1,11 @@
 package com.example.embedeed_project;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import android.app.Activity;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -13,6 +16,9 @@ public class PurchaseManagementByCompany extends Activity {
 	private ArrayList<String> list;
 	private ArrayAdapter<String> adapter;
 	private ListView productList;
+	Cursor cursor;
+	SQLiteDatabase db;
+	public int count;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -35,7 +41,6 @@ public class PurchaseManagementByCompany extends Activity {
 		productList = (ListView) findViewById(R.id.PurchaseManagementByCompanyList);
 		list = new ArrayList<String>();
 
-		list.add("매출1");
 		// adapter.notifyDataSetChanged();
 
 		adapter = new ArrayAdapter<String>(this,
