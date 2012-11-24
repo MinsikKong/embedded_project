@@ -67,6 +67,8 @@
         </activity>
         <activity android:name="dbConnect" >
         </activity>
+        <activity android:name="test" >
+        </activity>
     </application>
 
 </manifest>

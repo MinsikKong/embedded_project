@@ -18,7 +18,8 @@
         android:layout_toRightOf="@+id/totalPriceText"
         android:maxLength="40"
         android:text="10000원" />
-
+
+    
     <ListView
         android:id="@+id/orderList"
         android:layout_width="match_parent"

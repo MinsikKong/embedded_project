@@ -22,15 +22,16 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
 
 	boolean dbInstalled = false;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
-		//DB인스톨
-		if(!dbInstalled)dbInstall();
-		
-		
+
+		// DB인스톨
+		if (!dbInstalled)
+			dbInstall();
+
 		GridView gridview = (GridView) findViewById(R.id.gridview);
 		gridview.setAdapter(new ImageAdapter(this));
 
@@ -88,15 +89,14 @@ public class MainActivity extends Activity {
 					break;
 
 				case 8: // 정보
-					Intent intent8 = new Intent(MainActivity.this,
-							AppInfo.class);
+					Intent intent8 = new Intent(MainActivity.this, test.class);
 					startActivity(intent8);
 					break;
 				}
 			}
 		});
 	}
-	
+
 	public void dbInstall() {
 		AssetManager assetManager = getResources().getAssets();
 		File file = new File(Const.DATABASE_PATH);
