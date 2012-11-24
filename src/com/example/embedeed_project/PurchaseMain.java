@@ -43,6 +43,9 @@ public class PurchaseMain extends Activity {
 	SQLiteDatabase db;
 	Cursor cursor;
 	private int totalPrice = 0;
+	private final static int BARCODE_REQUEST_CODE = 0;
+	private final static int PAY_REQUEST_CODE = 1;
+	
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -76,7 +79,7 @@ public class PurchaseMain extends Activity {
 				final Intent intent = new Intent(
 						"com.google.zxing.client.android.SCAN");
 				intent.setPackage("com.google.zxing.client.android");
-				startActivityForResult(intent, 0);
+				startActivityForResult(intent, BARCODE_REQUEST_CODE);
 			}
 		});
 
@@ -118,7 +121,7 @@ public class PurchaseMain extends Activity {
 					Intent intent = new Intent(PurchaseMain.this, PurchasePay.class);
 					intent.putExtra("totalPrice", totalPrice);
 					intent.putExtra("orderArray", orderArray);
-					startActivity(intent);
+					startActivityForResult(intent, PAY_REQUEST_CODE);
 				}
 			}
 		});
@@ -387,7 +390,7 @@ public class PurchaseMain extends Activity {
 	protected void onActivityResult(int requestCode, int resultCode,
 			Intent intent) {
 		// 바코드 인식결과에 따라 상품을 추가함
-		if (requestCode == 0) {
+		if (requestCode == BARCODE_REQUEST_CODE) {
 			if (resultCode == RESULT_OK) {
 				String scannedCode = intent.getStringExtra("SCAN_RESULT"); // 바코드
 																			// 스캔결과
@@ -408,6 +411,10 @@ public class PurchaseMain extends Activity {
 			} else if (resultCode == RESULT_CANCELED) {
 				Toast.makeText(PurchaseMain.this, "Cancel", Toast.LENGTH_SHORT)
 						.show();
+			}
+		} else if(requestCode == PAY_REQUEST_CODE){
+			if(resultCode == RESULT_OK){
+				finish();
 			}
 		}
 	}
