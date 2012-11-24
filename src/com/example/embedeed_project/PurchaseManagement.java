@@ -7,10 +7,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Locale;
 import android.app.Activity;
-import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.AssetManager;
@@ -21,8 +19,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class PurchaseManagement extends Activity {
 	// 판매(공민식)
@@ -31,10 +30,7 @@ public class PurchaseManagement extends Activity {
 	private ListView itemList;
 	Cursor cursor;
 	SQLiteDatabase db;
-	public static final int DIALOG_ID_DATE = 0;
-	public static final int DIALOG_ID_COMPANY = 1;
-	public static final int DIALOG_ID_ITEM = 2;
-	Dialog customDialogInstance;
+	public int count;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -43,12 +39,11 @@ public class PurchaseManagement extends Activity {
 
 		list = new ArrayList<String>();
 
-
 		adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, list);
 		itemList = (ListView) findViewById(R.id.PurchaseManagementList);
 		itemList.setAdapter(adapter);
-		
+
 		db = openOrCreateDatabase(Const.DATABASE_NAME, MODE_PRIVATE, null);
 		db.setVersion(1);
 		db.setLocale(Locale.getDefault());
@@ -57,12 +52,18 @@ public class PurchaseManagement extends Activity {
 		// "item" table에서 item 이름을 불러와서 list에 추가
 		cursor = db.rawQuery("select * from product", null);
 		cursor.moveToFirst();
+
 		while (!cursor.isLast()) {
 			String item_name = cursor.getString(3);
 			list.add(item_name);
 			cursor.moveToNext();
 		}
 		cursor.close();
+
+		adapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_list_item_1, list);
+		itemList = (ListView) findViewById(R.id.PurchaseManagementList);
+		itemList.setAdapter(adapter);
 	}
 
 	@Override
@@ -77,8 +78,7 @@ public class PurchaseManagement extends Activity {
 		case R.id.PurchaseManagementByDateMenu: // 일자별
 			Intent intent1 = new Intent(PurchaseManagement.this,
 					PurchaseManagementByDate.class);
-			// startActivity(intent1);
-			showDialog(DIALOG_ID_DATE);
+			startActivity(intent1);
 			break;
 
 		case R.id.PurchaseManagementByCompanyMenu: // 업체별
@@ -95,34 +95,10 @@ public class PurchaseManagement extends Activity {
 
 		case R.id.PurchaseManagementAddListMenu: // 매입내역 추가
 			Intent intent4 = new Intent(PurchaseManagement.this,
-					PurchaseManagementByItem.class);
+					PurchaseManagementAddList.class);
 			startActivity(intent4);
 			break;
 		}
 		return true;
 	}
-
-	@Override
-	protected Dialog onCreateDialog(int id) {
-		Calendar c = Calendar.getInstance();
-		int year = c.get(Calendar.YEAR);
-		int monthOfYear = c.get(Calendar.MONTH);
-		int dayOfMonth = c.get(Calendar.DAY_OF_MONTH);
-		switch (id) {
-		case DIALOG_ID_DATE:
-			return new DatePickerDialog(this, mDateSetListener, year,
-					monthOfYear, dayOfMonth);
-		}
-		return null;
-	}
-
-	private DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {
-
-		@Override
-		public void onDateSet(DatePicker view, int year, int monthOfYear,
-				int dayOfMonth) {
-			// blahblah
-		}
-	};
-
 }

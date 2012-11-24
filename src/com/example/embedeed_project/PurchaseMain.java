@@ -113,10 +113,13 @@ public class PurchaseMain extends Activity {
 		// 구매화면으로
 		payButton.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
-				Intent intent = new Intent(PurchaseMain.this, PurchasePay.class);
-				intent.putExtra("totalPrice",totalPrice);
-				intent.putExtra("orderArray", orderArray);
-				startActivity(intent);
+				if(orderArray.size()!=0){
+					//구매 목록에 제품이 들어있을때만 구매목록으로 이행 가능
+					Intent intent = new Intent(PurchaseMain.this, PurchasePay.class);
+					intent.putExtra("totalPrice", totalPrice);
+					intent.putExtra("orderArray", orderArray);
+					startActivity(intent);
+				}
 			}
 		});
 
@@ -126,31 +129,31 @@ public class PurchaseMain extends Activity {
 		productArray = new ArrayList<ProductItemBean>();
 		orderArray = new ArrayList<OrderItemBean>();
 
-		//db옆고 세팅
+		// db옆고 세팅
 		db = openOrCreateDatabase(Const.DATABASE_NAME, MODE_PRIVATE, null);
 		db.setVersion(1);
 		db.setLocale(Locale.getDefault());
 		db.setLockingEnabled(true);
 
-		//product불러오기
+		// product불러오기
 		cursor = db.rawQuery("select * from product", null);
 		cursor.moveToFirst();
-		while (!cursor.moveToNext()) {
-			String item_name = cursor.getString(3);
-			//pr.add(item_name);
+		while (!cursor.isLast()) {
+			//product_code,name,barcode,price,stock
+			ProductItemBean item = new ProductItemBean(cursor.getInt(0),cursor.getString(3),cursor.getString(6),cursor.getInt(4),cursor.getInt(5));
+			productArray.add(item);
+			cursor.moveToNext();
 		}
 		cursor.close();
+		db.close();
 		
-		ProductItemBean item = new ProductItemBean(14124, "까페모카",
-				"8801056956011", 50, 12);
-		ProductItemBean item2 = new ProductItemBean(23125, "아메리카노",
-				"4007817504598", 30, 7);
-		ProductItemBean item3 = new ProductItemBean(31545, "까라멜 마끼아토",
-				"1234567890123", 20, 5);
+		//ProductItemBean item = new ProductItemBean(14124, "까페모카","8801056956011", 50, 12);
+		//ProductItemBean item2 = new ProductItemBean(23125, "아메리카노","4007817504598", 30, 7);
+		//ProductItemBean item3 = new ProductItemBean(31545, "까라멜 마끼아토","1234567890123", 20, 5);
 
-		productArray.add(item);
-		productArray.add(item2);
-		productArray.add(item3);
+		//productArray.add(item);
+		//productArray.add(item2);
+		//productArray.add(item3);
 
 		productAdapter = new ProductItemCustomAdapter(this,
 				R.layout.product_gridview, productArray);
