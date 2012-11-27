@@ -51,10 +51,8 @@ public class PurchaseManagementByDate extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
-				// TODO Auto-generated method stub
-
+				// 리스트 클릭하면 뭐 해줘야되는데 허허..........
 			}
-
 		});
 
 		list = new ArrayList<purchaseListBean>();
@@ -80,7 +78,7 @@ public class PurchaseManagementByDate extends Activity {
 			}
 		});
 
-		// 검색 버튼 터치시
+		// 검색 버튼 터치시 선택된 기간 내의 결과 찾음
 		search = (Button) findViewById(R.id.PurchaseByDateButton1);
 		search.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
@@ -119,7 +117,6 @@ public class PurchaseManagementByDate extends Activity {
 
 		adapter = new ItemCustomAdapter(this, R.layout.product_listview, list);
 		productList.setAdapter(adapter);
-
 	}
 
 	protected Dialog onCreateDialog(int id) {
@@ -196,7 +193,7 @@ public class PurchaseManagementByDate extends Activity {
 
 	class purchaseListBean {
 		public String productName;// 상품명
-		public int quantity; // 가격
+		public int quantity; // 수량
 		public int price; // 가격
 
 		public purchaseListBean(String productName, int quantity, int price) {
