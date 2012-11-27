@@ -89,7 +89,7 @@ public class MainActivity extends Activity {
 					break;
 
 				case 8: // 정보
-					Intent intent8 = new Intent(MainActivity.this, test.class);
+					Intent intent8 = new Intent(MainActivity.this, AppInfo.class);
 					startActivity(intent8);
 					break;
 				}
@@ -105,30 +105,30 @@ public class MainActivity extends Activity {
 		BufferedOutputStream bufferedOutputStream = null;
 
 		try {
-			InputStream inputStream = assetManager.open(Const.DATABASE_NAME);
-			BufferedInputStream bufferedInputStream = new BufferedInputStream(
-					inputStream);
-
-			if (file.exists()) {
+			if (!file.exists()) {
 				file.delete();
 				file.createNewFile();
+				InputStream inputStream = assetManager.open(Const.DATABASE_NAME);
+				BufferedInputStream bufferedInputStream = new BufferedInputStream(
+						inputStream);
+	
+	
+				fileOutputStream = new FileOutputStream(file);
+				bufferedOutputStream = new BufferedOutputStream(fileOutputStream);
+	
+				int read = -1;
+				byte[] buffer = new byte[1024];
+				while ((read = bufferedInputStream.read(buffer, 0, 1024)) != -1) {
+					bufferedOutputStream.write(buffer, 0, read);
+				}
+	
+				bufferedOutputStream.flush();
+	
+				bufferedOutputStream.close();
+				fileOutputStream.close();
+				bufferedInputStream.close();
+				inputStream.close();
 			}
-
-			fileOutputStream = new FileOutputStream(file);
-			bufferedOutputStream = new BufferedOutputStream(fileOutputStream);
-
-			int read = -1;
-			byte[] buffer = new byte[1024];
-			while ((read = bufferedInputStream.read(buffer, 0, 1024)) != -1) {
-				bufferedOutputStream.write(buffer, 0, read);
-			}
-
-			bufferedOutputStream.flush();
-
-			bufferedOutputStream.close();
-			fileOutputStream.close();
-			bufferedInputStream.close();
-			inputStream.close();
 			dbInstalled = true;
 		} catch (IOException e) {
 
