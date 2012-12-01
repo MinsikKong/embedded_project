@@ -59,7 +59,7 @@
         </activity>
         <activity android:name="PurchaseManagementByCompany" >
         </activity>
-        <activity android:name="SalesManagementAdd" >
+        <activity android:name="com.example.embedeed_project.SalesManagementAddList" >
         </activity>
         <activity android:name="PurchasePay" >
         </activity>
