@@ -39,6 +39,19 @@ public class PurchaseManagementByDate extends Activity {
 	static final int DATE_DIALOG_ID = 0;
 	View tempView;
 
+	// 매입내역은 Bean 사용
+	class purchaseListBean {
+		public String productName;// 상품명
+		public int quantity; // 수량
+		public int price; // 가격
+
+		public purchaseListBean(String productName, int quantity, int price) {
+			this.productName = productName;
+			this.quantity = quantity;
+			this.price = price;
+		}
+	}
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -51,11 +64,10 @@ public class PurchaseManagementByDate extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
-				// 리스트 클릭하면 뭐 해줘야되는데 허허..........
+				// 리스트 아이템 터치시
 			}
 		});
 
-		list = new ArrayList<purchaseListBean>();
 		et_startdate = (EditText) findViewById(R.id.PurchaseByDateStartDateEditext);
 		et_enddate = (EditText) findViewById(R.id.PurchaseByDateEndDateEditext);
 
@@ -140,13 +152,15 @@ public class PurchaseManagementByDate extends Activity {
 		}
 	};
 
+	// 매입내역 출력시 Listview에 상품이름, 개수, 총 가격을 표시하는 Custom Adapter
 	public class ItemCustomAdapter extends BaseAdapter {
 		Context context;
 		LayoutInflater inflater;
 
 		ArrayList<purchaseListBean> arrayList = new ArrayList<purchaseListBean>();
 
-		TextView itemNameText, quantityText, totalPriceText;
+		TextView itemNameText, quantityText, totalPriceText,
+				PurchaseByDateSummary;
 
 		private int layout;
 
@@ -172,7 +186,6 @@ public class PurchaseManagementByDate extends Activity {
 		}
 
 		public View getView(int i, View convertView, ViewGroup parent) {
-			final int finalPosition = i;
 			if (convertView == null) {
 				convertView = inflater.inflate(layout, parent, false);
 			}
@@ -182,6 +195,7 @@ public class PurchaseManagementByDate extends Activity {
 					.findViewById(R.id.productListviewQuantity);
 			totalPriceText = (TextView) convertView
 					.findViewById(R.id.productListviewTotal);
+
 			itemNameText.setText(arrayList.get(i).productName);
 			quantityText.setText(arrayList.get(i).quantity + "개");
 			totalPriceText.setText("총 " + arrayList.get(i).price
@@ -190,17 +204,4 @@ public class PurchaseManagementByDate extends Activity {
 			return convertView;
 		}
 	}
-
-	class purchaseListBean {
-		public String productName;// 상품명
-		public int quantity; // 수량
-		public int price; // 가격
-
-		public purchaseListBean(String productName, int quantity, int price) {
-			this.productName = productName;
-			this.quantity = quantity;
-			this.price = price;
-		}
-	}
-
 }

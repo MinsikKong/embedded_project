@@ -25,17 +25,8 @@
         android:id="@+id/PurchaseManagementByItemList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/PurchaseManagementByItemSummary"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/PurchaseManagementByItemSpinner" >
     </ListView>
-
-    <TextView
-        android:id="@+id/PurchaseManagementByItemSummary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:text="~일에서 ~일까지 매입 ~원 등 기타정보" />
 
 </RelativeLayout>

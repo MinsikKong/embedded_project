@@ -24,7 +24,7 @@ public class SalesManagementByCompany extends Activity {
 		// layout
 		ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter
 				.createFromResource(this,
-						R.array.SalesManagementByCompanySpinner,
+						R.array.SalesManagementByCompanySpinnerArray,
 						android.R.layout.simple_spinner_item);
 		// Specify the layout to use when the list of choices appears
 		spinnerAdapter
