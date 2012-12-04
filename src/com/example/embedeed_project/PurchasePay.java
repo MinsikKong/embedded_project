@@ -1,5 +1,12 @@
 package com.example.embedeed_project;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.InetAddress;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Vector;
@@ -12,6 +19,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -25,6 +33,7 @@ public class PurchasePay extends Activity {
 	private ArrayList<OrderItemBean> orderArray;
 	private enum payType {현금, 카드};
 	private payType selected;
+	private String return_msg;
 	
 	@SuppressWarnings("unchecked")
 	@Override
@@ -63,7 +72,8 @@ public class PurchasePay extends Activity {
 								public void onClick(DialogInterface dialog, int receipt_item) {
 									if(receipt_item==0){
 										//Wi-Fi
-										
+										TCPclient tp = new TCPclient(ordersToString());
+									    tp.run();
 										salesToDB();	//정상적으로 출력되었으면 DB에 저장함
 									} else if(receipt_item==1){
 										//BT
@@ -80,8 +90,6 @@ public class PurchasePay extends Activity {
 						} else if(item==1){
 							//DB에 저장하고 메인화면으로
 							salesToDB();
-							setResult(RESULT_OK);
-							finish();
 						} else if(item==2){
 							//뒤로
 						}
@@ -104,6 +112,14 @@ public class PurchasePay extends Activity {
 		});
 	}
 	
+	private String ordersToString(){
+		String orders = new String(totalPay+"");
+		
+		for(int i=0;i<orderArray.size();i++){
+			orders = orders.concat(","+orderArray.get(i).itemName+","+orderArray.get(i).totalPrice);
+		}
+		return orders;
+	}
 	
 	public void salesToDB(){
 		String sql = new String("INSERT INTO sales(all_price,represent_product,sales_type) VALUES("+totalPay+",'"+orderArray.get(0).itemName+
@@ -126,5 +142,57 @@ public class PurchasePay extends Activity {
 			db.execSQL(sqls);
 		}
 		db.close();
+		setResult(RESULT_OK);
+		finish();
+	}
+
+	private class TCPclient implements Runnable {
+		public static final int ServerPort = 3939;
+		public static final String ServerIP = "180.229.55.37";
+		// public static final String ServerIP = "121.168.111.211";
+		private String msg;
+
+		// private String return_msg;
+
+		public TCPclient(String _msg) {
+			this.msg = _msg;
+		}
+
+		@Override
+		public void run() {
+			try {
+
+				InetAddress serverAddr = InetAddress.getByName(ServerIP);
+
+				Log.d("TCP", "C: Connecting...");
+
+				Socket socket = new Socket(serverAddr, ServerPort);
+
+				try {
+					Log.d("TCP", "C: Sending: '" + msg + "'");
+					PrintWriter out = new PrintWriter(new BufferedWriter(
+							new OutputStreamWriter(socket.getOutputStream())),
+							true);
+
+					out.println(msg);
+					Log.d("TCP", "C: Sent.");
+					Log.d("TCP", "C: Done.");
+
+					BufferedReader in = new BufferedReader(
+							new InputStreamReader(socket.getInputStream()));
+					return_msg = in.readLine();
+
+					Log.d("TCP", "C: Server send to me this message -->"
+							+ return_msg);
+				} catch (Exception e) {
+					Log.e("TCP", "C: Error1", e);
+				} finally {
+					socket.close();
+				}
+			} catch (Exception e) {
+				Log.e("TCP", "C: Error2", e);
+			}
+		}
+
 	}
 }
