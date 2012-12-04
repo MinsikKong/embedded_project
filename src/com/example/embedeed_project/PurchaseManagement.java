@@ -148,7 +148,8 @@ public class PurchaseManagement extends Activity {
 			totalPriceTextView = (TextView) convertView
 					.findViewById(R.id.purchaseCustomListviewTextView4);
 
-			purchaseDateTextView.setText("" + arrayList.get(i).purchaseDate);
+			purchaseDateTextView.setText(""
+					+ arrayList.get(i).purchaseDate.substring(0, 9));
 			productNameTextView.setText("" + arrayList.get(i).productName);
 			amountTextView.setText(arrayList.get(i).amount + "개");
 			totalPriceTextView.setText("총" + arrayList.get(i).price
@@ -184,6 +185,13 @@ public class PurchaseManagement extends Activity {
 			Intent intent3 = new Intent(PurchaseManagement.this,
 					PurchaseManagementByItem.class);
 			startActivity(intent3);
+			break;
+
+		case R.id.PurchaseManagementAddListMenu: // 상품별
+			Intent intent4 = new Intent(PurchaseManagement.this,
+					PurchaseManagementAddList.class);
+			startActivity(intent4);
+			adapter.notifyDataSetChanged();
 			break;
 
 		}
