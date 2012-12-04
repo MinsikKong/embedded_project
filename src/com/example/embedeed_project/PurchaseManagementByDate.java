@@ -190,11 +190,11 @@ public class PurchaseManagementByDate extends Activity {
 				convertView = inflater.inflate(layout, parent, false);
 			}
 			itemNameText = (TextView) convertView
-					.findViewById(R.id.productListviewProductName);
+					.findViewById(R.id.productListview1);
 			quantityText = (TextView) convertView
-					.findViewById(R.id.productListviewQuantity);
+					.findViewById(R.id.productListview2);
 			totalPriceText = (TextView) convertView
-					.findViewById(R.id.productListviewTotal);
+					.findViewById(R.id.productListview3);
 
 			itemNameText.setText(arrayList.get(i).productName);
 			quantityText.setText(arrayList.get(i).quantity + "개");

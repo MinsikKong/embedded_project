@@ -38,9 +38,6 @@ public class MainActivity extends Activity {
 		gridview.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View v,
 					int position, long id) {
-				Toast.makeText(MainActivity.this, "" + position,
-						Toast.LENGTH_SHORT).show();
-
 				switch (position) {
 				case 0: // 매출관리
 					Intent intent0 = new Intent(MainActivity.this,
@@ -89,7 +86,8 @@ public class MainActivity extends Activity {
 					break;
 
 				case 8: // 정보
-					Intent intent8 = new Intent(MainActivity.this, AppInfo.class);
+					Intent intent8 = new Intent(MainActivity.this,
+							AppInfo.class);
 					startActivity(intent8);
 					break;
 				}
@@ -108,22 +106,23 @@ public class MainActivity extends Activity {
 			if (!file.exists()) {
 				file.delete();
 				file.createNewFile();
-				InputStream inputStream = assetManager.open(Const.DATABASE_NAME);
+				InputStream inputStream = assetManager
+						.open(Const.DATABASE_NAME);
 				BufferedInputStream bufferedInputStream = new BufferedInputStream(
 						inputStream);
-	
-	
+
 				fileOutputStream = new FileOutputStream(file);
-				bufferedOutputStream = new BufferedOutputStream(fileOutputStream);
-	
+				bufferedOutputStream = new BufferedOutputStream(
+						fileOutputStream);
+
 				int read = -1;
 				byte[] buffer = new byte[1024];
 				while ((read = bufferedInputStream.read(buffer, 0, 1024)) != -1) {
 					bufferedOutputStream.write(buffer, 0, read);
 				}
-	
+
 				bufferedOutputStream.flush();
-	
+
 				bufferedOutputStream.close();
 				fileOutputStream.close();
 				bufferedInputStream.close();

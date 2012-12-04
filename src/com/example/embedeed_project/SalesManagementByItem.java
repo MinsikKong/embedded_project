@@ -51,6 +51,7 @@ public class SalesManagementByItem extends Activity {
 			public void onItemSelected(AdapterView<?> arg0, View arg1,
 					int arg2, long arg3) {
 
+				int flag;
 				db = openOrCreateDatabase(Const.DATABASE_NAME, MODE_PRIVATE,
 						null);
 				db.setVersion(1);
@@ -58,10 +59,12 @@ public class SalesManagementByItem extends Activity {
 				db.setLockingEnabled(true);
 
 				// 특정 일자 사이에 있는 매입 조회
-				cursor = db.rawQuery(
-						"select * from purchase where product_name=" + "'"
-								+ (String) spinner.getSelectedItem() + "'",
-						null);
+				cursor = db
+						.rawQuery(
+								"select b.date, c.amount, a.price from product a, sales b, soldproducts c where a.name='"
+										+ (String) spinner.getSelectedItem()
+										+ "' and b.sales_num=c.sales_num and a.product_code=c.product_code",
+								null);
 
 				// 해당 내역이 없으면 메시지 뿌림
 				if (cursor.moveToFirst()) {
@@ -72,13 +75,14 @@ public class SalesManagementByItem extends Activity {
 				}
 
 				// select된 매입 내역을 list에 추가
+				list.clear();
 				for (count = cursor.getCount(); count > 0; count--) {
 					purchaseListBean item = new purchaseListBean(cursor
-							.getString(3), cursor.getInt(4), cursor.getInt(5));
+							.getString(0), cursor.getInt(1), cursor.getInt(2));
 					list.add(item);
 					cursor.moveToNext();
-
 				}
+
 				adapter.notifyDataSetChanged(); // listview refresh
 				cursor.close();
 				db.close();
@@ -158,11 +162,11 @@ public class SalesManagementByItem extends Activity {
 				convertView = inflater.inflate(layout, parent, false);
 			}
 			itemNameText = (TextView) convertView
-					.findViewById(R.id.productListviewProductName);
+					.findViewById(R.id.productListview1);
 			quantityText = (TextView) convertView
-					.findViewById(R.id.productListviewQuantity);
+					.findViewById(R.id.productListview2);
 			totalPriceText = (TextView) convertView
-					.findViewById(R.id.productListviewTotal);
+					.findViewById(R.id.productListview3);
 			itemNameText.setText(arrayList.get(i).productName);
 			quantityText.setText(arrayList.get(i).quantity + "개");
 			totalPriceText.setText("총 " + arrayList.get(i).price

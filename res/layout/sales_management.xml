@@ -6,16 +6,7 @@
         android:id="@+id/SalesManagementList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/SalesManagementSummary" >
+        android:layout_alignParentLeft="true" >
     </ListView>
-
-    <TextView
-        android:id="@+id/SalesManagementSummary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/salesByDayButton"
-        android:layout_alignParentLeft="true"
-        android:text="매출 ~~~원 등 기타정보" />
 
 </RelativeLayout>

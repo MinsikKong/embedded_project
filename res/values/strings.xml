@@ -6,15 +6,16 @@
     <string name="title_activity_main">MainActivity</string>
 
     <string-array name="SalesManagementByCompanySpinnerArray">
-        <item></item>
         <item>업체1</item>
         <item>업체2</item>
+        <item>업체3</item>
+        <item>업체4</item>
     </string-array>
     <string-array name="SalesManagementByItemSpinnerArray">
-        <item></item>
-        <item>상품1</item>
-        <item>상품2</item>
-        <item>상품3</item>
+        <item>떡볶이</item>
+        <item>순대</item>
+        <item>티슈</item>
+        <item>종이컵</item>
     </string-array>
     <string-array name="PurchaseManagementByCompanySpinnerArray">
         <item></item>

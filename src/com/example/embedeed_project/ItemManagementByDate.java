@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -131,16 +132,6 @@ public class ItemManagementByDate extends Activity {
 		productList.setAdapter(adapter);
 	}
 
-	protected Dialog onCreateDialog(int id) {
-		// DATE_DIALOG_ID로 호출받으면 DatePicker Dialog뜸
-		switch (id) {
-		case DATE_DIALOG_ID:
-			return new DatePickerDialog(this, mDateSetListener, year, month,
-					day);
-		}
-		return null;
-	}
-
 	// DatePicker Dialog에서 날짜를 정하면 해당 날짜를 해당 edittext에 넣음(보여
 	private DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {
 		public void onDateSet(DatePicker view, int year, int month, int day) {
@@ -190,11 +181,11 @@ public class ItemManagementByDate extends Activity {
 				convertView = inflater.inflate(layout, parent, false);
 			}
 			itemNameText = (TextView) convertView
-					.findViewById(R.id.productListviewProductName);
+					.findViewById(R.id.productListview1);
 			quantityText = (TextView) convertView
-					.findViewById(R.id.productListviewQuantity);
+					.findViewById(R.id.productListview2);
 			totalPriceText = (TextView) convertView
-					.findViewById(R.id.productListviewTotal);
+					.findViewById(R.id.productListview3);
 
 			itemNameText.setText(arrayList.get(i).productName);
 			quantityText.setText(arrayList.get(i).quantity + "개");
@@ -203,5 +194,11 @@ public class ItemManagementByDate extends Activity {
 
 			return convertView;
 		}
+	}
+
+	@Override
+	public Dialog onCreateDialog(int dialogId) {
+
+		return null;
 	}
 }
