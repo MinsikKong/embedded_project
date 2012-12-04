@@ -3,9 +3,6 @@ package com.example.embedeed_project;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
-
-import com.example.embedeed_project.SalesManagement.salesListBean;
-
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -112,10 +109,14 @@ public class SalesManagementByDate extends Activity {
 								+ et_startdate.getText() + "' and '"
 								+ et_enddate.getText() + "'", null);
 
+				// '검색'버튼 중복 클릭시 기존 리스트 클리어 처리
+				list.clear();
+
 				// db쿼리 처리
 				if (cursor.moveToFirst()) {
 					cursor.moveToFirst();
 
+					// row수만큼 돌려서 list에 삽입
 					for (count = cursor.getCount(); count > 0; count--) {
 						salesListBean item = new salesListBean(cursor
 								.getString(1), cursor.getString(3), cursor
@@ -134,7 +135,8 @@ public class SalesManagementByDate extends Activity {
 			}
 		});
 
-		adapter = new ItemCustomAdapter(this, R.layout.product_listview, list);
+		adapter = new ItemCustomAdapter(this, R.layout.sales_custom_listview,
+				list);
 		productList.setAdapter(adapter);
 	}
 
@@ -196,12 +198,13 @@ public class SalesManagementByDate extends Activity {
 				convertView = inflater.inflate(layout, parent, false);
 			}
 			soldDateTextView = (TextView) convertView
-					.findViewById(R.id.productListview1);
+					.findViewById(R.id.salesCustomListViewTextView1);
 			productNameTextView = (TextView) convertView
-					.findViewById(R.id.productListview2);
+					.findViewById(R.id.salesCustomListViewTextView2);
 			totalPriceTextView = (TextView) convertView
-					.findViewById(R.id.productListview3);
+					.findViewById(R.id.salesCustomListViewTextView3);
 
+			// custom listview(한 list에 edittext 3개)에 상품이름, 가격, 수량 정보 setText함
 			soldDateTextView.setText("" + arrayList.get(i).soldDate);
 			productNameTextView.setText("" + arrayList.get(i).productName);
 			totalPriceTextView.setText("" + arrayList.get(i).price + "원");

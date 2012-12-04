@@ -2,6 +2,9 @@ package com.example.embedeed_project;
 
 import java.util.ArrayList;
 import java.util.Locale;
+
+import com.example.embedeed_project.PurchaseManagement.purchaseListBean;
+
 import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
@@ -28,6 +31,25 @@ public class PurchaseManagementByCompany extends Activity {
 	Cursor cursor;
 	SQLiteDatabase db;
 	public int count;
+
+	class purchaseListBean {
+		public String purchaseDate; // 매입일
+		public String businessName; // 업체이름
+		public String productName; // 상품이름
+		public int amount; // 수량
+		public int price; // 가격
+		public int purchase_num; // 매입번호
+
+		public purchaseListBean(String purchaseDate, String businessName,
+				String productName, int amount, int price, int purchase_num) {
+			this.purchaseDate = purchaseDate;
+			this.businessName = businessName;
+			this.productName = productName;
+			this.amount = amount;
+			this.price = price;
+			this.purchase_num = purchase_num;
+		}
+	}
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -63,22 +85,26 @@ public class PurchaseManagementByCompany extends Activity {
 								+ (String) spinner.getSelectedItem() + "'",
 						null);
 
+				// Spinner 선택값이 변경될 경우 list clear
+				list.clear();
+
 				// 해당 내역이 없으면 메시지 뿌림
 				if (cursor.moveToFirst()) {
 					cursor.moveToFirst();
+
+					for (count = cursor.getCount(); count > 0; count--) {
+						purchaseListBean item = new purchaseListBean(cursor
+								.getString(1), cursor.getString(2), cursor
+								.getString(3), cursor.getInt(4), cursor
+								.getInt(5), cursor.getInt(0));
+						list.add(item);
+						cursor.moveToNext();
+					}
 				} else {
 					Toast.makeText(PurchaseManagementByCompany.this,
-							"해당 업체의 상품이 없습니다", Toast.LENGTH_SHORT).show();
+							"매입 내역이 없습니다", Toast.LENGTH_SHORT).show();
 				}
 
-				// select된 매입 내역을 list에 추가
-				for (count = cursor.getCount(); count > 0; count--) {
-					purchaseListBean item = new purchaseListBean(cursor
-							.getString(3), cursor.getInt(4), cursor.getInt(5));
-					list.add(item);
-					cursor.moveToNext();
-
-				}
 				adapter.notifyDataSetChanged(); // listview refresh
 				cursor.close();
 				db.close();
@@ -103,21 +129,10 @@ public class PurchaseManagementByCompany extends Activity {
 			}
 		});
 
-		adapter = new ItemCustomAdapter(this, R.layout.product_listview, list);
+		adapter = new ItemCustomAdapter(this,
+				R.layout.purchase_custom_listview, list);
 		productList.setAdapter(adapter);
 
-	}
-
-	class purchaseListBean {
-		public String productName;// 상품명
-		public int quantity; // 수량
-		public int price; // 가격
-
-		public purchaseListBean(String productName, int quantity, int price) {
-			this.productName = productName;
-			this.quantity = quantity;
-			this.price = price;
-		}
 	}
 
 	// 매입내역 출력시 Listview에 상품이름, 개수, 총 가격을 표시하는 Custom Adapter
@@ -153,20 +168,26 @@ public class PurchaseManagementByCompany extends Activity {
 		}
 
 		public View getView(int i, View convertView, ViewGroup parent) {
-			final int finalPosition = i;
+
+			TextView purchaseDateTextView, productNameTextView, amountTextView, totalPriceTextView;
+
 			if (convertView == null) {
 				convertView = inflater.inflate(layout, parent, false);
 			}
-			itemNameText = (TextView) convertView
-					.findViewById(R.id.productListview1);
-			quantityText = (TextView) convertView
-					.findViewById(R.id.productListview2);
-			totalPriceText = (TextView) convertView
-					.findViewById(R.id.productListview3);
-			itemNameText.setText(arrayList.get(i).productName);
-			quantityText.setText(arrayList.get(i).quantity + "개");
-			totalPriceText.setText("총 " + arrayList.get(i).price
-					* arrayList.get(i).quantity + "원");
+			purchaseDateTextView = (TextView) convertView
+					.findViewById(R.id.purchaseCustomListviewTextView1);
+			productNameTextView = (TextView) convertView
+					.findViewById(R.id.purchaseCustomListviewTextView2);
+			amountTextView = (TextView) convertView
+					.findViewById(R.id.purchaseCustomListviewTextView3);
+			totalPriceTextView = (TextView) convertView
+					.findViewById(R.id.purchaseCustomListviewTextView4);
+
+			purchaseDateTextView.setText("" + arrayList.get(i).purchaseDate);
+			productNameTextView.setText("" + arrayList.get(i).productName);
+			amountTextView.setText(arrayList.get(i).amount + "개");
+			totalPriceTextView.setText("총" + arrayList.get(i).price
+					* arrayList.get(i).amount + "원");
 
 			return convertView;
 		}

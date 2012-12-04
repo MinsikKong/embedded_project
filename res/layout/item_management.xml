@@ -6,34 +6,8 @@
         android:id="@+id/ItemManagementList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/ItemManagementButton1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true" >
-
     </ListView>
-
-    <Button
-        android:id="@+id/ItemManagementButton1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:text="일자별" />
-
-    <Button
-        android:id="@+id/ItemManagementButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/ItemManagementButton1"
-        android:text="업체별" />
-
-    <Button
-        android:id="@+id/ItemManagementButton3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:text="상품 추가" />
 
 </RelativeLayout>

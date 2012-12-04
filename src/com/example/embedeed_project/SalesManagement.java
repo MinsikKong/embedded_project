@@ -2,9 +2,7 @@ package com.example.embedeed_project;
 
 import java.util.ArrayList;
 import java.util.Locale;
-
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -31,7 +29,6 @@ public class SalesManagement extends Activity {
 	Cursor cursor;
 	SQLiteDatabase db;
 	public int count;
-	Button search;
 
 	// // 매출내역은 Bean 사용
 	class salesListBean {
@@ -58,7 +55,8 @@ public class SalesManagement extends Activity {
 		salesList = (ListView) findViewById(R.id.SalesManagementList);
 		// salesList1 = (ListView) findViewById(R.id.SalesManagementList2);
 
-		adapter = new ItemCustomAdapter(this, R.layout.product_listview, list);
+		adapter = new ItemCustomAdapter(this, R.layout.sales_custom_listview,
+				list);
 		salesList.setAdapter(adapter);
 
 		db = openOrCreateDatabase(Const.DATABASE_NAME, MODE_PRIVATE, null);
@@ -79,7 +77,7 @@ public class SalesManagement extends Activity {
 				cursor.moveToNext();
 			}
 		} else {
-			Toast.makeText(SalesManagement.this, "해당일의 상품 내역이 없습니다",
+			Toast.makeText(SalesManagement.this, "매출 내역이 없습니다",
 					Toast.LENGTH_SHORT).show();
 		}
 
@@ -193,11 +191,11 @@ public class SalesManagement extends Activity {
 				convertView = inflater.inflate(layout, parent, false);
 			}
 			soldDateTextView = (TextView) convertView
-					.findViewById(R.id.productListview1);
+					.findViewById(R.id.salesCustomListViewTextView1);
 			productNameTextView = (TextView) convertView
-					.findViewById(R.id.productListview2);
+					.findViewById(R.id.salesCustomListViewTextView2);
 			totalPriceTextView = (TextView) convertView
-					.findViewById(R.id.productListview3);
+					.findViewById(R.id.salesCustomListViewTextView3);
 
 			soldDateTextView.setText("" + arrayList.get(i).soldDate);
 			productNameTextView.setText("" + arrayList.get(i).productName);

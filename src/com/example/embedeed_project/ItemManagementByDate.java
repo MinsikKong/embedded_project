@@ -3,11 +3,13 @@ package com.example.embedeed_project;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
+
+import com.example.embedeed_project.ItemManagement.itemsListBean;
+
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -27,7 +29,7 @@ import android.widget.AdapterView.OnItemClickListener;
 
 public class ItemManagementByDate extends Activity {
 	// 일자별 매출(공민식)
-	private ArrayList<purchaseListBean> list;
+	private ArrayList<itemsListBean> list;
 	private ItemCustomAdapter adapter;
 	private ListView productList;
 	Cursor cursor;
@@ -40,16 +42,27 @@ public class ItemManagementByDate extends Activity {
 	static final int DATE_DIALOG_ID = 0;
 	View tempView;
 
-	// 매입내역은 Bean 사용
-	class purchaseListBean {
-		public String productName;// 상품명
-		public int quantity; // 수량
-		public int price; // 가격
+	// 매출내역은 Bean 사용
+	class itemsListBean {
+		public int product_code;
+		public String img;
+		public String category;
+		public String name;
+		public int price;
+		public int stock;
+		public String barcode;
+		public String note;
 
-		public purchaseListBean(String productName, int quantity, int price) {
-			this.productName = productName;
-			this.quantity = quantity;
+		public itemsListBean(int product_code, String img, String category,
+				String name, int price, int stock, String barcode, String note) {
+			this.product_code = this.price;
+			this.img = img;
+			this.category = category;
+			this.name = name;
 			this.price = price;
+			this.stock = stock;
+			this.barcode = barcode;
+			this.note = note;
 		}
 	}
 
@@ -58,7 +71,7 @@ public class ItemManagementByDate extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.item_management_by_date);
 
-		list = new ArrayList<purchaseListBean>();
+		list = new ArrayList<itemsListBean>();
 		productList = (ListView) findViewById(R.id.ItemByDateList);
 		productList.setOnItemClickListener(new OnItemClickListener() {
 
@@ -107,29 +120,47 @@ public class ItemManagementByDate extends Activity {
 								+ et_startdate.getText() + "' and '"
 								+ et_enddate.getText() + "'", null);
 
-				// 해당 내역이 없으면 메시지 뿌림
+				// '검색'버튼 중복 클릭시 기존 리스트 클리어 처리
+				list.clear();
+
+				// db쿼리 처리
 				if (cursor.moveToFirst()) {
 					cursor.moveToFirst();
+
+					// row수만큼 돌려서 list에 삽입
+					for (count = cursor.getCount(); count > 0; count--) {
+						itemsListBean item = new itemsListBean(
+								cursor.getInt(0), cursor.getString(1), cursor
+										.getString(2), cursor.getString(3),
+								cursor.getInt(4), cursor.getInt(5), cursor
+										.getString(6), cursor.getString(7));
+						list.add(item);
+						cursor.moveToNext();
+					}
 				} else {
-					Toast.makeText(ItemManagementByDate.this,
-							"해당일의 상품 내역이 없습니다", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getApplicationContext(), "해당일의 상품 내역이 없습니다",
+							Toast.LENGTH_SHORT).show();
 				}
 
-				// select된 매입 내역을 list에 추가
-				for (count = cursor.getCount(); count > 0; count--) {
-					purchaseListBean item = new purchaseListBean(cursor
-							.getString(3), cursor.getInt(4), cursor.getInt(5));
-					list.add(item);
-					cursor.moveToNext();
-				}
 				adapter.notifyDataSetChanged(); // listview refresh
 				cursor.close();
 				db.close();
 			}
 		});
 
-		adapter = new ItemCustomAdapter(this, R.layout.product_listview, list);
+		adapter = new ItemCustomAdapter(this, R.layout.item_custom_listview,
+				list);
 		productList.setAdapter(adapter);
+	}
+
+	protected Dialog onCreateDialog(int id) {
+		// DATE_DIALOG_ID로 호출받으면 DatePicker Dialog뜸
+		switch (id) {
+		case DATE_DIALOG_ID:
+			return new DatePickerDialog(this, mDateSetListener, year, month,
+					day);
+		}
+		return null;
 	}
 
 	// DatePicker Dialog에서 날짜를 정하면 해당 날짜를 해당 edittext에 넣음(보여
@@ -148,15 +179,14 @@ public class ItemManagementByDate extends Activity {
 		Context context;
 		LayoutInflater inflater;
 
-		ArrayList<purchaseListBean> arrayList = new ArrayList<purchaseListBean>();
+		ArrayList<itemsListBean> arrayList = new ArrayList<itemsListBean>();
 
-		TextView itemNameText, quantityText, totalPriceText,
-				PurchaseByDateSummary;
+		TextView productNameTextView, PriceTextView, amountTextView;
 
 		private int layout;
 
 		public ItemCustomAdapter(Context context, int layout,
-				ArrayList<purchaseListBean> arrayList) {
+				ArrayList<itemsListBean> arrayList) {
 			this.context = context;
 			inflater = (LayoutInflater) context
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -180,25 +210,18 @@ public class ItemManagementByDate extends Activity {
 			if (convertView == null) {
 				convertView = inflater.inflate(layout, parent, false);
 			}
-			itemNameText = (TextView) convertView
-					.findViewById(R.id.productListview1);
-			quantityText = (TextView) convertView
-					.findViewById(R.id.productListview2);
-			totalPriceText = (TextView) convertView
-					.findViewById(R.id.productListview3);
+			productNameTextView = (TextView) convertView
+					.findViewById(R.id.itemCustomListviewTextview1);
+			PriceTextView = (TextView) convertView
+					.findViewById(R.id.itemCustomListviewTextview2);
+			amountTextView = (TextView) convertView
+					.findViewById(R.id.itemCustomListviewTextview3);
 
-			itemNameText.setText(arrayList.get(i).productName);
-			quantityText.setText(arrayList.get(i).quantity + "개");
-			totalPriceText.setText("총 " + arrayList.get(i).price
-					* arrayList.get(i).quantity + "원");
+			productNameTextView.setText("" + arrayList.get(i).name);
+			PriceTextView.setText("" + arrayList.get(i).price + "원");
+			amountTextView.setText("" + arrayList.get(i).stock + "개");
 
 			return convertView;
 		}
-	}
-
-	@Override
-	public Dialog onCreateDialog(int dialogId) {
-
-		return null;
 	}
 }
