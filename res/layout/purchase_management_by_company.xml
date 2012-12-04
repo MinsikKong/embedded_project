@@ -24,17 +24,8 @@
         android:id="@+id/PurchaseManagementByCompanyList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/PurchaseManagementByCompanySummary"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/PurchaseManagementByCompanySpinner" >
     </ListView>
-
-    <TextView
-        android:id="@+id/PurchaseManagementByCompanySummary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:text="~일에서 ~일까지 매출 ~원 등 기타정보" />
 
 </RelativeLayout>

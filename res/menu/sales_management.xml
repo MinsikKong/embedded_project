@@ -1,21 +1,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
-        android:id="@+id/PurchaseManagementByDateMenu"
+        android:id="@+id/SalesManagementByDateMenu"
         android:orderInCategory="100"
         android:title="일자별 조회"/>
     <item
-        android:id="@+id/PurchaseManagementByCompanyMenu"
+        android:id="@+id/SalesManagementByCompanyMenu"
         android:orderInCategory="100"
         android:title="업체별 조회"/>
     <item
-        android:id="@+id/PurchaseManagementByItemMenu"
+        android:id="@+id/SalesManagementByItemMenu"
         android:orderInCategory="100"
         android:title="상품별 조회"/>
-    
-        <item
-        android:id="@+id/PurchaseManagementAddListMenu"
+    <item
+        android:id="@+id/SalesManagementAddListMenu"
         android:orderInCategory="100"
-        android:title="매입내역 추가"/>
+        android:title="매출내역 추가"/>
 
 </menu>

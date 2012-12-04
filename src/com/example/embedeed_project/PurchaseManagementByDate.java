@@ -3,29 +3,31 @@ package com.example.embedeed_project;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
-
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.content.Intent;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class PurchaseManagementByDate extends Activity {
 	// 일자별 매출(공민식)
-	private ArrayList<String> list;
-	private ArrayAdapter<String> adapter;
+	private ArrayList<purchaseListBean> list;
+	private ItemCustomAdapter adapter;
 	private ListView productList;
 	Cursor cursor;
 	SQLiteDatabase db;
@@ -37,25 +39,35 @@ public class PurchaseManagementByDate extends Activity {
 	static final int DATE_DIALOG_ID = 0;
 	View tempView;
 
+	// 매입내역은 Bean 사용
+	class purchaseListBean {
+		public String productName;// 상품명
+		public int quantity; // 수량
+		public int price; // 가격
+
+		public purchaseListBean(String productName, int quantity, int price) {
+			this.productName = productName;
+			this.quantity = quantity;
+			this.price = price;
+		}
+	}
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.purchase_management_by_date);
 
+		list = new ArrayList<purchaseListBean>();
 		productList = (ListView) findViewById(R.id.PurchaseByDateList);
-
 		productList.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
-				// TODO Auto-generated method stub
-
+				// 리스트 아이템 터치시
 			}
-
 		});
 
-		list = new ArrayList<String>();
 		et_startdate = (EditText) findViewById(R.id.PurchaseByDateStartDateEditext);
 		et_enddate = (EditText) findViewById(R.id.PurchaseByDateEndDateEditext);
 
@@ -78,6 +90,7 @@ public class PurchaseManagementByDate extends Activity {
 			}
 		});
 
+		// 검색 버튼 터치시 선택된 기간 내의 결과 찾음
 		search = (Button) findViewById(R.id.PurchaseByDateButton1);
 		search.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
@@ -103,17 +116,18 @@ public class PurchaseManagementByDate extends Activity {
 
 				// select된 매입 내역을 list에 추가
 				for (count = cursor.getCount(); count > 0; count--) {
-					String item_name = cursor.getString(3);
-					list.add(item_name);
+					purchaseListBean item = new purchaseListBean(cursor
+							.getString(3), cursor.getInt(4), cursor.getInt(5));
+					list.add(item);
 					cursor.moveToNext();
 				}
 				adapter.notifyDataSetChanged(); // listview refresh
 				cursor.close();
+				db.close();
 			}
 		});
 
-		adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, list);
+		adapter = new ItemCustomAdapter(this, R.layout.product_listview, list);
 		productList.setAdapter(adapter);
 	}
 
@@ -138,4 +152,56 @@ public class PurchaseManagementByDate extends Activity {
 		}
 	};
 
+	// 매입내역 출력시 Listview에 상품이름, 개수, 총 가격을 표시하는 Custom Adapter
+	public class ItemCustomAdapter extends BaseAdapter {
+		Context context;
+		LayoutInflater inflater;
+
+		ArrayList<purchaseListBean> arrayList = new ArrayList<purchaseListBean>();
+
+		TextView itemNameText, quantityText, totalPriceText,
+				PurchaseByDateSummary;
+
+		private int layout;
+
+		public ItemCustomAdapter(Context context, int layout,
+				ArrayList<purchaseListBean> arrayList) {
+			this.context = context;
+			inflater = (LayoutInflater) context
+					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			this.layout = layout;
+			this.arrayList = arrayList;
+		}
+
+		public int getCount() {
+			return arrayList.size();
+		}
+
+		public Object getItem(int position) {
+			return arrayList.get(position);
+		}
+
+		public long getItemId(int position) {
+			return position;
+		}
+
+		public View getView(int i, View convertView, ViewGroup parent) {
+			if (convertView == null) {
+				convertView = inflater.inflate(layout, parent, false);
+			}
+			itemNameText = (TextView) convertView
+					.findViewById(R.id.productListviewProductName);
+			quantityText = (TextView) convertView
+					.findViewById(R.id.productListviewQuantity);
+			totalPriceText = (TextView) convertView
+					.findViewById(R.id.productListviewTotal);
+
+			itemNameText.setText(arrayList.get(i).productName);
+			quantityText.setText(arrayList.get(i).quantity + "개");
+			totalPriceText.setText("총 " + arrayList.get(i).price
+					* arrayList.get(i).quantity + "원");
+
+			return convertView;
+		}
+	}
 }

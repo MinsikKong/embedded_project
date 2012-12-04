@@ -3,9 +3,9 @@ package com.example.embedeed_project;
 import android.app.Activity;
 import android.os.Bundle;
 
-public class SalesManagementAdd extends Activity {
+public class SalesManagementAddList extends Activity {
 
-	public SalesManagementAdd() {
+	public SalesManagementAddList() {
 		// TODO Auto-generated constructor stub
 	}
 

@@ -57,17 +57,10 @@
         android:id="@+id/PurchaseByDateList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/PurchaseSummary"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/PurchaseByDateEndDateEditext" >
-    </ListView>
-
-    <TextView
-        android:id="@+id/PurchaseByDateSummary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:text="~일에서 ~일까지 매입 ~원 등 기타정보" />
+        android:layout_below="@+id/PurchaseByDateEndDateEditext" >
+
+    </ListView>
 
 </RelativeLayout>

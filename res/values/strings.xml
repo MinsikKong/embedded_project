@@ -5,23 +5,29 @@
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">MainActivity</string>
 
-    <string-array name="SalesManagementByCompanySpinner">
+    <string-array name="SalesManagementByCompanySpinnerArray">
+        <item></item>
         <item>업체1</item>
         <item>업체2</item>
     </string-array>
-    <string-array name="SalesManagementByItemSpinner">
+    <string-array name="SalesManagementByItemSpinnerArray">
+        <item></item>
         <item>상품1</item>
         <item>상품2</item>
+        <item>상품3</item>
     </string-array>
-    <string-array name="PurchaseManagementByCompanySpinner">
+    <string-array name="PurchaseManagementByCompanySpinnerArray">
+        <item></item>
         <item>업체1</item>
         <item>업체2</item>
     </string-array>
-    <string-array name="PurchaseManagementByItemSpinner">
+    <string-array name="PurchaseManagementByItemSpinnerArray">
+        <item></item>
         <item>상품1</item>
         <item>상품2</item>
     </string-array>
-    <string-array name="ItemManagementByCompanySpinner">
+    <string-array name="ItemManagementByCompanySpinnerArray">
+        <item></item>
         <item>상품1</item>
         <item>상품2</item>
     </string-array>
