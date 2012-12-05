@@ -2,9 +2,6 @@ package com.example.embedeed_project;
 
 import java.util.ArrayList;
 import java.util.Locale;
-
-import com.example.embedeed_project.PurchaseManagement.purchaseListBean;
-
 import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;

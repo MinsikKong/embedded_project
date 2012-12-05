@@ -1,7 +1,6 @@
 package com.example.embedeed_project;
 
 import java.util.Locale;
-
 import android.app.Activity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -9,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class PurchaseManagementAddList extends Activity {
