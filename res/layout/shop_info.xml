@@ -163,4 +163,14 @@
         android:layout_marginTop="18dp"
         android:text="저장" />
 
+    <Button
+        android:id="@+id/ShopInfoPicButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/ShopInfoSaveButton"
+        android:layout_alignBottom="@+id/ShopInfoSaveButton"
+        android:layout_marginRight="15dp"
+        android:layout_toLeftOf="@+id/ShopInfoSaveButton"
+        android:text="사진보기" />
+
 </RelativeLayout>

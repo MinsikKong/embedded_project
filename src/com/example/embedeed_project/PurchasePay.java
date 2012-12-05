@@ -77,7 +77,11 @@ public class PurchasePay extends Activity {
 										salesToDB();	//정상적으로 출력되었으면 DB에 저장함
 									} else if(receipt_item==1){
 										//BT
-
+										Intent intent = new Intent(PurchasePay.this,
+												BluetoothSender.class);
+										intent.putExtra("totalPrice", totalPay);
+										intent.putExtra("orderArray", orderArray);
+										startActivityForResult(intent, 0);
 										salesToDB();	//정상적으로 출력되었으면 DB에 저장함
 									} else if(receipt_item==2){
 										//Cancel
@@ -194,5 +198,12 @@ public class PurchasePay extends Activity {
 			}
 		}
 
+	}
+
+
+	protected void onActivityResult(int requestCode, int resultCode,
+			Intent intent) {
+		// 바코드 인식결과에 따라 상품을 추가함
+		
 	}
 }

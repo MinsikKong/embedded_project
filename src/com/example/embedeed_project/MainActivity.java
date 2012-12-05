@@ -8,15 +8,22 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
@@ -35,7 +42,31 @@ public class MainActivity extends Activity {
 		GridView gridview = (GridView) findViewById(R.id.gridview);
 		gridview.setAdapter(new ImageAdapter(this));
 
+		AlertDialog.Builder builder;
+		AlertDialog alertDialog;
+		 // instantiate the dialog with the custom Theme
+
+		Context mContext = getApplicationContext();
+		LayoutInflater inflater = (LayoutInflater)mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
+		View layout = inflater.inflate(R.layout.shopinfo_custom_dialog, (ViewGroup)findViewById(R.id.shoppiclayout));
+		
+		ImageView image = (ImageView)layout.findViewById(R.id.shopimg);
+		image.setImageResource(R.drawable.ic_launcher);
+		TextView text = (TextView)layout.findViewById(R.id.shoptext);
+		
+		
+		builder = new AlertDialog.Builder(mContext);
+		builder.setView(layout);
+		builder.setPositiveButton("OK",new DialogInterface.OnClickListener(){
+			@Override
+			public void onClick(DialogInterface dialog, int arg1) {
+				dialog.dismiss();
+			}
+		});
+		alertDialog = builder.create();
+		
 		gridview.setOnItemClickListener(new OnItemClickListener() {
+			
 			public void onItemClick(AdapterView<?> parent, View v,
 					int position, long id) {
 				Toast.makeText(MainActivity.this, "" + position,

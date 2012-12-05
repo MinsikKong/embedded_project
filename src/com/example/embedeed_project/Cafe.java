@@ -11,7 +11,6 @@ import android.widget.Toast;
 public class Cafe extends Activity {
 	// 까페가기(박민성)
 
-
 	WebView wv;
 	
 	@Override

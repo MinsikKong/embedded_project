@@ -3,11 +3,57 @@
     android:layout_height="fill_parent" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="재고관리" />
+        android:text="옵션"
+        android:textSize="48px" />
+
+    <Button
+        android:id="@+id/DBResetButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="42dp"
+        android:text="DB초기화" />
+
+    <EditText
+        android:id="@+id/optionDBFile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView2"
+        android:ems="10"
+        android:textSize="8dp" />
+
+    <Button
+        android:id="@+id/optionSaveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/optionDBFile"
+        android:layout_marginTop="16dp"
+        android:text="저장" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/optionDBFile"
+        android:layout_alignBottom="@+id/optionDBFile"
+        android:layout_alignParentLeft="true"
+        android:text="매장사진 파일명"
+        android:textSize="30px" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/DBResetButton"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="29dp"
+        android:text="DB초기화"
+        android:textSize="30px" />
 
 </RelativeLayout>
