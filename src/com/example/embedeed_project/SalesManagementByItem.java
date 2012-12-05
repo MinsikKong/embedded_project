@@ -22,12 +22,24 @@ import android.widget.Toast;
 
 public class SalesManagementByItem extends Activity {
 	// 판매(공민식)
-	private ArrayList<purchaseListBean> list;
+	private ArrayList<salesListBean> list;
 	private ItemCustomAdapter adapter;
 	private ListView productList;
 	Cursor cursor;
 	SQLiteDatabase db;
 	public int count;
+
+	class salesListBean {
+		public String productName;// 상품명
+		public int quantity; // 수량
+		public int price; // 가격
+
+		public salesListBean(String productName, int quantity, int price) {
+			this.productName = productName;
+			this.quantity = quantity;
+			this.price = price;
+		}
+	}
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -58,10 +70,12 @@ public class SalesManagementByItem extends Activity {
 				db.setLockingEnabled(true);
 
 				// 특정 일자 사이에 있는 매입 조회
-				cursor = db.rawQuery(
-						"select * from purchase where product_name=" + "'"
-								+ (String) spinner.getSelectedItem() + "'",
-						null);
+				cursor = db
+						.rawQuery(
+								"select b.date, c.amount, a.price from product a, sales b, soldproducts c where a.name='"
+										+ (String) spinner.getSelectedItem()
+										+ "' and b.sales_num=c.sales_num and a.product_code=c.product_code",
+								null);
 
 				// 해당 내역이 없으면 메시지 뿌림
 				if (cursor.moveToFirst()) {
@@ -71,14 +85,17 @@ public class SalesManagementByItem extends Activity {
 							"해당 상품의 매입내역이 없습니다", Toast.LENGTH_SHORT).show();
 				}
 
+				// spinner의 선택 항목이 바뀌었을때 list의 내용 clear
+				list.clear();
+
 				// select된 매입 내역을 list에 추가
 				for (count = cursor.getCount(); count > 0; count--) {
-					purchaseListBean item = new purchaseListBean(cursor
-							.getString(3), cursor.getInt(4), cursor.getInt(5));
+					salesListBean item = new salesListBean(cursor.getString(0),
+							cursor.getInt(1), cursor.getInt(2));
 					list.add(item);
 					cursor.moveToNext();
-
 				}
+
 				adapter.notifyDataSetChanged(); // listview refresh
 				cursor.close();
 				db.close();
@@ -92,7 +109,7 @@ public class SalesManagementByItem extends Activity {
 			}
 		});
 
-		list = new ArrayList<purchaseListBean>();
+		list = new ArrayList<salesListBean>();
 		productList = (ListView) findViewById(R.id.SalesManagementByItemList);
 		productList.setOnItemClickListener(new OnItemClickListener() {
 
@@ -103,21 +120,10 @@ public class SalesManagementByItem extends Activity {
 			}
 		});
 
-		adapter = new ItemCustomAdapter(this, R.layout.product_listview, list);
+		adapter = new ItemCustomAdapter(this, R.layout.sales_custom_listview,
+				list);
 		productList.setAdapter(adapter);
 
-	}
-
-	class purchaseListBean {
-		public String productName;// 상품명
-		public int quantity; // 수량
-		public int price; // 가격
-
-		public purchaseListBean(String productName, int quantity, int price) {
-			this.productName = productName;
-			this.quantity = quantity;
-			this.price = price;
-		}
 	}
 
 	// 매입내역 출력시 Listview에 상품이름, 개수, 총 가격을 표시하는 Custom Adapter
@@ -125,14 +131,14 @@ public class SalesManagementByItem extends Activity {
 		Context context;
 		LayoutInflater inflater;
 
-		ArrayList<purchaseListBean> arrayList = new ArrayList<purchaseListBean>();
+		ArrayList<salesListBean> arrayList = new ArrayList<salesListBean>();
 
 		TextView itemNameText, quantityText, totalPriceText;
 
 		private int layout;
 
 		public ItemCustomAdapter(Context context, int layout,
-				ArrayList<purchaseListBean> arrayList) {
+				ArrayList<salesListBean> arrayList) {
 			this.context = context;
 			inflater = (LayoutInflater) context
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -153,16 +159,15 @@ public class SalesManagementByItem extends Activity {
 		}
 
 		public View getView(int i, View convertView, ViewGroup parent) {
-			final int finalPosition = i;
 			if (convertView == null) {
 				convertView = inflater.inflate(layout, parent, false);
 			}
 			itemNameText = (TextView) convertView
-					.findViewById(R.id.productListviewProductName);
+					.findViewById(R.id.salesCustomListViewTextView1);
 			quantityText = (TextView) convertView
-					.findViewById(R.id.productListviewQuantity);
+					.findViewById(R.id.salesCustomListViewTextView2);
 			totalPriceText = (TextView) convertView
-					.findViewById(R.id.productListviewTotal);
+					.findViewById(R.id.salesCustomListViewTextView3);
 			itemNameText.setText(arrayList.get(i).productName);
 			quantityText.setText(arrayList.get(i).quantity + "개");
 			totalPriceText.setText("총 " + arrayList.get(i).price

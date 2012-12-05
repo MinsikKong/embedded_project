@@ -172,5 +172,4 @@
         android:layout_marginRight="15dp"
         android:layout_toLeftOf="@+id/ShopInfoSaveButton"
         android:text="사진보기" />
-
 </RelativeLayout>

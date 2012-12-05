@@ -3,117 +3,172 @@
     android:layout_height="fill_parent" >
 
     <TextView
-        android:id="@+id/ItemManagementAddItemTextView1"
+        android:id="@+id/ItemManagementAddListTextView1"
         android:layout_width="wrap_content"
-        android:layout_height="50px"
+        android:layout_height="50dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="업체명" />
+        android:text="사진경로" />
 
     <TextView
-        android:id="@+id/ItemManagementAddItemTextView2"
+        android:id="@+id/ItemManagementAddListTextView2"
         android:layout_width="wrap_content"
-        android:layout_height="50px"
+        android:layout_height="50dp"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/ItemManagementAddListTextView1"
+        android:text="카테고리" />
+
+    <TextView
+        android:id="@+id/ItemManagementAddListTextView3"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/ItemManagementAddListTextView2"
         android:text="상품명" />
 
     <TextView
-        android:id="@+id/ItemManagementAddItemTextView3"
+        android:id="@+id/ItemManagementAddListTextView4"
         android:layout_width="wrap_content"
-        android:layout_height="50px"
+        android:layout_height="50dp"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/ItemManagementAddListTextView3"
+        android:text="가격" />
+
+    <TextView
+        android:id="@+id/ItemManagementAddListTextView5"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/ItemManagementAddListTextView4"
         android:text="수량" />
 
     <TextView
-        android:id="@+id/ItemManagementAddItemTextView4"
+        android:id="@+id/ItemManagementAddListTextView6"
         android:layout_width="wrap_content"
-        android:layout_height="50px"
+        android:layout_height="50dp"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView3"
-        android:text="단가" />
-
-    <TextView
-        android:id="@+id/ItemManagementAddItemTextView5"
-        android:layout_width="wrap_content"
-        android:layout_height="50px"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView4"
+        android:layout_below="@+id/ItemManagementAddListTextView5"
         android:text="바코드" />
 
     <TextView
-        android:id="@+id/ItemManagementAddItemTextView6"
+        android:id="@+id/ItemManagementAddListTextView7"
         android:layout_width="wrap_content"
-        android:layout_height="50px"
+        android:layout_height="50dp"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView5"
+        android:layout_below="@+id/ItemManagementAddListEditText6"
         android:text="메모" />
 
     <EditText
-        android:id="@+id/ItemManagementAddItemEditText1"
+        android:id="@+id/ItemManagementAddListEditText1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView1"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/ItemManagementAddListTextView1"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/textView1"
-        android:ems="10" />
+        android:layout_toRightOf="@+id/ItemManagementAddListTextView1"
+        android:ems="10"
+        android:hint=""
+        android:lines="1"
+        android:singleLine="true"
+        android:textSize="18sp" />
 
     <EditText
-        android:id="@+id/ItemManagementAddItemEditText2"
+        android:id="@+id/ItemManagementAddListEditText2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView2"
-        android:layout_alignTop="@+id/textView2"
-        android:layout_toRightOf="@+id/textView2"
-        android:ems="10" />
+        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/ItemManagementAddListTextView2"
+        android:layout_alignTop="@+id/ItemManagementAddListTextView2"
+        android:layout_toRightOf="@+id/ItemManagementAddListTextView2"
+        android:ems="10"
+        android:hint=""
+        android:lines="1"
+        android:singleLine="true"
+        android:textSize="18sp" />
 
     <EditText
-        android:id="@+id/ItemManagementAddItemEditText3"
+        android:id="@+id/ItemManagementAddListEditText3"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView3"
-        android:layout_alignLeft="@+id/editText2"
-        android:layout_alignTop="@+id/textView3"
-        android:ems="10" />
+        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/ItemManagementAddListTextView3"
+        android:layout_alignLeft="@+id/ItemManagementAddListEditText2"
+        android:layout_below="@+id/ItemManagementAddListEditText2"
+        android:ems="10"
+        android:hint=""
+        android:lines="1"
+        android:singleLine="true"
+        android:textSize="18sp" />
 
     <EditText
-        android:id="@+id/ItemManagementAddItemEditText4"
+        android:id="@+id/ItemManagementAddListEditText4"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView4"
-        android:layout_alignTop="@+id/textView4"
-        android:layout_toRightOf="@+id/textView5"
-        android:ems="10" />
-
-    <EditText
-        android:id="@+id/ItemManagementAddItemEditText5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView5"
-        android:layout_alignRight="@+id/editText4"
-        android:layout_alignTop="@+id/textView5"
-        android:layout_toRightOf="@+id/textView5"
-        android:ems="10" />
-
-    <EditText
-        android:id="@+id/ItemManagementAddItemEditText6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView6"
-        android:layout_alignLeft="@+id/editText5"
-        android:layout_alignTop="@+id/textView6"
-        android:ems="10" />
+        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/ItemManagementAddListTextView4"
+        android:layout_alignLeft="@+id/ItemManagementAddListEditText3"
+        android:layout_alignTop="@+id/ItemManagementAddListTextView4"
+        android:ems="10"
+        android:hint=""
+        android:inputType="number"
+        android:lines="1"
+        android:singleLine="true"
+        android:textSize="18sp" />
 
     <Button
-        android:id="@+id/ItemManagementAddItemBarcodeScanButton"
+        android:id="@+id/ItemManagementAddListButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:text="확인" />
+
+    <Button
+        android:id="@+id/ItemManagementAddListButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/editText5"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/ItemManagementAddListButton1"
+        android:text="취소" />
+
+    <EditText
+        android:id="@+id/ItemManagementAddListEditText5"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/ItemManagementAddListEditText4"
+        android:layout_below="@+id/ItemManagementAddListEditText4"
+        android:ems="10"
+        android:inputType="number"
+        android:lines="1"
+        android:singleLine="true"
+        android:textSize="18sp" >
+    </EditText>
+
+    <EditText
+        android:id="@+id/ItemManagementAddListEditText6"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/ItemManagementAddListEditText5"
+        android:layout_below="@+id/ItemManagementAddListEditText5"
+        android:ems="10"
+        android:inputType="number"
+        android:lines="1"
+        android:singleLine="true"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/ItemManagementAddListButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/editText4"
-        android:layout_toRightOf="@+id/editText5"
-        android:text="바코드 읽기"
-        android:textSize="12px" />
+        android:layout_below="@+id/ItemManagementAddListEditText5"
+        android:text="입력" />
+
+    <EditText
+        android:id="@+id/ItemManagementAddListEditText7"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/ItemManagementAddListEditText6"
+        android:layout_alignTop="@+id/ItemManagementAddListTextView7"
+        android:ems="10"
+        android:lines="1"
+        android:singleLine="true"
+        android:textSize="18sp" />
 
 </RelativeLayout>

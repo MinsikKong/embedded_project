@@ -6,17 +6,7 @@
         android:id="@+id/PurchaseManagementList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/PurchaseManagementSummary"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true" />
-
-    <TextView
-        android:id="@+id/PurchaseManagementSummary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:text="매입~~~원 등 기타정보"
-        android:textSize="32px" />
 
 </RelativeLayout>

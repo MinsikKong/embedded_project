@@ -41,14 +41,21 @@ public class PurchaseManagementByDate extends Activity {
 
 	// 매입내역은 Bean 사용
 	class purchaseListBean {
-		public String productName;// 상품명
-		public int quantity; // 수량
+		public String purchaseDate; // 매입일
+		public String businessName; // 업체이름
+		public String productName; // 상품이름
+		public int amount; // 수량
 		public int price; // 가격
+		public int purchase_num; // 매입번호
 
-		public purchaseListBean(String productName, int quantity, int price) {
+		public purchaseListBean(String purchaseDate, String businessName,
+				String productName, int amount, int price, int purchase_num) {
+			this.purchaseDate = purchaseDate;
+			this.businessName = businessName;
 			this.productName = productName;
-			this.quantity = quantity;
+			this.amount = amount;
 			this.price = price;
+			this.purchase_num = purchase_num;
 		}
 	}
 
@@ -109,25 +116,29 @@ public class PurchaseManagementByDate extends Activity {
 				// 해당 내역이 없으면 메시지 뿌림
 				if (cursor.moveToFirst()) {
 					cursor.moveToFirst();
+
+					// select된 매입 내역을 list에 추가
+					for (count = cursor.getCount(); count > 0; count--) {
+						purchaseListBean item = new purchaseListBean(cursor
+								.getString(1), cursor.getString(2), cursor
+								.getString(3), cursor.getInt(4), cursor
+								.getInt(5), cursor.getInt(0));
+						list.add(item);
+						cursor.moveToNext();
+					}
 				} else {
 					Toast.makeText(PurchaseManagementByDate.this,
 							"해당일의 매입 내역이 없습니다", Toast.LENGTH_SHORT).show();
 				}
 
-				// select된 매입 내역을 list에 추가
-				for (count = cursor.getCount(); count > 0; count--) {
-					purchaseListBean item = new purchaseListBean(cursor
-							.getString(3), cursor.getInt(4), cursor.getInt(5));
-					list.add(item);
-					cursor.moveToNext();
-				}
 				adapter.notifyDataSetChanged(); // listview refresh
 				cursor.close();
 				db.close();
 			}
 		});
 
-		adapter = new ItemCustomAdapter(this, R.layout.product_listview, list);
+		adapter = new ItemCustomAdapter(this,
+				R.layout.purchase_custom_listview, list);
 		productList.setAdapter(adapter);
 	}
 
@@ -186,20 +197,26 @@ public class PurchaseManagementByDate extends Activity {
 		}
 
 		public View getView(int i, View convertView, ViewGroup parent) {
+
+			TextView purchaseDateTextView, productNameTextView, amountTextView, totalPriceTextView;
+
 			if (convertView == null) {
 				convertView = inflater.inflate(layout, parent, false);
 			}
-			itemNameText = (TextView) convertView
-					.findViewById(R.id.productListviewProductName);
-			quantityText = (TextView) convertView
-					.findViewById(R.id.productListviewQuantity);
-			totalPriceText = (TextView) convertView
-					.findViewById(R.id.productListviewTotal);
+			purchaseDateTextView = (TextView) convertView
+					.findViewById(R.id.purchaseCustomListviewTextView1);
+			productNameTextView = (TextView) convertView
+					.findViewById(R.id.purchaseCustomListviewTextView2);
+			amountTextView = (TextView) convertView
+					.findViewById(R.id.purchaseCustomListviewTextView3);
+			totalPriceTextView = (TextView) convertView
+					.findViewById(R.id.purchaseCustomListviewTextView4);
 
-			itemNameText.setText(arrayList.get(i).productName);
-			quantityText.setText(arrayList.get(i).quantity + "개");
-			totalPriceText.setText("총 " + arrayList.get(i).price
-					* arrayList.get(i).quantity + "원");
+			purchaseDateTextView.setText("" + arrayList.get(i).purchaseDate);
+			productNameTextView.setText("" + arrayList.get(i).productName);
+			amountTextView.setText(arrayList.get(i).amount + "개");
+			totalPriceTextView.setText("총" + arrayList.get(i).price
+					* arrayList.get(i).amount + "원");
 
 			return convertView;
 		}

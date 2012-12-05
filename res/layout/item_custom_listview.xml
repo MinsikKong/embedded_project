@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/itemCustomListviewTextview1"
+        android:layout_width="105dp"
+        android:layout_height="24dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="아이템이름" />
+
+    <TextView
+        android:id="@+id/itemCustomListviewTextview2"
+        android:layout_width="105dp"
+        android:layout_height="24dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="몇개" />
+
+    <TextView
+        android:id="@+id/itemCustomListviewTextview3"
+        android:layout_width="105dp"
+        android:layout_height="24dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="총 얼마" />
+
+</RelativeLayout>

@@ -5,7 +5,7 @@
     <TextView
         android:id="@+id/PurchaseManagementAddListTextView1"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="50px"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:text="업체명" />
@@ -13,7 +13,7 @@
     <TextView
         android:id="@+id/PurchaseManagementAddListTextView2"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="50px"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/PurchaseManagementAddListTextView1"
         android:text="상품명" />
@@ -21,7 +21,7 @@
     <TextView
         android:id="@+id/PurchaseManagementAddListTextView3"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="50px"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/PurchaseManagementAddListTextView2"
         android:text="수량" />
@@ -29,7 +29,7 @@
     <TextView
         android:id="@+id/PurchaseManagementAddListTextView4"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="50px"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/PurchaseManagementAddListTextView3"
         android:text="단가" />
@@ -37,92 +37,81 @@
     <TextView
         android:id="@+id/PurchaseManagementAddListTextView5"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="50px"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/PurchaseManagementAddListTextView4"
+        android:text="바코드" />
+
+    <TextView
+        android:id="@+id/PurchaseManagementAddListTextView6"
+        android:layout_width="wrap_content"
+        android:layout_height="50px"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/PurchaseManagementAddListTextView5"
         android:text="메모" />
 
     <EditText
         android:id="@+id/PurchaseManagementAddListEditText1"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/PurchaseManagementAddListTextView1"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/PurchaseManagementAddListTextView1"
-        android:ems="10"
-        android:hint=""
-        android:lines="1"
-        android:singleLine="true"
-        android:textSize="18sp" />
+        android:ems="10" />
 
     <EditText
         android:id="@+id/PurchaseManagementAddListEditText2"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/PurchaseManagementAddListTextView2"
         android:layout_alignTop="@+id/PurchaseManagementAddListTextView2"
         android:layout_toRightOf="@+id/PurchaseManagementAddListTextView2"
-        android:ems="10"
-        android:hint=""
-        android:lines="1"
-        android:singleLine="true"
-        android:textSize="18sp" />
-
-    <EditText
-        android:id="@+id/PurchaseManagementAddListEditText3"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_alignBottom="@+id/PurchaseManagementAddListTextView3"
-        android:layout_alignLeft="@+id/PurchaseManagementAddListEditText2"
-        android:layout_below="@+id/PurchaseManagementAddListEditText2"
-        android:ems="10"
-        android:hint=""
-        android:inputType="number"
-        android:lines="1"
-        android:singleLine="true"
-        android:textSize="18sp" />
+        android:ems="10" />
 
     <EditText
         android:id="@+id/PurchaseManagementAddListEditText4"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/PurchaseManagementAddListTextView4"
-        android:layout_alignLeft="@+id/PurchaseManagementAddListEditText3"
         android:layout_alignTop="@+id/PurchaseManagementAddListTextView4"
-        android:ems="10"
-        android:hint=""
-        android:inputType="number"
-        android:lines="1"
-        android:singleLine="true"
-        android:textSize="18sp" />
+        android:layout_toRightOf="@+id/PurchaseManagementAddListTextView5"
+        android:ems="10" />
+
+    <EditText
+        android:id="@+id/PurchaseManagementAddListEditText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/PurchaseManagementAddListEditText4"
+        android:layout_alignTop="@+id/PurchaseManagementAddListTextView3"
+        android:layout_toLeftOf="@+id/ItemManagementAddItemBarcodeScanButton"
+        android:ems="10" />
 
     <EditText
         android:id="@+id/PurchaseManagementAddListEditText5"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/PurchaseManagementAddListTextView5"
-        android:layout_below="@+id/PurchaseManagementAddListEditText4"
-        android:layout_toRightOf="@+id/PurchaseManagementAddListTextView2"
-        android:ems="10"
-        android:hint=""
-        android:lines="1"
-        android:singleLine="true"
-        android:textSize="18sp" />
+        android:layout_alignLeft="@+id/PurchaseManagementAddListEditText4"
+        android:layout_alignTop="@+id/PurchaseManagementAddListTextView5"
+        android:ems="10" />
 
-    <Button
-        android:id="@+id/PurchaseManagementAddListButton1"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:text="확인" />
-
-    <Button
-        android:id="@+id/PurchaseManagementAddListButton2"
+    <EditText
+        android:id="@+id/PurchaseManagementAddListEditText6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/PurchaseManagementAddListButton1"
-        android:text="취소" />
+        android:layout_alignBottom="@+id/PurchaseManagementAddListTextView6"
+        android:layout_alignTop="@+id/PurchaseManagementAddListTextView6"
+        android:layout_toLeftOf="@+id/ItemManagementAddItemBarcodeScanButton"
+        android:ems="10" />
+
+    <Button
+        android:id="@+id/ItemManagementAddItemBarcodeScanButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/PurchaseManagementAddListEditText5"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/PurchaseManagementAddListEditText4"
+        android:text="바코드 읽기"
+        android:textSize="12px" />
 
 </RelativeLayout>

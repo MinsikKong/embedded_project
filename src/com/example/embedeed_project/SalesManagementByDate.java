@@ -26,7 +26,7 @@ import android.widget.AdapterView.OnItemClickListener;
 
 public class SalesManagementByDate extends Activity {
 	// 일자별 매출(공민식)
-	private ArrayList<purchaseListBean> list;
+	private ArrayList<salesListBean> list;
 	private ItemCustomAdapter adapter;
 	private ListView productList;
 	Cursor cursor;
@@ -39,16 +39,19 @@ public class SalesManagementByDate extends Activity {
 	static final int DATE_DIALOG_ID = 0;
 	View tempView;
 
-	// 매입내역은 Bean 사용
-	class purchaseListBean {
-		public String productName;// 상품명
-		public int quantity; // 수량
+	// 매출내역은 Bean 사용
+	class salesListBean {
+		public String soldDate;// 상품명
+		public String productName; // 수량
 		public int price; // 가격
+		public int sales_num; // 가격
 
-		public purchaseListBean(String productName, int quantity, int price) {
+		public salesListBean(String soldDate, String productName, int price,
+				int sales_num) {
+			this.soldDate = soldDate;
 			this.productName = productName;
-			this.quantity = quantity;
 			this.price = price;
+			this.sales_num = sales_num;
 		}
 	}
 
@@ -57,7 +60,7 @@ public class SalesManagementByDate extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.sales_management_by_date);
 
-		list = new ArrayList<purchaseListBean>();
+		list = new ArrayList<salesListBean>();
 		productList = (ListView) findViewById(R.id.SalesByDateList);
 		productList.setOnItemClickListener(new OnItemClickListener() {
 
@@ -102,32 +105,38 @@ public class SalesManagementByDate extends Activity {
 
 				// 특정 일자 사이에 있는 매입 조회
 				cursor = db.rawQuery(
-						"select * from product where created_at between" + "'"
+						"select * from sales where created_at between" + "'"
 								+ et_startdate.getText() + "' and '"
 								+ et_enddate.getText() + "'", null);
 
-				// 해당 내역이 없으면 메시지 뿌림
+				// '검색'버튼 중복 클릭시 기존 리스트 클리어 처리
+				list.clear();
+
+				// db쿼리 처리
 				if (cursor.moveToFirst()) {
 					cursor.moveToFirst();
+
+					// row수만큼 돌려서 list에 삽입
+					for (count = cursor.getCount(); count > 0; count--) {
+						salesListBean item = new salesListBean(cursor
+								.getString(1), cursor.getString(3), cursor
+								.getInt(2), cursor.getInt(0));
+						list.add(item);
+						cursor.moveToNext();
+					}
 				} else {
-					Toast.makeText(SalesManagementByDate.this,
-							"해당일의 상품 내역이 없습니다", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getApplicationContext(), "해당일의 상품 내역이 없습니다",
+							Toast.LENGTH_SHORT).show();
 				}
 
-				// select된 매입 내역을 list에 추가
-				for (count = cursor.getCount(); count > 0; count--) {
-					purchaseListBean item = new purchaseListBean(cursor
-							.getString(3), cursor.getInt(4), cursor.getInt(5));
-					list.add(item);
-					cursor.moveToNext();
-				}
 				adapter.notifyDataSetChanged(); // listview refresh
 				cursor.close();
 				db.close();
 			}
 		});
 
-		adapter = new ItemCustomAdapter(this, R.layout.product_listview, list);
+		adapter = new ItemCustomAdapter(this, R.layout.sales_custom_listview,
+				list);
 		productList.setAdapter(adapter);
 	}
 
@@ -157,15 +166,14 @@ public class SalesManagementByDate extends Activity {
 		Context context;
 		LayoutInflater inflater;
 
-		ArrayList<purchaseListBean> arrayList = new ArrayList<purchaseListBean>();
+		ArrayList<salesListBean> arrayList = new ArrayList<salesListBean>();
 
-		TextView itemNameText, quantityText, totalPriceText,
-				PurchaseByDateSummary;
+		TextView soldDateTextView, productNameTextView, totalPriceTextView;
 
 		private int layout;
 
 		public ItemCustomAdapter(Context context, int layout,
-				ArrayList<purchaseListBean> arrayList) {
+				ArrayList<salesListBean> arrayList) {
 			this.context = context;
 			inflater = (LayoutInflater) context
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -189,17 +197,17 @@ public class SalesManagementByDate extends Activity {
 			if (convertView == null) {
 				convertView = inflater.inflate(layout, parent, false);
 			}
-			itemNameText = (TextView) convertView
-					.findViewById(R.id.productListviewProductName);
-			quantityText = (TextView) convertView
-					.findViewById(R.id.productListviewQuantity);
-			totalPriceText = (TextView) convertView
-					.findViewById(R.id.productListviewTotal);
+			soldDateTextView = (TextView) convertView
+					.findViewById(R.id.salesCustomListViewTextView1);
+			productNameTextView = (TextView) convertView
+					.findViewById(R.id.salesCustomListViewTextView2);
+			totalPriceTextView = (TextView) convertView
+					.findViewById(R.id.salesCustomListViewTextView3);
 
-			itemNameText.setText(arrayList.get(i).productName);
-			quantityText.setText(arrayList.get(i).quantity + "개");
-			totalPriceText.setText("총 " + arrayList.get(i).price
-					* arrayList.get(i).quantity + "원");
+			// custom listview(한 list에 edittext 3개)에 상품이름, 가격, 수량 정보 setText함
+			soldDateTextView.setText("" + arrayList.get(i).soldDate);
+			productNameTextView.setText("" + arrayList.get(i).productName);
+			totalPriceTextView.setText("" + arrayList.get(i).price + "원");
 
 			return convertView;
 		}
