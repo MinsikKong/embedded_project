@@ -191,7 +191,6 @@ public class PurchaseManagement extends Activity {
 			Intent intent4 = new Intent(PurchaseManagement.this,
 					PurchaseManagementAddList.class);
 			startActivity(intent4);
-			adapter.notifyDataSetChanged();
 			break;
 
 		}

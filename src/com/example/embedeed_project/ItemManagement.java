@@ -179,6 +179,7 @@ public class ItemManagement extends Activity {
 			Intent intent2 = new Intent(ItemManagement.this,
 					ItemManagementAddItem.class);
 			startActivity(intent2);
+			adapter.notifyDataSetChanged();
 			break;
 		}
 		return true;
