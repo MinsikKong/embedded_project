@@ -44,8 +44,7 @@ public class ItemManagementAddItem extends Activity {
 						|| name.getText().equals("")
 						|| price.getText().equals("")
 						|| stock.getText().equals("")
-						|| barcode.getText().equals("")
-						) {
+						|| barcode.getText().equals("")) {
 					Toast.makeText(getApplicationContext(),
 							"상품 정보를 올바로 입력해주세요", Toast.LENGTH_SHORT).show();
 

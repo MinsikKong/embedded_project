@@ -1,0 +1,38 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+    <com.google.android.maps.MapView
+        android:id="@+id/mapview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/ShopInfoMapButton1"
+        android:apiKey="0VkoabGKpMbdvAQX7ZiAcghYXGGQQ1xF8C7Y7aA"
+        android:clickable="true"
+        android:enabled="true" />
+
+    <Button
+        android:id="@+id/ShopInfoMapButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:text="현재 위치로 설정" />
+
+    <Button
+        android:id="@+id/ShopInfoMapButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="종료" />
+
+    <TextView
+        android:id="@+id/ShopInfoMapTextview1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="" />
+
+</RelativeLayout>

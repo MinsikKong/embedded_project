@@ -176,12 +176,15 @@ public class ItemManagement extends Activity {
 			break;
 
 		case R.id.ItemManagementAddListMenu: // 업체별
+			adapter.notifyDataSetChanged();
 			Intent intent2 = new Intent(ItemManagement.this,
 					ItemManagementAddItem.class);
+			adapter.notifyDataSetChanged();
 			startActivity(intent2);
 			adapter.notifyDataSetChanged();
 			break;
 		}
+		adapter.notifyDataSetChanged();
 		return true;
 	}
 }

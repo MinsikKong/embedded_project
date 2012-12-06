@@ -152,7 +152,7 @@ public class PurchasePay extends Activity {
 
 	private class TCPclient implements Runnable {
 		public static final int ServerPort = 3939;
-		public static final String ServerIP = "180.229.55.37";
+		public static final String ServerIP = "116.33.27.24";
 		// public static final String ServerIP = "121.168.111.211";
 		private String msg;
 

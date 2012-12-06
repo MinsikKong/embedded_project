@@ -4,6 +4,12 @@
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="hello">MapOverlayDemo</string>
+    
+    <string name="goLabel">Show the Map</string>
+    <string name="overlay_label">Food</string>
+    <string name="access_label">Access</string>
+    <string name="route_label">Route</string>
 
     <string-array name="SalesManagementByCompanySpinnerArray">
         <item>업체1</item>

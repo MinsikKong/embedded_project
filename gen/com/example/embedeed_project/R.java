@@ -18,24 +18,26 @@ public final class R {
     public static final class attr {
     }
     public static final class drawable {
-        public static final int black=0x7f020011;
-        public static final int blue=0x7f02000d;
-        public static final int green=0x7f02000e;
-        public static final int ic_action_search=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
-        public static final int main_button1=0x7f020002;
-        public static final int main_button2=0x7f020003;
-        public static final int main_button3=0x7f020004;
-        public static final int main_button4=0x7f020005;
-        public static final int main_button5=0x7f020006;
-        public static final int main_button6=0x7f020007;
-        public static final int main_button7=0x7f020008;
-        public static final int main_button8=0x7f020009;
-        public static final int main_button9=0x7f02000a;
-        public static final int purchase_management_add=0x7f02000b;
-        public static final int red=0x7f02000c;
-        public static final int white=0x7f020010;
-        public static final int yellow=0x7f02000f;
+        public static final int arrow=0x7f020000;
+        public static final int arrow64=0x7f020001;
+        public static final int black=0x7f020013;
+        public static final int blue=0x7f02000f;
+        public static final int green=0x7f020010;
+        public static final int ic_action_search=0x7f020002;
+        public static final int ic_launcher=0x7f020003;
+        public static final int main_button1=0x7f020004;
+        public static final int main_button2=0x7f020005;
+        public static final int main_button3=0x7f020006;
+        public static final int main_button4=0x7f020007;
+        public static final int main_button5=0x7f020008;
+        public static final int main_button6=0x7f020009;
+        public static final int main_button7=0x7f02000a;
+        public static final int main_button8=0x7f02000b;
+        public static final int main_button9=0x7f02000c;
+        public static final int purchase_management_add=0x7f02000d;
+        public static final int red=0x7f02000e;
+        public static final int white=0x7f020012;
+        public static final int yellow=0x7f020011;
     }
     public static final class id {
         public static final int AdvertiseButton1=0x7f090003;
@@ -55,7 +57,7 @@ public final class R {
         public static final int ItemByDateStartDateEditext=0x7f09002d;
         public static final int ItemByDateTextView1=0x7f09002c;
         public static final int ItemByDateTextView2=0x7f09002e;
-        public static final int ItemManagementAddItemBarcodeScanButton=0x7f09008f;
+        public static final int ItemManagementAddItemBarcodeScanButton=0x7f090094;
         public static final int ItemManagementAddListButton1=0x7f090027;
         public static final int ItemManagementAddListButton2=0x7f090028;
         public static final int ItemManagementAddListButton3=0x7f09002a;
@@ -66,7 +68,7 @@ public final class R {
         public static final int ItemManagementAddListEditText5=0x7f090029;
         public static final int ItemManagementAddListEditText6=0x7f090022;
         public static final int ItemManagementAddListEditText7=0x7f09002b;
-        public static final int ItemManagementAddListMenu=0x7f090093;
+        public static final int ItemManagementAddListMenu=0x7f090098;
         public static final int ItemManagementAddListTextView1=0x7f09001b;
         public static final int ItemManagementAddListTextView2=0x7f09001c;
         public static final int ItemManagementAddListTextView3=0x7f09001d;
@@ -74,7 +76,7 @@ public final class R {
         public static final int ItemManagementAddListTextView5=0x7f09001f;
         public static final int ItemManagementAddListTextView6=0x7f090020;
         public static final int ItemManagementAddListTextView7=0x7f090021;
-        public static final int ItemManagementByDateMenu=0x7f090092;
+        public static final int ItemManagementByDateMenu=0x7f090097;
         public static final int ItemManagementList=0x7f09001a;
         public static final int ItemSearchByDayButton1=0x7f090030;
         public static final int ItemSummary=0x7f090033;
@@ -91,21 +93,21 @@ public final class R {
         public static final int PurchaseManagementAddListEditText3=0x7f090055;
         public static final int PurchaseManagementAddListEditText4=0x7f090056;
         public static final int PurchaseManagementAddListEditText5=0x7f090057;
-        public static final int PurchaseManagementAddListEditText6=0x7f090090;
-        public static final int PurchaseManagementAddListMenu=0x7f090097;
+        public static final int PurchaseManagementAddListEditText6=0x7f090095;
+        public static final int PurchaseManagementAddListMenu=0x7f09009c;
         public static final int PurchaseManagementAddListTextView1=0x7f09004e;
         public static final int PurchaseManagementAddListTextView2=0x7f09004f;
         public static final int PurchaseManagementAddListTextView3=0x7f090050;
         public static final int PurchaseManagementAddListTextView4=0x7f090051;
         public static final int PurchaseManagementAddListTextView5=0x7f090052;
-        public static final int PurchaseManagementAddListTextView6=0x7f09008e;
+        public static final int PurchaseManagementAddListTextView6=0x7f090093;
         public static final int PurchaseManagementByCompanyList=0x7f09005b;
-        public static final int PurchaseManagementByCompanyMenu=0x7f090095;
+        public static final int PurchaseManagementByCompanyMenu=0x7f09009a;
         public static final int PurchaseManagementByCompanySpinner=0x7f09000a;
         public static final int PurchaseManagementByCompanyTv1=0x7f09005a;
-        public static final int PurchaseManagementByDateMenu=0x7f090094;
+        public static final int PurchaseManagementByDateMenu=0x7f090099;
         public static final int PurchaseManagementByItemList=0x7f090064;
-        public static final int PurchaseManagementByItemMenu=0x7f090096;
+        public static final int PurchaseManagementByItemMenu=0x7f09009b;
         public static final int PurchaseManagementByItemSpinner=0x7f090011;
         public static final int PurchaseManagementByItemTv1=0x7f090012;
         public static final int PurchaseManagementList=0x7f09004d;
@@ -119,13 +121,13 @@ public final class R {
         public static final int SalesManagementByCompanyList=0x7f09006e;
         public static final int SalesManagementByCompanySpinner=0x7f09006d;
         public static final int SalesManagementByCompanyTv1=0x7f09006c;
-        public static final int SalesManagementByDateMenu=0x7f090098;
+        public static final int SalesManagementByDateMenu=0x7f09009d;
         public static final int SalesManagementByItemList=0x7f090078;
-        public static final int SalesManagementByItemMenu=0x7f090099;
+        public static final int SalesManagementByItemMenu=0x7f09009e;
         public static final int SalesManagementByItemSpinner=0x7f090077;
         public static final int SalesManagementByItemTv1=0x7f090076;
         public static final int SalesManagementList=0x7f09006b;
-        public static final int SalesManagementList2=0x7f09008d;
+        public static final int SalesManagementList2=0x7f090092;
         public static final int ShopInfoEditText1=0x7f090081;
         public static final int ShopInfoEditText2=0x7f090082;
         public static final int ShopInfoEditText3=0x7f090083;
@@ -133,6 +135,10 @@ public final class R {
         public static final int ShopInfoEditText5=0x7f090085;
         public static final int ShopInfoEditText6=0x7f090086;
         public static final int ShopInfoEditText7=0x7f090087;
+        public static final int ShopInfoMapButton=0x7f09008a;
+        public static final int ShopInfoMapButton1=0x7f09008c;
+        public static final int ShopInfoMapButton2=0x7f09008d;
+        public static final int ShopInfoMapTextview1=0x7f09008e;
         public static final int ShopInfoPicButton=0x7f090089;
         public static final int ShopInfoSaveButton=0x7f090088;
         public static final int ShopInfoTextView1=0x7f09007a;
@@ -158,7 +164,8 @@ public final class R {
         public static final int itemCustomListviewTextview2=0x7f090018;
         public static final int itemCustomListviewTextview3=0x7f090019;
         public static final int layout_root=0x7f090009;
-        public static final int menu_settings=0x7f090091;
+        public static final int mapview=0x7f09008b;
+        public static final int menu_settings=0x7f090096;
         public static final int optionDBFile=0x7f090036;
         public static final int optionSaveButton=0x7f090037;
         public static final int orderItemName=0x7f090038;
@@ -179,9 +186,9 @@ public final class R {
         public static final int salesCustomListViewTextView2=0x7f090069;
         public static final int salesCustomListViewTextView3=0x7f09006a;
         public static final int salesSearchByDayButton1=0x7f090073;
-        public static final int shopimg=0x7f09008b;
-        public static final int shoppiclayout=0x7f09008a;
-        public static final int shoptext=0x7f09008c;
+        public static final int shopimg=0x7f090090;
+        public static final int shoppiclayout=0x7f09008f;
+        public static final int shoptext=0x7f090091;
         public static final int singlePrice=0x7f090039;
         public static final int spinner1=0x7f090063;
         public static final int stock=0x7f09003e;
@@ -225,8 +232,9 @@ public final class R {
         public static final int sales_management_by_date=0x7f03001c;
         public static final int sales_management_by_item=0x7f03001d;
         public static final int shop_info=0x7f03001e;
-        public static final int shopinfo_custom_dialog=0x7f03001f;
-        public static final int test=0x7f030020;
+        public static final int shop_info_map=0x7f03001f;
+        public static final int shopinfo_custom_dialog=0x7f030020;
+        public static final int test=0x7f030021;
     }
     public static final class menu {
         public static final int activity_main=0x7f080000;
@@ -238,9 +246,14 @@ public final class R {
         public static final int song1=0x7f040000;
     }
     public static final class string {
+        public static final int access_label=0x7f050007;
         public static final int app_name=0x7f050000;
+        public static final int goLabel=0x7f050005;
+        public static final int hello=0x7f050004;
         public static final int hello_world=0x7f050001;
         public static final int menu_settings=0x7f050002;
+        public static final int overlay_label=0x7f050006;
+        public static final int route_label=0x7f050008;
         public static final int title_activity_main=0x7f050003;
     }
     public static final class style {
