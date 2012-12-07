@@ -1,6 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent"
+        android:background="@drawable/yellow">
 
     <TextView
         android:id="@+id/textView1"
@@ -8,6 +9,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="재고관리" />
+        android:text="POSP(PointOfSalesPortable) v0.101                       made by embedded A-1조(박민성,공민식)" />
 
 </RelativeLayout>

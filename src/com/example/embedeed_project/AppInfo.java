@@ -5,20 +5,13 @@ import android.os.Bundle;
 
 public class AppInfo extends Activity {
 	//앱 정보(박민성)
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
-	}
 
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
-	
-	    // TODO Auto-generated method stub
+		setContentView(R.layout.app_info);
 	}
 
 }

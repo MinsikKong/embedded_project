@@ -41,7 +41,6 @@ public class NFCListener extends Activity {
 			byte[] stock = new byte[payload.length-20];
 			if(payload[18]!=47){
 				//3개(인코딩문자) + 16개(카드번호)이후에는 슬래시(/)가 와야함
-				Log.d(ACTIVITY_SERVICE,"주금");
 				finish();
 			}
 			for(int i=3;i<payload.length;i++){
