@@ -33,7 +33,7 @@ public class PurchaseManagementAddList extends Activity {
 
 		confirmButton.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
-				// note(메모)제외한 나머지 항목이 비었을때
+				// note(메모)제외한 나머지 항목이 비었을때 에러 출력
 				if (business_name.getText().equals("")
 						|| product_name.getText().equals("")
 						|| amount.getText().equals("")
@@ -42,13 +42,14 @@ public class PurchaseManagementAddList extends Activity {
 							"매입 정보를 올바로 입력해주세요", Toast.LENGTH_SHORT).show();
 
 				} else {
+					// db 설정
 					db = openOrCreateDatabase(Const.DATABASE_NAME,
 							MODE_PRIVATE, null);
 					db.setVersion(1);
 					db.setLocale(Locale.getDefault());
 					db.setLockingEnabled(true);
 
-					// 특정 일자 사이에 있는 매입 조회
+					// edittext의 내용을 db에 insert함
 					db.execSQL("insert into purchase (business_name, product_name, amount, price, note) values ('"
 							+ business_name.getText()
 							+ "','"

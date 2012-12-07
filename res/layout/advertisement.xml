@@ -2,14 +2,6 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:text="광고......." />
-
     <Button
         android:id="@+id/AdvertiseButton1"
         android:layout_width="wrap_content"
@@ -30,17 +22,23 @@
         android:id="@+id/AdvertiseButton3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/AdvertiseButton4"
-        android:layout_toRightOf="@+id/textView1"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/AdvertiseButton1"
         android:text="음악종료" />
 
     <Button
         android:id="@+id/AdvertiseButton4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/AdvertiseButton2"
-        android:layout_alignBottom="@+id/AdvertiseButton2"
-        android:layout_toRightOf="@+id/AdvertiseButton2"
+        android:layout_below="@+id/AdvertiseButton1"
+        android:layout_toRightOf="@+id/AdvertiseButton1"
         android:text="영상종료" />
+
+    <VideoView
+        android:id="@+id/video"
+        android:layout_width="480px"
+        android:layout_height="270px"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/AdvertiseButton2" />
 
 </RelativeLayout>

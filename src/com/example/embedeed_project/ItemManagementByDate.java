@@ -34,6 +34,7 @@ public class ItemManagementByDate extends Activity {
 	public int count;
 	Button search;
 
+	// DatePicker Dialog에 사용
 	EditText et_startdate, et_enddate;
 	private int year, month, day;
 	static final int DATE_DIALOG_ID = 0;
@@ -41,18 +42,18 @@ public class ItemManagementByDate extends Activity {
 
 	// 매출내역은 Bean 사용
 	class itemsListBean {
-		public int product_code;
-		public String img;
-		public String category;
-		public String name;
-		public int price;
-		public int stock;
-		public String barcode;
-		public String note;
+		public int product_code; // 상품코드
+		public String img; // 상품 이미지
+		public String category; // 상품 카테고리
+		public String name; // 상품명
+		public int price; // 상품 가격
+		public int stock; // 상품 재고
+		public String barcode; // 상품 바코드
+		public String note; // 상품 메모
 
 		public itemsListBean(int product_code, String img, String category,
 				String name, int price, int stock, String barcode, String note) {
-			this.product_code = this.price;
+			this.product_code = this.product_code;
 			this.img = img;
 			this.category = category;
 			this.name = name;
@@ -68,6 +69,7 @@ public class ItemManagementByDate extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.item_management_by_date);
 
+		// listview 설정
 		list = new ArrayList<itemsListBean>();
 		productList = (ListView) findViewById(R.id.ItemByDateList);
 		productList.setOnItemClickListener(new OnItemClickListener() {
@@ -111,7 +113,7 @@ public class ItemManagementByDate extends Activity {
 				db.setLocale(Locale.getDefault());
 				db.setLockingEnabled(true);
 
-				// 특정 일자 사이에 있는 매입 조회
+				// 특정 일자 사이에 있는 상품 내역 조회
 				cursor = db.rawQuery(
 						"select * from product where created_at between" + "'"
 								+ et_startdate.getText() + "' and '"
@@ -124,7 +126,7 @@ public class ItemManagementByDate extends Activity {
 				if (cursor.moveToFirst()) {
 					cursor.moveToFirst();
 
-					// row수만큼 돌려서 list에 삽입
+					// 상품코드, 이미지, 카테고리, 상품명, 가격, 재고, 바코드, 메모 가져옴
 					for (count = cursor.getCount(); count > 0; count--) {
 						itemsListBean item = new itemsListBean(
 								cursor.getInt(0), cursor.getString(1), cursor
@@ -203,6 +205,7 @@ public class ItemManagementByDate extends Activity {
 			return position;
 		}
 
+		// 내역 출력시 listview의 한 list에 여러 항목을 표시하는 Custom Adapter
 		public View getView(int i, View convertView, ViewGroup parent) {
 			if (convertView == null) {
 				convertView = inflater.inflate(layout, parent, false);

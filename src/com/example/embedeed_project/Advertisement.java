@@ -4,10 +4,13 @@ import android.app.Activity;
 import android.app.Service;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.view.View;
 import android.widget.Button;
+import android.widget.MediaController;
+import android.widget.VideoView;
 
 public class Advertisement extends Activity {
 	// 광고(공민식)
@@ -24,6 +27,7 @@ public class Advertisement extends Activity {
 		musicStop = (Button) findViewById(R.id.AdvertiseButton3);
 		movieStop = (Button) findViewById(R.id.AdvertiseButton4);
 
+		// 음악 재생
 		musicStart.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				Intent intent = new Intent(
@@ -31,7 +35,8 @@ public class Advertisement extends Activity {
 				startService(intent);
 			}
 		});
-		
+
+		// 음악 재생 중지
 		musicStop.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				Intent intent = new Intent(
@@ -40,28 +45,29 @@ public class Advertisement extends Activity {
 			}
 		});
 
-	}
+		// 영상 재생
+		movieStart.setOnClickListener(new Button.OnClickListener() {
+			public void onClick(View v) {
+				VideoView vv = (VideoView) findViewById(R.id.video);
+				MediaController mc = new MediaController(
+						getApplicationContext());
+				mc.setAnchorView(vv);
+				vv.setVideoURI(Uri
+						.parse("android.resource://com.example.embedeed_project/"
+								+ R.raw.test2));
+				vv.setMediaController(mc);
+				vv.start();
+			}
+		});
 
-	public class AudioService extends Service {
-		private MediaPlayer mp1;
+		// 영상 재생 중지
+		movieStop.setOnClickListener(new Button.OnClickListener() {
+			public void onClick(View v) {
+				VideoView vv = (VideoView) findViewById(R.id.video);
+				vv.stopPlayback();
 
-		@Override
-		public IBinder onBind(Intent arg0) {
-			return null;
-		}
-
-		@Override
-		public void onStart(Intent intent, int startId) {
-			super.onStart(intent, startId);
-			mp1 = MediaPlayer.create(this, R.raw.song1);
-			mp1.start();
-		}
-
-		@Override
-		public void onDestroy() {
-			super.onDestroy();
-			mp1.stop();
-		}
+			}
+		});
 
 	}
 }

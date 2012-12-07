@@ -39,13 +39,12 @@ public class ItemManagementAddItem extends Activity {
 
 		confirmButton.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
-				// note(메모)제외한 나머지 항목이 비었을때
+				// note(메모)제외한 나머지 항목이 비었을때 에러 출력
 				if (img.getText().equals("") || category.getText().equals("")
 						|| name.getText().equals("")
 						|| price.getText().equals("")
 						|| stock.getText().equals("")
-						|| barcode.getText().equals("")
-						) {
+						|| barcode.getText().equals("")) {
 					Toast.makeText(getApplicationContext(),
 							"상품 정보를 올바로 입력해주세요", Toast.LENGTH_SHORT).show();
 
@@ -56,7 +55,7 @@ public class ItemManagementAddItem extends Activity {
 					db.setLocale(Locale.getDefault());
 					db.setLockingEnabled(true);
 
-					// 특정 일자 사이에 있는 매입 조회
+					// Edittext의 내용을 db에 insert
 					db.execSQL("insert into product (img, category, name, price, stock, barcode, note) values ('"
 							+ img.getText()
 							+ "','"
@@ -77,12 +76,14 @@ public class ItemManagementAddItem extends Activity {
 			}
 		});
 
+		// 취소버튼
 		cancelButton.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				finish();
 			}
 		});
 
+		// 바코드 스캐너로 바코드 입력
 		barcodeButton.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {// 오픈소스 "ZXing"을 이용한 "Barcode Scanner"
 				// app(https://zxing.googlecode.com/files/BarcodeScanner4.31.apk)을
@@ -98,14 +99,13 @@ public class ItemManagementAddItem extends Activity {
 
 	}
 
+	// 바코드 스캐너에서 결과 받아와서 edittext에 값 설정
 	protected void onActivityResult(int requestCode, int resultCode,
 			Intent intent) {
 		if (requestCode == 0) {
 			if (resultCode == RESULT_OK) {
 				barcodeNumber = intent.getStringExtra("SCAN_RESULT");
 				barcode.setText(barcodeNumber);
-				// Toast.makeText(ItemManagementAddItem.this, s,
-				// Toast.LENGTH_SHORT).show();
 
 			} else if (resultCode == RESULT_CANCELED) {
 				Toast.makeText(ItemManagementAddItem.this, "Cancel",

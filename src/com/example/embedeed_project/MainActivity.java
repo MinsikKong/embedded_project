@@ -41,85 +41,88 @@ public class MainActivity extends Activity {
 			dbInstall();
 		}
 
-		GridView gridview = (GridView) findViewById(R.id.gridview);
-		gridview.setAdapter(new ImageAdapter(this));
-
 		AlertDialog.Builder builder;
 		AlertDialog alertDialog;
-		 // instantiate the dialog with the custom Theme
 
 		Context mContext = getApplicationContext();
-		LayoutInflater inflater = (LayoutInflater)mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
-		View layout = inflater.inflate(R.layout.shopinfo_custom_dialog, (ViewGroup)findViewById(R.id.shoppiclayout));
-		
-		ImageView image = (ImageView)layout.findViewById(R.id.shopimg);
+		LayoutInflater inflater = (LayoutInflater) mContext
+				.getSystemService(LAYOUT_INFLATER_SERVICE);
+		View layout = inflater.inflate(R.layout.shopinfo_custom_dialog,
+				(ViewGroup) findViewById(R.id.shoppiclayout));
+
+		ImageView image = (ImageView) layout.findViewById(R.id.shopimg);
 		image.setImageResource(R.drawable.ic_launcher);
-		TextView text = (TextView)layout.findViewById(R.id.shoptext);
-		
-		
+		TextView text = (TextView) layout.findViewById(R.id.shoptext);
+
 		builder = new AlertDialog.Builder(mContext);
 		builder.setView(layout);
-		builder.setPositiveButton("OK",new DialogInterface.OnClickListener(){
+		builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int arg1) {
 				dialog.dismiss();
 			}
 		});
 		alertDialog = builder.create();
-		
+
+		// 각 기능으로 이동하는 image button을 띄우기 위한 gridview
+		GridView gridview = (GridView) findViewById(R.id.gridview);
+		gridview.setAdapter(new ImageAdapter(this));
+
 		gridview.setOnItemClickListener(new OnItemClickListener() {
-			
+
 			public void onItemClick(AdapterView<?> parent, View v,
 					int position, long id) {
 				switch (position) {
 				case 0: // 매출관리
-					Intent intent0 = new Intent(MainActivity.this,
+					Intent intent0 = new Intent(getApplicationContext(),
 							SalesManagement.class);
 					startActivity(intent0);
 					break;
 
 				case 1: // 매입관리
-					Intent intent1 = new Intent(MainActivity.this,
+					Intent intent1 = new Intent(getApplicationContext(),
 							PurchaseManagement.class);
 					startActivity(intent1);
 					break;
 
 				case 2: // 상품관리
-					Intent intent2 = new Intent(MainActivity.this,
+					Intent intent2 = new Intent(getApplicationContext(),
 							ItemManagement.class);
 					startActivity(intent2);
 					break;
 
 				case 3: // 매장정보
-					Intent intent3 = new Intent(MainActivity.this,
+					Intent intent3 = new Intent(getApplicationContext(),
 							ShopInfo.class);
 					startActivity(intent3);
 					break;
 
 				case 4: // POS
-					Intent intent4 = new Intent(MainActivity.this,
+					Intent intent4 = new Intent(getApplicationContext(),
 							PurchaseMain.class);
 					startActivity(intent4);
 					break;
 
 				case 5: // 업체광고
-					Intent intent5 = new Intent(MainActivity.this,
+					Intent intent5 = new Intent(getApplicationContext(),
 							Advertisement.class);
 					startActivity(intent5);
 					break;
 
 				case 6: // 카페 가기
-					Intent intent6 = new Intent(MainActivity.this, Cafe.class);
+					Intent intent6 = new Intent(getApplicationContext(),
+							Cafe.class);
 					startActivity(intent6);
 					break;
 
 				case 7: // 옵션
-					Intent intent7 = new Intent(MainActivity.this, Option.class);
+					Intent intent7 = new Intent(getApplicationContext(),
+							Option.class);
 					startActivity(intent7);
 					break;
 
 				case 8: // 정보
-					Intent intent8 = new Intent(MainActivity.this,
+					Intent intent8 = new Intent(getApplicationContext(),
 							AppInfo.class);
 					startActivity(intent8);
 					break;
@@ -128,6 +131,7 @@ public class MainActivity extends Activity {
 		});
 	}
 
+	// db파일 설정
 	public void dbInstall() {
 		AssetManager assetManager = getResources().getAssets();
 		File file = new File(Const.DATABASE_PATH);

@@ -103,7 +103,7 @@
         android:layout_below="@+id/ShopInfoTextView1"
         android:layout_toRightOf="@+id/ShopInfoTextView1"
         android:textSize="8dp" />
-
+
     <EditText
         android:id="@+id/ShopInfoEditText3"
         android:layout_width="wrap_content"
@@ -113,7 +113,7 @@
         android:layout_below="@+id/ShopInfoTextView2"
         android:layout_toRightOf="@+id/ShopInfoTextView1"
         android:textSize="8dp" />
-
+
     <EditText
         android:id="@+id/ShopInfoEditText4"
         android:layout_width="wrap_content"
@@ -123,7 +123,7 @@
         android:layout_below="@+id/ShopInfoTextView3"
         android:layout_toRightOf="@+id/ShopInfoTextView1"
         android:textSize="8dp" />
-
+
     <EditText
         android:id="@+id/ShopInfoEditText5"
         android:layout_width="wrap_content"
@@ -133,7 +133,7 @@
         android:layout_toRightOf="@+id/ShopInfoTextView1"
         android:ems="10"
         android:textSize="8dp" />
-
+
     <EditText
         android:id="@+id/ShopInfoEditText6"
         android:layout_width="wrap_content"
@@ -143,7 +143,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/ShopInfoTextView6"
         android:textSize="8dp" />
-
+
     <EditText
         android:id="@+id/ShopInfoEditText7"
         android:layout_width="wrap_content"
@@ -172,4 +172,14 @@
         android:layout_marginRight="15dp"
         android:layout_toLeftOf="@+id/ShopInfoSaveButton"
         android:text="사진보기" />
+
+    <Button
+        android:id="@+id/ShopInfoMapButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/ShopInfoPicButton"
+        android:layout_alignBottom="@+id/ShopInfoPicButton"
+        android:layout_toLeftOf="@+id/ShopInfoPicButton"
+        android:text="지도" />
+
 </RelativeLayout>

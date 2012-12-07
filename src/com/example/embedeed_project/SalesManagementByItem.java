@@ -69,7 +69,7 @@ public class SalesManagementByItem extends Activity {
 				db.setLocale(Locale.getDefault());
 				db.setLockingEnabled(true);
 
-				// 특정 일자 사이에 있는 매입 조회
+				// 각 상품명에 해당하는 매출내역 찾음
 				cursor = db
 						.rawQuery(
 								"select b.date, c.amount, a.price from product a, sales b, soldproducts c where a.name='"
@@ -88,7 +88,7 @@ public class SalesManagementByItem extends Activity {
 				// spinner의 선택 항목이 바뀌었을때 list의 내용 clear
 				list.clear();
 
-				// select된 매입 내역을 list에 추가
+				// 판매일, 판매상품, 가격, 매출번호 받아옴
 				for (count = cursor.getCount(); count > 0; count--) {
 					salesListBean item = new salesListBean(cursor.getString(0),
 							cursor.getInt(1), cursor.getInt(2));
@@ -126,7 +126,7 @@ public class SalesManagementByItem extends Activity {
 
 	}
 
-	// 매입내역 출력시 Listview에 상품이름, 개수, 총 가격을 표시하는 Custom Adapter
+	// 내역 출력시 listview의 한 list에 여러 항목을 표시하는 Custom Adapter
 	public class ItemCustomAdapter extends BaseAdapter {
 		Context context;
 		LayoutInflater inflater;
@@ -158,6 +158,7 @@ public class SalesManagementByItem extends Activity {
 			return position;
 		}
 
+		// 판매일, 상품명, 가격을 해당 Textview에 settext함
 		public View getView(int i, View convertView, ViewGroup parent) {
 			if (convertView == null) {
 				convertView = inflater.inflate(layout, parent, false);
