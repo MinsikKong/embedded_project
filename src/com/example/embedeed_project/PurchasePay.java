@@ -12,17 +12,25 @@ import java.util.Locale;
 import java.util.Vector;
 
 import android.R.string;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.nfc.NdefMessage;
+import android.nfc.NfcAdapter;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +42,7 @@ public class PurchasePay extends Activity {
 	private enum payType {현금, 카드};
 	private payType selected;
 	private String return_msg;
+	private final static int FROM_POS_CARDTYPE = 2;
 	
 	@SuppressWarnings("unchecked")
 	@Override
@@ -107,11 +116,12 @@ public class PurchasePay extends Activity {
 	    Button cardButton = (Button)findViewById(R.id.cardPay);
 	    cardButton.setOnClickListener(new OnClickListener(){
 	    	//카드 버튼을 눌렀을때의 다이어로그 정의
+			@SuppressLint({ "NewApi", "NewApi" })
 			@Override
 			public void onClick(View v) {
 		    	selected=payType.카드;
-				
-				
+		    	Intent intent = new Intent(PurchasePay.this, NFCListener.class);
+				startActivityForResult(intent, FROM_POS_CARDTYPE);
 			}
 		});
 	}
@@ -152,7 +162,7 @@ public class PurchasePay extends Activity {
 
 	private class TCPclient implements Runnable {
 		public static final int ServerPort = 3939;
-		public static final String ServerIP = "180.229.55.37";
+		public static final String ServerIP = "116.33.27.24";
 		// public static final String ServerIP = "121.168.111.211";
 		private String msg;
 
@@ -203,7 +213,6 @@ public class PurchasePay extends Activity {
 
 	protected void onActivityResult(int requestCode, int resultCode,
 			Intent intent) {
-		// 바코드 인식결과에 따라 상품을 추가함
-		
+
 	}
 }

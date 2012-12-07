@@ -15,6 +15,7 @@ import android.content.Intent;
 import android.content.res.AssetManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -36,8 +37,9 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 
 		// DB인스톨
-		if (!dbInstalled)
+		if (!dbInstalled){
 			dbInstall();
+		}
 
 		GridView gridview = (GridView) findViewById(R.id.gridview);
 		gridview.setAdapter(new ImageAdapter(this));
@@ -129,18 +131,20 @@ public class MainActivity extends Activity {
 	public void dbInstall() {
 		AssetManager assetManager = getResources().getAssets();
 		File file = new File(Const.DATABASE_PATH);
-
+		File dir = new File(Const.DATABASE_DIR);
+		
 		FileOutputStream fileOutputStream = null;
 		BufferedOutputStream bufferedOutputStream = null;
 
 		try {
 			if (!file.exists()) {
+				if(!dir.exists()){
+					dir.mkdir();
+				}
 				file.delete();
 				file.createNewFile();
-				InputStream inputStream = assetManager
-						.open(Const.DATABASE_NAME);
-				BufferedInputStream bufferedInputStream = new BufferedInputStream(
-						inputStream);
+				InputStream inputStream = assetManager.open(Const.DATABASE_NAME);
+				BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
 
 				fileOutputStream = new FileOutputStream(file);
 				bufferedOutputStream = new BufferedOutputStream(
@@ -161,10 +165,11 @@ public class MainActivity extends Activity {
 			}
 			dbInstalled = true;
 		} catch (IOException e) {
-
+			Toast.makeText(MainActivity.this, "인스톨실패", Toast.LENGTH_SHORT).show();
+			e.printStackTrace();
 		}
 	}
-
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.activity_main, menu);
