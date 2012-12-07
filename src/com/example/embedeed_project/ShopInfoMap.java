@@ -1,6 +1,7 @@
 package com.example.embedeed_project;
 
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
@@ -61,10 +62,14 @@ public class ShopInfoMap extends MapActivity {
 			@Override
 			public void onClick(View arg0) {
 
-				value = addr.get(0).getAddressLine(0);
-				Toast.makeText(getApplicationContext(),
-						addr.get(0).getAddressLine(0), Toast.LENGTH_SHORT)
-						.show();
+				if (addr != null) {
+
+					value = addr.get(0).getAddressLine(0);
+					Toast.makeText(getApplicationContext(),
+							addr.get(0).getAddressLine(0), Toast.LENGTH_SHORT)
+							.show();
+
+				}
 
 				Intent intent = new Intent();
 				intent.putExtra("value", value);
@@ -78,6 +83,9 @@ public class ShopInfoMap extends MapActivity {
 		cancel.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
+				Intent intent = new Intent();
+				intent.putExtra("value", "fail");
+				setResult(MapActivity.RESULT_CANCELED, intent);
 				finish();
 			}
 		});
@@ -89,13 +97,24 @@ public class ShopInfoMap extends MapActivity {
 
 			try {
 				gc = new Geocoder(getApplicationContext(), Locale.KOREAN);
-				addr = gc.getFromLocation(l.getLatitude(), l.getLongitude(), 1);
+				if (gc.getFromLocation(l.getLatitude(), l.getLongitude(), 1) == null) {
+					Toast.makeText(getApplicationContext(), "위치정보를 받는 중입니다",
+							Toast.LENGTH_SHORT).show();
+				} else {
+					l.setLatitude(37.221918);
+					l.setLongitude(127.187647);
 
-				MapController mc = mv.getController();
-				GeoPoint gp = new GeoPoint((int) (l.getLatitude() * 1000000),
-						(int) (l.getLongitude() * 1000000));
-				mc.animateTo(gp);
-				mc.setZoom(16);
+					addr = gc.getFromLocation(l.getLatitude(),
+							l.getLongitude(), 1);
+
+					MapController mc = mv.getController();
+					GeoPoint gp = new GeoPoint(
+							(int) (l.getLatitude() * 1000000),
+							(int) (l.getLongitude() * 1000000));
+					mc.animateTo(gp);
+					mc.setZoom(16);
+				}
+
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -117,5 +136,12 @@ public class ShopInfoMap extends MapActivity {
 			// TODO Auto-generated method stub
 
 		}
+
+	}
+
+	@Override
+	public void onBackPressed() {
+		// super.onBackPressed();
+
 	}
 }

@@ -55,7 +55,7 @@ public class Advertisement extends Activity {
 				vv.setVideoURI(Uri
 						.parse("android.resource://com.example.embedeed_project/"
 								+ R.raw.test2));
-				vv.setMediaController(mc);
+				//vv.setMediaController(mc);
 				vv.start();
 			}
 		});
