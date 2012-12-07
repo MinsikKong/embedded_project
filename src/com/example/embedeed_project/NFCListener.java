@@ -36,17 +36,10 @@ public class NFCListener extends Activity {
 		if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(action)) {
 			NdefMessage[] messages = getNdefMessages(getIntent());
 			byte[] payload = messages[0].getRecords()[0].getPayload();
-<<<<<<< HEAD
-			byte[] readString = new byte[payload.length-3];
-			byte[] stock = new byte[payload.length-20];
-			if(payload[18]!=47){
-				//3개(인코딩문자) + 16개(카드번호)이후에는 슬래시(/)가 와야함
-=======
 			byte[] readString = new byte[payload.length - 3];
 			byte[] stock = new byte[payload.length - 20];
 			if (payload[18] != 47) {
 				// 3개(인코딩문자) + 16개(카드번호)이후에는 슬래시(/)가 와야함
->>>>>>> f6a9df05e94226d467ce503e9ce405103b132346
 				finish();
 			}
 			for (int i = 3; i < payload.length; i++) {
