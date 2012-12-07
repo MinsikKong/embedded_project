@@ -76,7 +76,7 @@ public class PurchaseManagementByCompany extends Activity {
 				db.setLocale(Locale.getDefault());
 				db.setLockingEnabled(true);
 
-				// 특정 일자 사이에 있는 매입 조회
+				// 특정 업체명을 가진 매입내역 조회
 				cursor = db.rawQuery(
 						"select * from purchase where business_name=" + "'"
 								+ (String) spinner.getSelectedItem() + "'",
@@ -89,6 +89,7 @@ public class PurchaseManagementByCompany extends Activity {
 				if (cursor.moveToFirst()) {
 					cursor.moveToFirst();
 
+					// 매입일, 업체명, 상품명, 수량 ,가격, 매입번호 받아옴
 					for (count = cursor.getCount(); count > 0; count--) {
 						purchaseListBean item = new purchaseListBean(cursor
 								.getString(1), cursor.getString(2), cursor
@@ -115,6 +116,7 @@ public class PurchaseManagementByCompany extends Activity {
 			}
 		});
 
+		// listview 설정
 		list = new ArrayList<purchaseListBean>();
 		productList = (ListView) findViewById(R.id.PurchaseManagementByCompanyList);
 		productList.setOnItemClickListener(new OnItemClickListener() {
@@ -164,6 +166,7 @@ public class PurchaseManagementByCompany extends Activity {
 			return position;
 		}
 
+		// 매입일, 업체명, 수량, 가격을 해당 textview에 출력
 		public View getView(int i, View convertView, ViewGroup parent) {
 
 			TextView purchaseDateTextView, productNameTextView, amountTextView, totalPriceTextView;

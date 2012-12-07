@@ -30,7 +30,7 @@ public class PurchaseManagement extends Activity {
 	SQLiteDatabase db;
 	public int count;
 
-	// // 매출내역은 Bean 사용
+	// 매입 내역은 Bean 사용
 	class purchaseListBean {
 		public String purchaseDate; // 매입일
 		public String businessName; // 업체이름
@@ -55,6 +55,7 @@ public class PurchaseManagement extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.purchase_management);
 
+		// listview 설정
 		list = new ArrayList<purchaseListBean>();
 		purchaseList = (ListView) findViewById(R.id.PurchaseManagementList);
 
@@ -62,17 +63,19 @@ public class PurchaseManagement extends Activity {
 				R.layout.purchase_custom_listview, list);
 		purchaseList.setAdapter(adapter);
 
+		// db 설정
 		db = openOrCreateDatabase(Const.DATABASE_NAME, MODE_PRIVATE, null);
 		db.setVersion(1);
 		db.setLocale(Locale.getDefault());
 		db.setLockingEnabled(true);
 
-		// 특정 일자 사이에 있는 매입 조회
+		// 전체 매입내역 조회
 		cursor = db.rawQuery("select * from purchase", null);
 
 		if (cursor.moveToFirst()) {
 			cursor.moveToFirst();
 
+			// 매입일, 업체명, 상품명, 수량 ,가격, 매입번호 받아옴
 			for (count = cursor.getCount(); count > 0; count--) {
 				purchaseListBean item = new purchaseListBean(
 						cursor.getString(1), cursor.getString(2),
@@ -96,7 +99,7 @@ public class PurchaseManagement extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> av, View view, int position,
 					long id) {
-				// ㅠㅠ
+				// TODO Auto-generated method stub
 			}
 
 		});
@@ -132,6 +135,7 @@ public class PurchaseManagement extends Activity {
 			return position;
 		}
 
+		// 매입일, 업체명, 수량, 가격을 해당 textview에 출력
 		public View getView(int i, View convertView, ViewGroup parent) {
 
 			TextView purchaseDateTextView, productNameTextView, amountTextView, totalPriceTextView;
@@ -187,7 +191,7 @@ public class PurchaseManagement extends Activity {
 			startActivity(intent3);
 			break;
 
-		case R.id.PurchaseManagementAddListMenu: // 상품별
+		case R.id.PurchaseManagementAddListMenu: // 매입내역 추가
 			Intent intent4 = new Intent(PurchaseManagement.this,
 					PurchaseManagementAddList.class);
 			startActivity(intent4);

@@ -31,20 +31,20 @@ public class ItemManagement extends Activity {
 	public int count;
 	Button search;
 
-	// // 매출내역은 Bean 사용
+	// 상품 내역은 Bean 사용
 	class itemsListBean {
-		public int product_code;
-		public String img;
-		public String category;
-		public String name;
-		public int price;
-		public int stock;
-		public String barcode;
-		public String note;
+		public int product_code; // 상품코드
+		public String img; // 상품 이미지
+		public String category; // 상품 카테고리
+		public String name; // 상품명
+		public int price; // 상품 가격
+		public int stock; // 상품 재고
+		public String barcode; // 상품 바코드
+		public String note; // 상품 메모
 
 		public itemsListBean(int product_code, String img, String category,
 				String name, int price, int stock, String barcode, String note) {
-			this.product_code = this.price;
+			this.product_code = this.product_code;
 			this.img = img;
 			this.category = category;
 			this.name = name;
@@ -60,14 +60,15 @@ public class ItemManagement extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.item_management);
 
+		// listview 설정
 		list = new ArrayList<itemsListBean>();
 		salesList = (ListView) findViewById(R.id.ItemManagementList);
-		// salesList1 = (ListView) findViewById(R.id.SalesManagementList2);
 
 		adapter = new ItemCustomAdapter(this, R.layout.item_custom_listview,
 				list);
 		salesList.setAdapter(adapter);
 
+		// db 설정
 		db = openOrCreateDatabase(Const.DATABASE_NAME, MODE_PRIVATE, null);
 		db.setVersion(1);
 		db.setLocale(Locale.getDefault());
@@ -79,6 +80,7 @@ public class ItemManagement extends Activity {
 		if (cursor.moveToFirst()) {
 			cursor.moveToFirst();
 
+			// 상품코드, 이미지, 카테고리, 상품명, 가격, 재고, 바코드, 메모 가져옴
 			for (count = cursor.getCount(); count > 0; count--) {
 				itemsListBean item = new itemsListBean(cursor.getInt(0),
 						cursor.getString(1), cursor.getString(2),
@@ -108,7 +110,7 @@ public class ItemManagement extends Activity {
 		});
 	}
 
-	// 매입내역 출력시 Listview에 상품이름, 개수, 총 가격을 표시하는 Custom Adapter
+	// 내역 출력시 listview의 한 list에 여러 항목을 표시하는 Custom Adapter
 	public class ItemCustomAdapter extends BaseAdapter {
 		Context context;
 		LayoutInflater inflater;
@@ -175,13 +177,10 @@ public class ItemManagement extends Activity {
 			startActivity(intent1);
 			break;
 
-		case R.id.ItemManagementAddListMenu: // 업체별
-			adapter.notifyDataSetChanged();
+		case R.id.ItemManagementAddListMenu: // 상품추가
 			Intent intent2 = new Intent(ItemManagement.this,
 					ItemManagementAddItem.class);
-			adapter.notifyDataSetChanged();
 			startActivity(intent2);
-			adapter.notifyDataSetChanged();
 			break;
 		}
 		adapter.notifyDataSetChanged();

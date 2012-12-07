@@ -60,6 +60,7 @@ public class SalesManagementByDate extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.sales_management_by_date);
 
+		// listview 설정
 		list = new ArrayList<salesListBean>();
 		productList = (ListView) findViewById(R.id.SalesByDateList);
 		productList.setOnItemClickListener(new OnItemClickListener() {
@@ -71,6 +72,7 @@ public class SalesManagementByDate extends Activity {
 			}
 		});
 
+		// DatePicker DIalog에 사용
 		et_startdate = (EditText) findViewById(R.id.SalesByDateStartDateEditext);
 		et_enddate = (EditText) findViewById(R.id.SalesByDateEndDateEditext);
 
@@ -79,7 +81,7 @@ public class SalesManagementByDate extends Activity {
 		month = objTime.get(Calendar.MONTH);
 		day = objTime.get(Calendar.DAY_OF_MONTH);
 
-		// 각 edittext 터치하면 DatePicker Dialog 호출함
+		// 각 edittext 터치하면 DatePicker Dialog 띄움
 		et_startdate.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				tempView = v;
@@ -97,6 +99,7 @@ public class SalesManagementByDate extends Activity {
 		search = (Button) findViewById(R.id.SalesByDateButton1);
 		search.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
+				// db 설정
 				db = openOrCreateDatabase(Const.DATABASE_NAME, MODE_PRIVATE,
 						null);
 				db.setVersion(1);
@@ -116,7 +119,7 @@ public class SalesManagementByDate extends Activity {
 				if (cursor.moveToFirst()) {
 					cursor.moveToFirst();
 
-					// row수만큼 돌려서 list에 삽입
+					// 판매일, 판매상품, 가격, 매출번호 받아옴
 					for (count = cursor.getCount(); count > 0; count--) {
 						salesListBean item = new salesListBean(cursor
 								.getString(1), cursor.getString(3), cursor
@@ -161,7 +164,7 @@ public class SalesManagementByDate extends Activity {
 		}
 	};
 
-	// 매입내역 출력시 Listview에 상품이름, 개수, 총 가격을 표시하는 Custom Adapter
+	// 내역 출력시 listview의 한 list에 여러 항목을 표시하는 Custom Adapter
 	public class ItemCustomAdapter extends BaseAdapter {
 		Context context;
 		LayoutInflater inflater;
@@ -193,6 +196,7 @@ public class SalesManagementByDate extends Activity {
 			return position;
 		}
 
+		// 판매일, 상품명, 가격을 해당 Textview에 settext함
 		public View getView(int i, View convertView, ViewGroup parent) {
 			if (convertView == null) {
 				convertView = inflater.inflate(layout, parent, false);

@@ -29,7 +29,7 @@ public class SalesManagement extends Activity {
 	SQLiteDatabase db;
 	public int count;
 
-	// // 매출내역은 Bean 사용
+	// 매출내역은 Bean 사용
 	class salesListBean {
 		public String soldDate;// 상품명
 		public String productName; // 수량
@@ -50,25 +50,26 @@ public class SalesManagement extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.sales_management);
 
+		// listview 설정
 		list = new ArrayList<salesListBean>();
 		salesList = (ListView) findViewById(R.id.SalesManagementList);
-		// salesList1 = (ListView) findViewById(R.id.SalesManagementList2);
-
 		adapter = new ItemCustomAdapter(this, R.layout.sales_custom_listview,
 				list);
 		salesList.setAdapter(adapter);
 
+		// db 설정
 		db = openOrCreateDatabase(Const.DATABASE_NAME, MODE_PRIVATE, null);
 		db.setVersion(1);
 		db.setLocale(Locale.getDefault());
 		db.setLockingEnabled(true);
 
-		// 특정 일자 사이에 있는 매입 조회
+		// 매출내역 전체 조회
 		cursor = db.rawQuery("select * from sales", null);
 
 		if (cursor.moveToFirst()) {
 			cursor.moveToFirst();
 
+			// 판매일, 판매상품, 가격, 매출번호 받아옴
 			for (count = cursor.getCount(); count > 0; count--) {
 				salesListBean item = new salesListBean(cursor.getString(1),
 						cursor.getString(3), cursor.getInt(2), cursor.getInt(0));
@@ -90,9 +91,6 @@ public class SalesManagement extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> av, View view, int position,
 					long id) {
-				//
-				// 일단 보류
-				//
 
 				// Toast.makeText(getApplicationContext(),
 				// "" + list.get(position).price, Toast.LENGTH_SHORT)
@@ -153,16 +151,14 @@ public class SalesManagement extends Activity {
 		});
 	}
 
-	// 매입내역 출력시 Listview에 상품이름, 개수, 총 가격을 표시하는 Custom Adapter
+	// 내역 출력시 listview의 한 list에 여러 항목을 표시하는 Custom Adapter
 	public class ItemCustomAdapter extends BaseAdapter {
 		Context context;
 		LayoutInflater inflater;
+		private int layout;
 
 		ArrayList<salesListBean> arrayList = new ArrayList<salesListBean>();
-
 		TextView soldDateTextView, productNameTextView, totalPriceTextView;
-
-		private int layout;
 
 		public ItemCustomAdapter(Context context, int layout,
 				ArrayList<salesListBean> arrayList) {
@@ -185,6 +181,7 @@ public class SalesManagement extends Activity {
 			return position;
 		}
 
+		// 판매일, 상품명, 가격을 해당 Textview에 settext함
 		public View getView(int i, View convertView, ViewGroup parent) {
 			if (convertView == null) {
 				convertView = inflater.inflate(layout, parent, false);
@@ -215,21 +212,15 @@ public class SalesManagement extends Activity {
 	public boolean onMenuItemSelected(int featureId, MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.SalesManagementByDateMenu: // 일자별
-			Intent intent1 = new Intent(SalesManagement.this,
+			Intent intent1 = new Intent(getApplicationContext(),
 					SalesManagementByDate.class);
 			startActivity(intent1);
 			break;
 
-		// case R.id.SalesManagementByCompanyMenu: // 업체별
-		// Intent intent2 = new Intent(SalesManagement.this,
-		// SalesManagementByCompany.class);
-		// startActivity(intent2);
-		// break;
-
 		case R.id.SalesManagementByItemMenu: // 상품별
-			Intent intent3 = new Intent(SalesManagement.this,
+			Intent intent2 = new Intent(getApplicationContext(),
 					SalesManagementByItem.class);
-			startActivity(intent3);
+			startActivity(intent2);
 			break;
 
 		}

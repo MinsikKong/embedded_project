@@ -169,7 +169,7 @@ public class ShopInfo extends Activity {
 		mapButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				// 맵
+				// 매장정보 지도 부분
 				final Intent intent = new Intent(ShopInfo.this,
 						ShopInfoMap.class);
 				startActivityForResult(intent, 0);

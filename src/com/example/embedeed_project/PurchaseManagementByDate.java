@@ -64,6 +64,7 @@ public class PurchaseManagementByDate extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.purchase_management_by_date);
 
+		// listview 설정
 		list = new ArrayList<purchaseListBean>();
 		productList = (ListView) findViewById(R.id.PurchaseByDateList);
 		productList.setOnItemClickListener(new OnItemClickListener() {
@@ -75,6 +76,7 @@ public class PurchaseManagementByDate extends Activity {
 			}
 		});
 
+		// DatePicker Dialog에 사용
 		et_startdate = (EditText) findViewById(R.id.PurchaseByDateStartDateEditext);
 		et_enddate = (EditText) findViewById(R.id.PurchaseByDateEndDateEditext);
 
@@ -107,7 +109,7 @@ public class PurchaseManagementByDate extends Activity {
 				db.setLocale(Locale.getDefault());
 				db.setLockingEnabled(true);
 
-				// 특정 일자 사이에 있는 매입 조회
+				// 특정 일자 사이에 있는 매입내역 조회
 				cursor = db.rawQuery(
 						"select * from purchase where created_at between" + "'"
 								+ et_startdate.getText() + "' and '"
@@ -117,7 +119,7 @@ public class PurchaseManagementByDate extends Activity {
 				if (cursor.moveToFirst()) {
 					cursor.moveToFirst();
 
-					// select된 매입 내역을 list에 추가
+					// 매입일, 업체명, 상품명, 수량 ,가격, 매입번호 받아옴
 					for (count = cursor.getCount(); count > 0; count--) {
 						purchaseListBean item = new purchaseListBean(cursor
 								.getString(1), cursor.getString(2), cursor
@@ -196,6 +198,7 @@ public class PurchaseManagementByDate extends Activity {
 			return position;
 		}
 
+		// 매입일, 업체명, 수량, 가격을 해당 textview에 출력
 		public View getView(int i, View convertView, ViewGroup parent) {
 
 			TextView purchaseDateTextView, productNameTextView, amountTextView, totalPriceTextView;

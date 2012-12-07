@@ -8,7 +8,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 
 public class ImageAdapter extends BaseAdapter {
-	//그리드뷰에서 이미지 보여주기 위한 어댑터
+	// 그리드뷰에서 이미지를 보여주기 위한 어댑터
 	private Context mContext;
 
 	public ImageAdapter(Context c) {
@@ -31,18 +31,18 @@ public class ImageAdapter extends BaseAdapter {
 		ImageView imageView;
 		if (convertView == null) {
 			imageView = new ImageView(mContext);
-			imageView.setLayoutParams(new GridView.LayoutParams(150, 150));// ��ư �׸� ���� ũ�Ⱑ 150x150
+			imageView.setLayoutParams(new GridView.LayoutParams(150, 150)); // 버튼 그림 사이즈가 150x150임
 			imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 		} else {
 			imageView = (ImageView) convertView;
 		}
 
-		// 
+		//
 		imageView.setImageResource(mThumbIds[position]);
 		return imageView;
 	}
 
-	// 
+	// 버튼 9개 추가
 	private Integer[] mThumbIds = { R.drawable.main_button1,
 			R.drawable.main_button2, R.drawable.main_button3,
 			R.drawable.main_button4, R.drawable.main_button5,
